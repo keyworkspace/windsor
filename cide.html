@@ -10,14 +10,16 @@
 <link href="styles.css" rel="stylesheet">
 <style id="oc-runtime">@keyframes oc-slideRight{from{opacity:0;transform:translate(calc(var(--oc-tx,0px) - 40px),var(--oc-ty,0px))}to{opacity:1;transform:translate(var(--oc-tx,0px),var(--oc-ty,0px))}}
 @keyframes oc-slideLeft{from{opacity:0;transform:translate(calc(var(--oc-tx,0px) + 40px),var(--oc-ty,0px))}to{opacity:1;transform:translate(var(--oc-tx,0px),var(--oc-ty,0px))}}
+@keyframes oc-fadeIn{from{opacity:0}to{opacity:1}}
 .oc-anim-slide-right{animation:oc-slideRight var(--oc-dur,600ms) ease var(--oc-delay,0ms) 1 both;}
-.oc-anim-slide-left{animation:oc-slideLeft var(--oc-dur,600ms) ease var(--oc-delay,0ms) 1 both;}</style></head>
+.oc-anim-slide-left{animation:oc-slideLeft var(--oc-dur,600ms) ease var(--oc-delay,0ms) 1 both;}
+.oc-anim-fade-in{animation:oc-fadeIn var(--oc-dur,600ms) ease var(--oc-delay,0ms) 1 both;}</style></head>
 <body class="">
 <div class="preloader loaded">
 <div class="preloader-logo">W</div>
 <div class="preloader-line"><span></span></div>
 <div class="preloader-text">WINDSOR</div>
-</div><header class="header">
+</div><header class="header scrolled">
 <a class="logo" href="index.html">
 <img alt="Windsor" class="logo-icon" src="assets/favicon.png">
 <span class="logo-name">WINDSOR</span>
@@ -26,7 +28,7 @@
 <ul class="nav-list">
 <li><a href="index.html">Inicio</a></li>
 <li class="dropdown">
-<a href="metodologia.html">Sobre</a>
+<a href="metodologia.html" class="">Sobre</a>
 <ul class="submenu">
 <li><a href="metodologia.html">Metodología</a></li>
 <li><a href="inspiracion.html">Inspiración</a></li>
@@ -96,14 +98,14 @@
 <div class="hero-noise"></div>
 <h1 class="oc-anim-slide-right" style="--oc-dur: 600ms; --oc-delay: 0ms;">Centro de Innovación <em class="oc-anim-slide-left" style="--oc-dur: 600ms; --oc-delay: 0ms;">y Desarrollo Empresarial</em></h1>
 <p class="">Formación, mentoría y consultoría para emprendedores, PYMEs y organizaciones que quieren crecer con método y propósito.</p>
-<a class="cta" href="#programas">Conocer programas <svg aria-hidden="true" class="svg-icon svg-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+<a class="cta oc-anim-fade-in" href="#programas" style="--oc-dur: 1000ms; --oc-delay: 0ms;">Conocer programas <svg aria-hidden="true" class="svg-icon svg-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
 </section>
 <section class="section">
 <div class="section-meta"><span>01</span><span>QUÉ ES CIDE</span></div>
 <div class="container grid-2">
-<div>
-<h2>Impulsamos <span>tu desarrollo empresarial.</span></h2>
-<p>El CIDE (Centro de Innovación y Desarrollo Empresarial) de Windsor es un espacio de formación, asesoría y acompañamiento para emprendedores, pequeñas y medianas empresas, y organizaciones que buscan profesionalizar su gestión, innovar en sus procesos y escalar sus proyectos.</p>
+<div class="">
+<h2 class="">Impulsamos <span class="">tu desarrollo empresarial.</span></h2>
+<p class="">El CIDE (Centro de Innovación y Desarrollo Empresarial) de Windsor es un espacio de formación, asesoría y acompañamiento para emprendedores, pequeñas y medianas empresas, y organizaciones que buscan profesionalizar su gestión, innovar en sus procesos y escalar sus proyectos.</p>
 </div>
 <div class="">
 <ul style="list-style:none; margin-top:25px;">
@@ -118,15 +120,15 @@
 <section class="section" style="background:var(--white);">
 <div class="section-meta"><span>02</span><span>PROGRAMAS</span></div>
 <div class="container" id="programas">
-<h2 style="font-size:clamp(2.1rem,3.75vw,3rem); letter-spacing:-0.06em; line-height:0.9;">
+<h2 style="font-size:clamp(2.1rem,3.75vw,3rem); letter-spacing:-0.06em; line-height:0.9;" class="">
                     Nuestros programas
                     <span style="display:block; font-family:var(--sans); font-weight:900; text-decoration:underline; text-decoration-thickness:0.07em; text-underline-offset:0.1em; color:var(--blue);" class="">para tu crecimiento.</span>
 </h2>
 <div class="programas-grid">
 <div class="programa">
 <span class="num">01</span>
-<h3>Formación ejecutiva</h3>
-<p>Talleres y cursos en áreas de gestión, marketing, finanzas, innovación y liderazgo para equipos directivos.</p>
+<h3 class="">Formación ejecutiva</h3>
+<p class="">Talleres y cursos en áreas de gestión, marketing, finanzas, innovación y liderazgo para equipos directivos.</p>
 </div>
 <div class="programa">
 <span class="num">02</span>
@@ -135,7 +137,7 @@
 </div>
 <div class="programa">
 <span class="num">03</span>
-<h3>Consultoría estratégica</h3>
+<h3 class="">Consultoría estratégica</h3>
 <p>Asesoría en planes de negocio, transformación digital, branding y desarrollo organizacional.</p>
 </div>
 <div class="programa">
