@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Key · Batería Integrada de Orientación Vocacional</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; }
+
+  .likert-btn {
+    width: 2.75rem; height: 2.75rem; border-radius: 9999px;
+    border: 2px solid #cbd5e1; background: #fff; color: #475569;
+    font-weight: 700; font-size: .875rem; transition: all .15s ease;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    flex: 0 0 auto;
+  }
+  .likert-btn:hover { border-color: #6366f1; color: #4f46e5; transform: translateY(-2px); }
+  .likert-btn.selected {
+    background: #4f46e5; border-color: #4f46e5; color: #fff;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, .4);
+    transform: translateY(-2px);
+  }
+
+  .opt-btn {
+    text-align: left; padding: .7rem .95rem; border-radius: .65rem;
+    border: 1.5px solid #e2e8f0; background: #fff; font-size: .875rem;
+    color: #475569; transition: all .15s ease; cursor: pointer; width: 100%;
+    line-height: 1.3;
+  }
+  .opt-btn:hover { border-color: #a5b4fc; background: #eef2ff; color: #3730a3; }
+  .opt-btn.selected {
+    border-color: #4f46e5; background: #eef2ff; color: #3730a3;
+    font-weight: 700; box-shadow: 0 0 0 3px rgba(99, 102, 241, .18);
+  }
+
+  .missing-card {
+    border-color: #fca5a5 !important;
+    box-shadow: 0 0 0 3px rgba(248, 113, 113, .18) !important;
+    animation: shake .35s ease;
+  }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+  }
+
+  .fade-in { animation: fadeIn .35s ease both; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  textarea:focus, input:focus, select:focus { outline: none; }
+
+  .item-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem; height: 2rem;
+    border-radius: 9999px;
+    background: #f1f5f9;
+    color: #64748b;
+    font-weight: 800;
+    font-size: .8rem;
+    flex-shrink: 0;
+  }
+
+  .input-field {
+    width: 100%;
+    border: 1.5px solid #cbd5e1;
+    border-radius: .5rem;
+    padding: .6rem .8rem;
+    font-size: .875rem;
+    color: #334155;
+    transition: all .15s ease;
+    background: #fff;
+  }
+  .input-field:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, .15);
+  }
+  .input-field.missing {
+    border-color: #fca5a5;
+    background: #fef2f2;
+  }
+
+  @media print {
+    .no-print { display: none !important; }
+    body { background: #fff !important; }
+    main { padding: 0 !important; max-width: 100% !important; }
+    .print-card {
+      box-shadow: none !important;
+      border: 1px solid #e2e8f0 !important;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .print-break { break-inside: avoid; page-break-inside: avoid; }
+    @page { margin: 1.2cm; }
+  }
+</style>
+</head>
+<body class="bg-slate-100 min-h-screen flex flex-col">
+
+<header class="bg-gradient-to-r from-indigo-700 via-indigo-600 to-violet-600 text-white shadow-lg no-print">
+  <div class="max-w-5xl mx-auto px-4 py-6 sm:py-8">
+    <div class="flex items-center gap-3 sm:gap-4">
+      <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-xl bg-white/15 backdrop-blur flex items-center justify-center text-2xl sm:text-3xl shrink-0">🧭</div>
+      <div>
+        <h1 class="text-base sm:text-2xl font-bold leading-tight">Test Key · Batería Integrada de Orientación Vocacional</h1>
+        <p class="text-indigo-100 text-[11px] sm:text-sm mt-1">
+          Kuder · Herrera y Montes · CHASIDE · Holland (RIASEC) · DAT · Allport · Mooney · Big Five
+        </p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="flex-1 w-full max-w-5xl mx-auto px-4 py-6 sm:py-8">
+
+  <div class="mb-6 no-print">
+    <div class="flex justify-between items-center mb-2">
+      <span class="text-xs font-bold text-slate-500 uppercase tracking-wide" id="stepLabel">Paso 1 de 5</span>
+      <span class="text-xs font-bold text-indigo-600 uppercase tracking-wide" id="stepName">Identificación e Intereses</span>
+    </div>
+    <div class="h-2.5 bg-slate-200 rounded-full overflow-hidden shadow-inner">
+      <div id="progressBar"
+           class="h-full bg-gradient-to-r from-indigo-500 to-violet-500 rounded-full transition-all duration-500 ease-out"
+           style="width:20%"></div>
+    </div>
+    <div class="hidden sm:grid grid-cols-5 gap-2 mt-3 text-[10px] uppercase tracking-wide font-bold text-slate-400">
+      <span data-stepdot="1" class="text-center">1 · Identificación</span>
+      <span data-stepdot="2" class="text-center">2 · Aptitudes</span>
+      <span data-stepdot="3" class="text-center">3 · Personalidad</span>
+      <span data-stepdot="4" class="text-center">4 · Proyectiva</span>
+      <span data-stepdot="5" class="text-center">5 · Informe</span>
+    </div>
+  </div>
+
+  <div id="alertBox" class="hidden mb-5"></div>
+
+  <div id="content" class="fade-in"></div>
+
+  <div class="flex justify-between items-center gap-3 mt-8 no-print">
+    <button id="btnPrev"
+      class="px-5 py-3 rounded-xl font-semibold text-sm bg-white text-slate-600 border border-slate-200 shadow-sm hover:bg-slate-50 hover:text-indigo-600 transition-all">
+      ← Anterior
+    </button>
+    <button id="btnNext"
+      class="px-6 py-3 rounded-xl font-bold text-sm bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/40 hover:-translate-y-0.5 transition-all">
+      Siguiente →
+    </button>
+  </div>
+
+</main>
+
+<footer class="text-center text-[11px] text-slate-400 py-6 no-print">
+  Herramienta de orientación vocacional con fines educativos y de autoconocimiento. No sustituye una evaluación psicométrica profesional.
+</footer>
+
+<script>
+/* =========================================================
+   1. DATOS BASE (mapeos internos, NO visibles al usuario)
+   ========================================================= */
+
+const AREAS = {
+  C: {
+    name: 'Administrativas', short: 'Administrativas',
+    full: 'Ciencias Administrativas, Contables y Económicas',
+    color: '#2563eb', bg: '#dbeafe',
+    desc: 'Perfil orientado al orden, la organización, la gestión de recursos, el cumplimiento de normas y el manejo estructurado de la información. Se asocia con personalidades de tipo Convencional (Holland) y con las escalas de Cálculo y Oficina (Kuder/Herrera).',
+    kuderScales: ['Cálculo', 'Oficina']
+  },
+  H: {
+    name: 'Humanísticas', short: 'Humanísticas',
+    full: 'Ciencias Humanísticas, Sociales y Educación',
+    color: '#db2777', bg: '#fce7f3',
+    desc: 'Perfil orientado al servicio, la comunicación, la enseñanza, la comprensión del comportamiento humano y la transformación social. Se relaciona con personalidades de tipo Social (Holland) y con las escalas de Servicio Social y Literario (Kuder/Herrera).',
+    kuderScales: ['Servicio social', 'Literario']
+  },
+  A: {
+    name: 'Artísticas', short: 'Artísticas',
+    full: 'Artes, Diseño y Comunicación Creativa',
+    color: '#9333ea', bg: '#f3e8ff',
+    desc: 'Perfil orientado a la expresión, la creatividad, la estética y la producción de ideas originales. Se vincula con personalidades de tipo Artístico (Holland) y con las escalas de Artístico y Musical (Kuder/Herrera).',
+    kuderScales: ['Artístico', 'Musical']
+  },
+  S: {
+    name: 'Salud', short: 'Salud',
+    full: 'Ciencias de la Salud y Asistencia Social',
+    color: '#059669', bg: '#d1fae5',
+    desc: 'Perfil orientado al cuidado, la prevención, el diagnóstico y el bienestar físico-emocional. Se asocia con personalidades de tipo Social (Holland) y con las escalas de Servicio Social y Científico (Kuder/Herrera).',
+    kuderScales: ['Servicio social', 'Científico']
+  },
+  I: {
+    name: 'Ingeniería', short: 'Ingeniería',
+    full: 'Ingeniería, Tecnología y Computación',
+    color: '#0891b2', bg: '#cffafe',
+    desc: 'Perfil orientado al diseño, construcción y optimización de sistemas tecnológicos y mecánicos. Se relaciona con personalidades de tipo Realista e Investigador (Holland) y con las escalas de Mecánico y Cálculo (Kuder/Herrera).',
+    kuderScales: ['Mecánico', 'Cálculo']
+  },
+  D: {
+    name: 'Defensa', short: 'Defensa',
+    full: 'Defensa, Seguridad, Liderazgo y Jurídica',
+    color: '#ea580c', bg: '#ffedd5',
+    desc: 'Perfil orientado al liderazgo, la toma de decisiones bajo presión, la disciplina y la protección. Se vincula con personalidades de tipo Emprendedor (Holland) y con las escalas de Persuasivo y Aire Libre (Kuder/Herrera).',
+    kuderScales: ['Persuasivo', 'Aire libre']
+  },
+  E: {
+    name: 'Exactas', short: 'Exactas',
+    full: 'Ciencias Exactas, Naturales y Agrarias',
+    color: '#65a30d', bg: '#ecfccb',
+    desc: 'Perfil orientado a la investigación, la experimentación y el análisis riguroso de datos. Se asocia con personalidades de tipo Investigador (Holland) y con las escalas de Científico y Aire Libre (Kuder/Herrera).',
+    kuderScales: ['Científico', 'Aire libre']
+  }
+};
+
+const AREA_ORDER = ['C', 'H', 'A', 'S', 'I', 'D', 'E'];
+const KUDER_SCALES = ['Aire libre', 'Mecánico', 'Cálculo', 'Científico', 'Persuasivo', 'Artístico', 'Literario', 'Musical', 'Servicio social', 'Oficina'];
+
+/* --- MÓDULO 1: 56 ítems con mapeo OCULTO a CHASIDE + Kuder --- */
+const M1 = [
+  // Área C (Administrativas) - 8 ítems
+  { id: 1,  area: 'C', kuder: 'Oficina',    text: 'Me gusta organizar archivos, clasificar documentos o llevar un control ordenado de datos.' },
+  { id: 2,  area: 'C', kuder: 'Cálculo',    text: 'Prefiero seguir reglas claras y procedimientos estructurados en mi trabajo.' },
+  { id: 3,  area: 'C', kuder: 'Cálculo',    text: 'Disfruto llevar la contabilidad de una empresa o gestionar presupuestos.' },
+  { id: 4,  area: 'C', kuder: 'Oficina',    text: 'Me siento cómodo/a trabajando en una oficina con horarios y tareas definidas.' },
+  { id: 5,  area: 'C', kuder: 'Oficina',    text: 'Me agrada clasificar y archivar información en sistemas ordenados.' },
+  { id: 6,  area: 'C', kuder: 'Cálculo',    text: 'Me resulta fácil trabajar con hojas de cálculo y bases de datos.' },
+  { id: 7,  area: 'C', kuder: 'Persuasivo', text: 'Me interesa administrar los recursos de una organización para que sea eficiente.' },
+  { id: 8,  area: 'C', kuder: 'Oficina',    text: 'Prefiero tareas administrativas que requieren precisión y atención al detalle.' },
+  // Área H (Humanísticas) - 8 ítems
+  { id: 9,  area: 'H', kuder: 'Servicio social', text: 'Me apasiona ayudar a los demás a resolver sus problemas personales o emocionales.' },
+  { id: 10, area: 'H', kuder: 'Literario',      text: 'Disfruto enseñar, capacitar o explicar temas complejos a otras personas.' },
+  { id: 11, area: 'H', kuder: 'Servicio social', text: 'Me interesa comprender las causas de los problemas sociales y cómo solucionarlos.' },
+  { id: 12, area: 'H', kuder: 'Servicio social', text: 'Me gusta escuchar y aconsejar a amigos o familiares en momentos difíciles.' },
+  { id: 13, area: 'H', kuder: 'Literario',      text: 'Disfruto leer y analizar textos literarios, filosóficos o históricos.' },
+  { id: 14, area: 'H', kuder: 'Persuasivo',     text: 'Me gusta debatir y argumentar mis ideas ante otras personas.' },
+  { id: 15, area: 'H', kuder: 'Literario',      text: 'Me agrada escribir ensayos, artículos o reflexiones personales.' },
+  { id: 16, area: 'H', kuder: 'Servicio social', text: 'Me interesa participar en proyectos comunitarios o de voluntariado.' },
+  // Área A (Artísticas) - 8 ítems
+  { id: 17, area: 'A', kuder: 'Artístico', text: 'Me atrae expresar mis ideas a través del dibujo, la música, la escritura o el diseño.' },
+  { id: 18, area: 'A', kuder: 'Artístico', text: 'Valoro la creatividad y prefiero tareas donde no haya respuestas únicas ni rígidas.' },
+  { id: 19, area: 'A', kuder: 'Artístico', text: 'Disfruto visitar museos, exposiciones de arte o asistir a conciertos.' },
+  { id: 20, area: 'A', kuder: 'Artístico', text: 'Me gusta imaginar y crear cosas nuevas, aunque no tengan una utilidad práctica inmediata.' },
+  { id: 21, area: 'A', kuder: 'Musical',   text: 'La música es una parte fundamental de mi vida y me gusta analizarla o crearla.' },
+  { id: 22, area: 'A', kuder: 'Artístico', text: 'Me agrada diseñar, ilustrar o trabajar con formas y colores.' },
+  { id: 23, area: 'A', kuder: 'Musical',   text: 'Disfruto cantar, tocar un instrumento o participar en actividades musicales.' },
+  { id: 24, area: 'A', kuder: 'Artístico', text: 'Prefiero ambientes donde pueda desarrollar mi imaginación y originalidad.' },
+  // Área S (Salud) - 8 ítems
+  { id: 25, area: 'S', kuder: 'Científico',      text: 'Me interesa entender cómo funciona el cuerpo humano, la biología o la medicina.' },
+  { id: 26, area: 'S', kuder: 'Servicio social', text: 'Me siento cómodo/a en entornos asistenciales, cuidando la salud física o el bienestar de otros.' },
+  { id: 27, area: 'S', kuder: 'Científico',      text: 'Me gustaría realizar primeros auxilios o ayudar en campañas de prevención de la salud.' },
+  { id: 28, area: 'S', kuder: 'Científico',      text: 'Me interesa investigar sobre enfermedades y cómo diagnosticarlas.' },
+  { id: 29, area: 'S', kuder: 'Servicio social', text: 'Disfruto cuidar a personas enfermas o acompañar a quien lo necesita.' },
+  { id: 30, area: 'S', kuder: 'Científico',      text: 'Me gusta aprender sobre anatomía, fisiología o farmacología.' },
+  { id: 31, area: 'S', kuder: 'Servicio social', text: 'Me interesa promover hábitos saludables en la comunidad.' },
+  { id: 32, area: 'S', kuder: 'Científico',      text: 'Me atrae la idea de trabajar en un laboratorio clínico o de investigación médica.' },
+  // Área I (Ingeniería) - 8 ítems
+  { id: 33, area: 'I', kuder: 'Mecánico', text: 'Me gusta armar, desarmar, reparar objetos mecánicos o entender el funcionamiento de máquinas.' },
+  { id: 34, area: 'I', kuder: 'Cálculo',  text: 'Me atrae programar, trabajar con tecnología o resolver problemas lógicos informáticos.' },
+  { id: 35, area: 'I', kuder: 'Mecánico', text: 'Disfruto diseñar o construir objetos, estructuras o sistemas.' },
+  { id: 36, area: 'I', kuder: 'Mecánico', text: 'Me interesa aprender sobre electricidad, electrónica o mecánica automotriz.' },
+  { id: 37, area: 'I', kuder: 'Cálculo',  text: 'Me gusta resolver problemas matemáticos aplicados a la ingeniería.' },
+  { id: 38, area: 'I', kuder: 'Mecánico', text: 'Me agrada trabajar con herramientas, maquinaria o equipos técnicos.' },
+  { id: 39, area: 'I', kuder: 'Cálculo',  text: 'Disfruto planificar y diseñar soluciones técnicas a problemas prácticos.' },
+  { id: 40, area: 'I', kuder: 'Mecánico', text: 'Me interesa la robótica, la automatización o el mantenimiento de sistemas.' },
+  // Área D (Defensa) - 8 ítems
+  { id: 41, area: 'D', kuder: 'Persuasivo', text: 'Me motiva asumir roles de liderazgo, tomar decisiones bajo presión y dirigir equipos.' },
+  { id: 42, area: 'D', kuder: 'Aire libre', text: 'Me interesan la estrategia, la disciplina, la protección civil o el ámbito jurídico/militar.' },
+  { id: 43, area: 'D', kuder: 'Persuasivo', text: 'Defendería con argumentos mis ideas y las de otros ante una injusticia.' },
+  { id: 44, area: 'D', kuder: 'Persuasivo', text: 'Me atrae la idea de trabajar en seguridad, defensa o resolución de conflictos.' },
+  { id: 45, area: 'D', kuder: 'Persuasivo', text: 'Me gusta organizar y coordinar grupos de personas para alcanzar objetivos.' },
+  { id: 46, area: 'D', kuder: 'Aire libre', text: 'Me interesa el trabajo de campo, la vigilancia o la protección del territorio.' },
+  { id: 47, area: 'D', kuder: 'Persuasivo', text: 'Disfruto negociar, mediar o resolver disputas entre personas.' },
+  { id: 48, area: 'D', kuder: 'Aire libre', text: 'Me atrae la idea de servir en instituciones de orden, seguridad o justicia.' },
+  // Área E (Exactas) - 8 ítems
+  { id: 49, area: 'E', kuder: 'Científico', text: 'Disfruto investigar, hacer experimentos científicos o analizar fenómenos naturales.' },
+  { id: 50, area: 'E', kuder: 'Cálculo',    text: 'Me gusta trabajar con números, fórmulas matemáticas o estadísticas para comprobar hipótesis.' },
+  { id: 51, area: 'E', kuder: 'Científico', text: 'Me interesa observar y clasificar plantas, animales o minerales.' },
+  { id: 52, area: 'E', kuder: 'Científico', text: 'Me gustaría participar en proyectos de investigación científica o ambiental.' },
+  { id: 53, area: 'E', kuder: 'Aire libre', text: 'Disfruto el trabajo de campo, la naturaleza y el estudio del medio ambiente.' },
+  { id: 54, area: 'E', kuder: 'Cálculo',    text: 'Me resulta estimulante resolver problemas abstractos o teóricos.' },
+  { id: 55, area: 'E', kuder: 'Científico', text: 'Me agrada analizar datos y sacar conclusiones basadas en evidencia.' },
+  { id: 56, area: 'E', kuder: 'Aire libre', text: 'Me interesa la geología, la astronomía o las ciencias de la tierra.' }
+];
+
+/* --- MÓDULO 2: 12 ítems de aptitudes (mapeo oculto a área CHASIDE) --- */
+const M2 = [
+  { id: 1,  title: 'Razonamiento Lógico-Matemático', desc: 'Facilidad para números, cálculo y resolución de problemas abstractos.', icon: '🔢', area: 'I' },
+  { id: 2,  title: 'Aptitud Verbal y Comprensión Lectora', desc: 'Facilidad para redactar, debatir y argumentar ideas.', icon: '📝', area: 'H' },
+  { id: 3,  title: 'Habilidad Espacial y Visual', desc: 'Capacidad para imaginar objetos en 3D, mapas o diseños geométricos.', icon: '📐', area: 'A' },
+  { id: 4,  title: 'Aptitud Mecánica y Técnica', desc: 'Destreza manual para manipular herramientas o sistemas físicos.', icon: '🔧', area: 'I' },
+  { id: 5,  title: 'Habilidad Interpersonal y Empatía', desc: 'Facilidad para negociar, escuchar y coordinar personas.', icon: '🤝', area: 'H' },
+  { id: 6,  title: 'Capacidad de Análisis Científico', desc: 'Destreza para observar, investigar y sistematizar datos.', icon: '🔬', area: 'E' },
+  { id: 7,  title: 'Creatividad e Innovación', desc: 'Facilidad para generar ideas originales y pensar fuera de lo convencional.', icon: '💡', area: 'A' },
+  { id: 8,  title: 'Organización y Planificación', desc: 'Habilidad para estructurar tareas, gestionar tiempo y recursos.', icon: '📅', area: 'C' },
+  { id: 9,  title: 'Liderazgo y Toma de Decisiones', desc: 'Capacidad para guiar grupos y decidir con seguridad.', icon: '🎯', area: 'D' },
+  { id: 10, title: 'Comunicación Oral y Escrita', desc: 'Habilidad para expresar ideas con claridad y persuasión.', icon: '🗣️', area: 'H' },
+  { id: 11, title: 'Resolución de Problemas Complejos', desc: 'Capacidad para abordar situaciones ambiguas y encontrar soluciones.', icon: '🧩', area: 'E' },
+  { id: 12, title: 'Trabajo en Equipo y Colaboración', desc: 'Habilidad para integrarse y aportar en equipos multidisciplinarios.', icon: '👥', area: 'D' }
+];
+
+/* --- MÓDULO 3: personalidad (Big Five), valores (Allport) y contexto (Mooney) --- */
+const M3 = [
+  { id: 'bigfive_apertura',        icon: '🎨', title: '¿Qué tan curioso/a y abierto/a eres a nuevas ideas, experiencias y formas de pensar?', options: ['Muy poco', 'Poco', 'Moderado', 'Bastante', 'Muy alto'] },
+  { id: 'bigfive_responsabilidad', icon: '📋', title: '¿Qué tan organizado/a, cumplido/a y disciplinado/a eres con tus tareas?', options: ['Muy poco', 'Poco', 'Moderado', 'Bastante', 'Muy alto'] },
+  { id: 'bigfive_extraversion',    icon: '🗣️', title: '¿Qué tan sociable, enérgico/a y comunicativo/a te consideras?', options: ['Muy poco', 'Poco', 'Moderado', 'Bastante', 'Muy alto'] },
+  { id: 'bigfive_amabilidad',      icon: '🤝', title: '¿Qué tan cooperativo/a, empático/a y considerado/a eres con los demás?', options: ['Muy poco', 'Poco', 'Moderado', 'Bastante', 'Muy alto'] },
+  { id: 'bigfive_estabilidad',     icon: '🧘', title: '¿Qué tan tranquilo/a y emocionalmente estable te mantienes bajo presión?', options: ['Muy poco', 'Poco', 'Moderado', 'Bastante', 'Muy alto'] },
+  { id: 'valor',      icon: '💎', title: '¿Qué es lo más importante que buscas en tu futuro profesional?', options: ['Estabilidad económica', 'Impacto social y ayuda', 'Creatividad y libertad', 'Reconocimiento y prestigio'] },
+  { id: 'obstaculo',  icon: '🚧', title: '¿Qué es lo que más te preocupa o te frena en este momento para decidir tu futuro?', options: ['Situación económica / costos', 'Presión o expectativas familiares', 'Rendimiento académico previo', 'Falta de claridad / indecisión'] },
+  { id: 'entorno',    icon: '🏢', title: '¿Dónde te gustaría pasar la mayor parte de tu jornada laboral?', options: ['Oficina / Corporativo', 'Laboratorio / Investigación', 'Aire libre / Campo', 'Estudio creativo / Taller', 'Hospital / Clínica'] },
+  { id: 'modalidad',  icon: '🎓', title: '¿Cómo prefieres formarte profesionalmente?', options: ['Universidad presencial tradicional', 'Educación técnica / tecnológica', 'Educación virtual / autodidacta', 'Formación dual (estudiar y trabajar)'] },
+  { id: 'tiempo',     icon: '⏳', title: '¿Cuánto tiempo estás dispuesto/a a invertir en tu formación?', options: ['Menos de 2 años', 'Entre 2 y 4 años', 'Entre 4 y 6 años', 'Más de 6 años (posgrados)'] },
+  { id: 'movilidad',  icon: '✈️', title: '¿Qué tan dispuesto/a estás a mudarte o viajar por trabajo?', options: ['Nada dispuesto/a', 'Poco dispuesto/a', 'Moderadamente dispuesto/a', 'Muy dispuesto/a'] }
+];
+
+const OBSTACLE_TIPS = {
+  'Situación económica / costos': 'Explora universidades públicas, programas de becas y créditos educativos, carreras técnicas de corta duración o modalidades virtuales que reducen costos de traslado y materiales. Considera también la formación dual.',
+  'Presión o expectativas familiares': 'Agenda una conversación abierta con tu familia presentando datos objetivos (resultados de esta evaluación, campo laboral, salarios promedio). Recuerda que la decisión vocacional es tuya y puedes construir acuerdos sin renunciar a tus intereses.',
+  'Rendimiento académico previo': 'Identifica las materias específicas que se te dificultan e invierte en refuerzo focalizado (cursos, tutorías, plataformas gratuitas). Muchas carreras evalúan competencias específicas, no un promedio general.',
+  'Falta de claridad / indecisión': 'Realiza entrevistas informativas a profesionales de las 2 o 3 áreas que más te llamaron la atención, visita ferias vocacionales y prueba cursos introductorios gratuitos (MOOCs) antes de comprometerte.'
+};
+
+/* =========================================================
+   2. ALEATORIZACIÓN DE ÍTEMS (BLIND TESTING)
+   ========================================================= */
+let M1_DISPLAY_ORDER = [];
+let M2_DISPLAY_ORDER = [];
+let M3_DISPLAY_ORDER = [];
+
+function shuffleArray(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function buildBlindOrder() {
+  M1_DISPLAY_ORDER = shuffleArray(M1.map(q => q.id));
+  M2_DISPLAY_ORDER = shuffleArray(M2.map(q => q.id));
+  M3_DISPLAY_ORDER = shuffleArray(M3.map(q => q.id));
+}
+
+function getM1Item(id) { return M1.find(q => q.id === id); }
+function getM2Item(id) { return M2.find(q => q.id === id); }
+function getM3Item(id) { return M3.find(q => q.id === id); }
+
+/* =========================================================
+   3. ESTADO
+   ========================================================= */
+const state = {
+  identificacion: { nombre: '', edad: '', email: '', genero: '', institucion: '' },
+  m1: {},
+  m2: {},
+  m3: {},
+  m4: { f1: '', f2: '' }
+};
+
+let currentStep = 1;
+let lastResults = null;
+let chartCHASIDE = null;
+let chartKUDER = null;
+
+/* =========================================================
+   4. UTILIDADES
+   ========================================================= */
+function escapeHTML(str) {
+  return String(str)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+}
+
+function showAlert(msg) {
+  const box = document.getElementById('alertBox');
+  box.innerHTML = `
+    <div class="bg-red-50 border-l-4 border-red-500 text-red-700 text-sm px-4 py-3 rounded-r-lg flex items-start gap-2 shadow-sm">
+      <span class="text-base leading-none">⚠️</span>
+      <span class="font-medium">${msg}</span>
+    </div>`;
+  box.classList.remove('hidden');
+  box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function clearAlert() {
+  const box = document.getElementById('alertBox');
+  box.innerHTML = '';
+  box.classList.add('hidden');
+}
+
+function showSuccess(msg) {
+  const box = document.getElementById('alertBox');
+  box.innerHTML = `
+    <div class="bg-emerald-50 border-l-4 border-emerald-500 text-emerald-700 text-sm px-4 py-3 rounded-r-lg flex items-start gap-2 shadow-sm">
+      <span class="text-base leading-none">✅</span>
+      <span class="font-medium">${msg}</span>
+    </div>`;
+  box.classList.remove('hidden');
+  box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  setTimeout(() => {
+    if (box.querySelector('.bg-emerald-50')) {
+      box.innerHTML = '';
+      box.classList.add('hidden');
+    }
+  }, 6000);
+}
+
+/* =========================================================
+   5. RENDERIZADO DE MÓDULOS
+   ========================================================= */
+
+function renderModule1() {
+  const legend = `
+    <div class="flex flex-wrap justify-center gap-2 text-[10px] sm:text-xs text-slate-500 font-medium">
+      <span class="px-2.5 py-1 bg-slate-100 rounded-full">1 · Totalmente en desacuerdo</span>
+      <span class="px-2.5 py-1 bg-slate-100 rounded-full">2 · En desacuerdo</span>
+      <span class="px-2.5 py-1 bg-slate-100 rounded-full">3 · Neutral</span>
+      <span class="px-2.5 py-1 bg-slate-100 rounded-full">4 · De acuerdo</span>
+      <span class="px-2.5 py-1 bg-slate-100 rounded-full">5 · Totalmente de acuerdo</span>
+    </div>`;
+
+  const rows = M1_DISPLAY_ORDER.map((id, idx) => {
+    const q = getM1Item(id);
+    const sel = state.m1[q.id];
+    return `
+      <div id="card-m1-${q.id}" class="bg-white rounded-xl border border-slate-200 p-4 sm:p-5 shadow-sm hover:shadow-md transition-shadow">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+          <div class="flex items-center gap-3 flex-1 min-w-0">
+            <span class="item-number">${idx + 1}</span>
+            <p class="text-[13px] sm:text-[15px] text-slate-700 leading-snug">${q.text}</p>
+          </div>
+          <div class="flex gap-2 justify-center sm:justify-end shrink-0" data-qid="m1-${q.id}">
+            ${[1, 2, 3, 4, 5].map(v => `
+              <button type="button" class="likert-btn ${sel == v ? 'selected' : ''}"
+                      data-m1="${q.id}" data-value="${v}" aria-label="Valor ${v}">${v}</button>
+            `).join('')}
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+
+  const identif = state.identificacion;
+  return `
+    <div class="space-y-4">
+
+      <!-- Tarjeta de identificación -->
+      <div class="bg-gradient-to-br from-indigo-50 to-violet-50 rounded-xl border border-indigo-200 p-5 shadow-sm">
+        <h2 class="text-base sm:text-lg font-extrabold text-indigo-900 mb-1 flex items-center gap-2">
+          <span>🪪</span> Datos de identificación
+        </h2>
+        <p class="text-[12px] text-indigo-700 mb-4">
+          Esta información se incluirá en el informe que enviarás al orientador vocacional. Por favor, complétala con exactitud.
+        </p>
+        <div class="grid sm:grid-cols-2 gap-3">
+          <div>
+            <label for="id_nombre" class="block text-[11px] font-bold text-indigo-900 uppercase tracking-wide mb-1">Nombre completo *</label>
+            <input type="text" id="id_nombre" class="input-field" placeholder="Ej. María Fernanda López" value="${escapeHTML(identif.nombre)}">
+          </div>
+          <div>
+            <label for="id_email" class="block text-[11px] font-bold text-indigo-900 uppercase tracking-wide mb-1">Correo electrónico *</label>
+            <input type="email" id="id_email" class="input-field" placeholder="tucorreo@ejemplo.com" value="${escapeHTML(identif.email)}">
+          </div>
+          <div>
+            <label for="id_edad" class="block text-[11px] font-bold text-indigo-900 uppercase tracking-wide mb-1">Edad *</label>
+            <input type="number" id="id_edad" min="12" max="99" class="input-field" placeholder="Ej. 17" value="${escapeHTML(identif.edad)}">
+          </div>
+          <div>
+            <label for="id_genero" class="block text-[11px] font-bold text-indigo-900 uppercase tracking-wide mb-1">Género</label>
+            <select id="id_genero" class="input-field">
+              <option value="" ${!identif.genero ? 'selected' : ''}>Prefiero no decirlo</option>
+              <option value="Femenino" ${identif.genero === 'Femenino' ? 'selected' : ''}>Femenino</option>
+              <option value="Masculino" ${identif.genero === 'Masculino' ? 'selected' : ''}>Masculino</option>
+              <option value="No binario" ${identif.genero === 'No binario' ? 'selected' : ''}>No binario</option>
+              <option value="Otro" ${identif.genero === 'Otro' ? 'selected' : ''}>Otro</option>
+            </select>
+          </div>
+          <div class="sm:col-span-2">
+            <label for="id_institucion" class="block text-[11px] font-bold text-indigo-900 uppercase tracking-wide mb-1">Institución educativa o ciudad</label>
+            <input type="text" id="id_institucion" class="input-field" placeholder="Ej. Preparatoria N. 5, Guadalajara" value="${escapeHTML(identif.institucion)}">
+          </div>
+        </div>
+        <p class="text-[11px] text-indigo-600 mt-3 italic">* Campos obligatorios para generar el informe.</p>
+      </div>
+
+      <!-- Módulo 1 -->
+      <div class="bg-indigo-50 border-l-4 border-indigo-500 p-4 sm:p-5 rounded-r-xl">
+        <h2 class="text-base sm:text-lg font-extrabold text-indigo-900">Módulo 1 · Intereses</h2>
+        <p class="text-[13px] sm:text-sm text-indigo-700 mt-1">
+          Indica tu grado de acuerdo con cada una de las 56 afirmaciones.
+          Responde con total sinceridad: no hay respuestas correctas ni incorrectas.
+        </p>
+      </div>
+      ${legend}
+      <div class="space-y-3">${rows}</div>
+    </div>`;
+}
+
+function renderModule2() {
+  const legend = `
+    <div class="flex flex-wrap justify-center gap-2 text-[10px] sm:text-xs text-slate-500 font-medium">
+      <span class="px-2.5 py-1 bg-slate-100 rounded-full">1 · Muy baja</span>
+      <span class="px-2.5 py-1 bg-slate-100 rounded-full">2 · Baja</span>
+      <span class="px-2.5 py-1 bg-slate-100 rounded-full">3 · Media</span>
+      <span class="px-2.5 py-1 bg-slate-100 rounded-full">4 · Alta</span>
+      <span class="px-2.5 py-1 bg-slate-100 rounded-full">5 · Muy alta</span>
+    </div>`;
+
+  const rows = M2_DISPLAY_ORDER.map((id, idx) => {
+    const q = getM2Item(id);
+    const sel = state.m2[q.id];
+    return `
+      <div id="card-m2-${q.id}" class="bg-white rounded-xl border border-slate-200 p-4 sm:p-5 shadow-sm hover:shadow-md transition-shadow">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+          <div class="flex items-center gap-3 flex-1 min-w-0">
+            <span class="item-number">${idx + 1}</span>
+            <div>
+              <p class="text-[14px] sm:text-[15px] font-bold text-slate-800 flex items-center gap-2">
+                <span class="text-lg">${q.icon}</span>${q.title}
+              </p>
+              <p class="text-[12px] sm:text-[13px] text-slate-500 mt-0.5 leading-snug">${q.desc}</p>
+            </div>
+          </div>
+          <div class="flex gap-2 justify-center sm:justify-end shrink-0" data-qid="m2-${q.id}">
+            ${[1, 2, 3, 4, 5].map(v => `
+              <button type="button" class="likert-btn ${sel == v ? 'selected' : ''}"
+                      data-m2="${q.id}" data-value="${v}" aria-label="Nivel ${v}">${v}</button>
+            `).join('')}
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+
+  return `
+    <div class="space-y-4">
+      <div class="bg-cyan-50 border-l-4 border-cyan-500 p-4 sm:p-5 rounded-r-xl">
+        <h2 class="text-base sm:text-lg font-extrabold text-cyan-900">Módulo 2 · Aptitudes Percibidas</h2>
+        <p class="text-[13px] sm:text-sm text-cyan-800 mt-1">
+          Autoevalúa tu nivel de habilidad en cada competencia. No hay respuestas buenas ni malas: lo importante es tu percepción honesta.
+        </p>
+      </div>
+      ${legend}
+      <div class="space-y-3">${rows}</div>
+    </div>`;
+}
+
+function renderModule3() {
+  const blocks = M3_DISPLAY_ORDER.map((id, idx) => {
+    const q = getM3Item(id);
+    const currentVal = state.m3[q.id];
+    const gridClass = q.options.length > 4 ? 'sm:grid-cols-2' : 'grid-cols-2 sm:grid-cols-3';
+    return `
+      <div id="card-m3-${q.id}" class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+        <h3 class="font-bold text-slate-800 text-[15px] mb-3 flex items-start gap-3">
+          <span class="item-number">${idx + 1}</span>
+          <span class="flex items-start gap-2">
+            <span class="text-lg leading-none">${q.icon}</span>
+            <span>${q.title}</span>
+          </span>
+        </h3>
+        <div class="grid ${gridClass} gap-2">
+          ${q.options.map((o, i) => `
+            <button type="button" class="opt-btn ${currentVal === i ? 'selected' : ''}"
+                    data-m3="${q.id}" data-idx="${i}">${o}</button>
+          `).join('')}
+        </div>
+      </div>`;
+  }).join('');
+
+  return `
+    <div class="space-y-4">
+      <div class="bg-amber-50 border-l-4 border-amber-500 p-4 sm:p-5 rounded-r-xl">
+        <h2 class="text-base sm:text-lg font-extrabold text-amber-900">Módulo 3 · Personalidad, Valores y Contexto</h2>
+        <p class="text-[13px] sm:text-sm text-amber-800 mt-1">
+          Responde de forma espontánea. Este módulo explora tu personalidad, tus valores y tu contexto actual.
+          El sistema combinará estas respuestas con los módulos anteriores para construir tu Test Key final.
+        </p>
+      </div>
+      ${blocks}
+    </div>`;
+}
+
+function renderModule4() {
+  return `
+    <div class="space-y-4">
+      <div class="bg-violet-50 border-l-4 border-violet-500 p-4 sm:p-5 rounded-r-xl">
+        <h2 class="text-base sm:text-lg font-extrabold text-violet-900">Módulo 4 · Exploración Proyectiva y Expresiva</h2>
+        <p class="text-[13px] sm:text-sm text-violet-800 mt-1">
+          Ejercicios de respuesta abierta para el análisis cualitativo de tu proyecto de vida y la técnica <strong>R-O (Realidad Ocupacional)</strong>.
+          Escribe con libertad; no hay límite de extensión.
+        </p>
+      </div>
+
+      <div id="card-m4-f1" class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+        <label for="m4-f1" class="block font-bold text-slate-800 text-[15px] mb-1">
+          ✍️ Completa la frase
+        </label>
+        <p class="text-[13px] text-slate-500 mb-3 italic">
+          "Cuando imagino mi trabajo ideal en 5 años, me veo..."
+        </p>
+        <textarea id="m4-f1" data-m4="f1" rows="4"
+          class="w-full rounded-lg border border-slate-300 p-3 text-sm text-slate-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all resize-y"
+          placeholder="Describe el entorno, las tareas que realizarías, con quién trabajarías, cómo te sentirías...">${escapeHTML(state.m4.f1)}</textarea>
+      </div>
+
+      <div id="card-m4-f2" class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+        <label for="m4-f2" class="block font-bold text-slate-800 text-[15px] mb-1">
+          🎯 Técnica R-O (Realidad Ocupacional)
+        </label>
+        <p class="text-[13px] text-slate-500 mb-3 italic">
+          Menciona 2 profesiones u oficios que siempre te hayan llamado la atención y explica brevemente por qué.
+        </p>
+        <textarea id="m4-f2" data-m4="f2" rows="5"
+          class="w-full rounded-lg border border-slate-300 p-3 text-sm text-slate-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all resize-y"
+          placeholder="1) ... porque...&#10;2) ... porque...">${escapeHTML(state.m4.f2)}</textarea>
+      </div>
+    </div>`;
+}
+
+/* =========================================================
+   6. MOTOR DE CÁLCULO DEL TEST KEY
+   ========================================================= */
+function computeTestKey() {
+  /* --- CHASIDE --- */
+  const chasideRaw = {};
+  AREA_ORDER.forEach(a => chasideRaw[a] = 0);
+  M1.forEach(q => {
+    chasideRaw[q.area] += Number(state.m1[q.id] || 0);
+  });
+  const chaside = {};
+  AREA_ORDER.forEach(a => {
+    chaside[a] = ((chasideRaw[a] - 8) / 32) * 10;
+  });
+
+  /* --- KUDER/HERRERA --- */
+  const kuderRaw = {};
+  KUDER_SCALES.forEach(s => kuderRaw[s] = 0);
+  M1.forEach(q => {
+    if (q.kuder && kuderRaw[q.kuder] !== undefined) {
+      kuderRaw[q.kuder] += Number(state.m1[q.id] || 0);
+    }
+  });
+  const kuder = {};
+  KUDER_SCALES.forEach(s => {
+    const count = M1.filter(q => q.kuder === s).length || 1;
+    const min = count * 1;
+    const max = count * 5;
+    kuder[s] = ((kuderRaw[s] - min) / (max - min)) * 10;
+    if (isNaN(kuder[s])) kuder[s] = 0;
+  });
+
+  /* --- DAT (aptitudes) --- */
+  const aptRaw = M2.map(q => Number(state.m2[q.id] || 0));
+  const aptitudes = {};
+  M2.forEach((q, i) => {
+    aptitudes[q.title] = ((aptRaw[i] - 1) / 4) * 10;
+  });
+
+  /* --- Aptitud por área CHASIDE --- */
+  const aptitudeByArea = {};
+  AREA_ORDER.forEach(a => {
+    const items = M2.filter(q => q.area === a);
+    if (items.length === 0) {
+      aptitudeByArea[a] = 0;
+    } else {
+      const sum = items.reduce((s, q) => s + aptitudes[q.title], 0);
+      aptitudeByArea[a] = sum / items.length;
+    }
+  });
+
+  /* --- Big Five --- */
+  const bigFive = {
+    apertura: state.m3['bigfive_apertura'] !== undefined ? (state.m3['bigfive_apertura'] / 4) * 10 : 5,
+    responsabilidad: state.m3['bigfive_responsabilidad'] !== undefined ? (state.m3['bigfive_responsabilidad'] / 4) * 10 : 5,
+    extraversion: state.m3['bigfive_extraversion'] !== undefined ? (state.m3['bigfive_extraversion'] / 4) * 10 : 5,
+    amabilidad: state.m3['bigfive_amabilidad'] !== undefined ? (state.m3['bigfive_amabilidad'] / 4) * 10 : 5,
+    estabilidad: state.m3['bigfive_estabilidad'] !== undefined ? (state.m3['bigfive_estabilidad'] / 4) * 10 : 5
+  };
+
+  /* --- Holland (RIASEC) derivado de CHASIDE --- */
+  const holland = {
+    Realista: (chaside.I + chaside.E) / 2,
+    Investigador: (chaside.E + chaside.I + chaside.S) / 3,
+    Artístico: chaside.A,
+    Social: (chaside.H + chaside.S) / 2,
+    Emprendedor: (chaside.D + chaside.C) / 2,
+    Convencional: chaside.C
+  };
+
+  /* --- Índice integrado Test Key --- */
+  const integratedScore = {};
+  AREA_ORDER.forEach(a => {
+    const kuderAvg = AREAS[a].kuderScales.reduce((s, k) => s + kuder[k], 0) / AREAS[a].kuderScales.length;
+    integratedScore[a] = (chaside[a] * 0.5) + (aptitudeByArea[a] * 0.3) + (kuderAvg * 0.2);
+  });
+
+  let predominant = AREA_ORDER[0];
+  AREA_ORDER.forEach(a => {
+    if (integratedScore[a] > integratedScore[predominant]) predominant = a;
+  });
+
+  const sorted = [...AREA_ORDER].sort((x, y) => integratedScore[y] - integratedScore[x]);
+  const secondary = sorted.find(a => a !== predominant);
+
+  /* --- Coherencia múltiple global --- */
+  let sumDiff = 0;
+  AREA_ORDER.forEach(a => {
+    const kuderAvg = AREAS[a].kuderScales.reduce((s, k) => s + kuder[k], 0) / AREAS[a].kuderScales.length;
+    const diff1 = Math.abs(chaside[a] - aptitudeByArea[a]);
+    const diff2 = Math.abs(chaside[a] - kuderAvg);
+    const diff3 = Math.abs(aptitudeByArea[a] - kuderAvg);
+    sumDiff += (diff1 + diff2 + diff3) / 3;
+  });
+  const meanDiff = sumDiff / AREA_ORDER.length;
+  const coherence = Math.max(0, Math.min(100, Math.round(100 - (meanDiff / 10) * 100)));
+
+  /* --- Diagnóstico --- */
+  let diagnosis, diagDesc, diagColor, diagBg;
+  if (coherence >= 75) {
+    diagnosis = 'Alta Convergencia Vocacional (Test Key)';
+    diagDesc = 'Tus intereses (CHASIDE/Kuder/Herrera), tus aptitudes (DAT) y tu perfil de personalidad (Holland/Big Five) convergen en la misma dirección. Esta triple validación otorga una alta confiabilidad a tu perfil vocacional. Tienes una base sólida para elegir una carrera en el área predominante.';
+    diagColor = '#047857'; diagBg = '#ecfdf5';
+  } else if (coherence >= 55) {
+    diagnosis = 'Convergencia Vocacional Moderada';
+    diagDesc = 'Existe alineación parcial entre tus intereses, aptitudes y personalidad. Algunas áreas requieren desarrollo de competencias o mayor exploración. El Test Key sugiere que profundices en las áreas donde las tres fuentes coinciden.';
+    diagColor = '#b45309'; diagBg = '#fffbeb';
+  } else {
+    diagnosis = 'Divergencia Vocacional / Requiere Exploración';
+    diagDesc = 'Tus intereses, aptitudes y personalidad apuntan a direcciones diferentes. Esto NO es negativo: indica que estás en una etapa de exploración. El Test Key recomienda realizar entrevistas vocacionales, pruebas estandarizadas adicionales y experiencias prácticas antes de decidir.';
+    diagColor = '#be123c'; diagBg = '#fff1f2';
+  }
+
+  /* --- Coherencia por área --- */
+  const coherenceByArea = {};
+  AREA_ORDER.forEach(a => {
+    const kuderAvg = AREAS[a].kuderScales.reduce((s, k) => s + kuder[k], 0) / AREAS[a].kuderScales.length;
+    const diff = (Math.abs(chaside[a] - aptitudeByArea[a]) + Math.abs(chaside[a] - kuderAvg) + Math.abs(aptitudeByArea[a] - kuderAvg)) / 3;
+    let label, color;
+    if (diff <= 1.5) { label = 'Convergente'; color = '#047857'; }
+    else if (diff <= 3.5) { label = 'Moderada'; color = '#b45309'; }
+    else { label = 'Divergente'; color = '#be123c'; }
+    coherenceByArea[a] = {
+      diff, label, color,
+      interest: chaside[a],
+      aptitude: aptitudeByArea[a],
+      kuderAvg,
+      integrated: integratedScore[a]
+    };
+  });
+
+  return {
+    chaside, chasideRaw, kuder, kuderRaw, aptitudes, aptitudeByArea,
+    bigFive, holland, integratedScore, predominant, secondary,
+    coherence, meanDiff, diagnosis, diagDesc, diagColor, diagBg,
+    coherenceByArea
+  };
+}
+
+/* =========================================================
+   7. RENDERIZADO DE RESULTADOS (SIN CARRERAS)
+   ========================================================= */
+function renderResults() {
+  const r = computeTestKey();
+  lastResults = r;
+
+  const P = AREAS[r.predominant];
+  const S = AREAS[r.secondary];
+
+  /* --- Tarjeta del Área Predominante (sin carreras) --- */
+  const predCard = `
+    <div class="print-card rounded-2xl p-6 sm:p-8 text-white shadow-xl print-break"
+         style="background:linear-gradient(135deg, ${P.color} 0%, ${P.color}cc 60%, ${P.color}99 100%)">
+      <p class="text-[11px] font-bold uppercase tracking-widest opacity-80 mb-1">Test Key · Área Vocacional Predominante</p>
+      <h2 class="text-2xl sm:text-3xl font-extrabold leading-tight">${P.name}</h2>
+      <p class="text-sm font-medium opacity-90 mt-1">${P.full}</p>
+      <p class="text-[13px] sm:text-sm opacity-95 mt-3 leading-relaxed max-w-3xl">${P.desc}</p>
+
+      <div class="flex flex-wrap gap-3 mt-5">
+        <div class="bg-white/15 backdrop-blur rounded-xl px-4 py-2.5 border border-white/20">
+          <p class="text-[10px] uppercase tracking-wide opacity-80 font-bold">Interés</p>
+          <p class="text-xl font-extrabold">${r.chaside[r.predominant].toFixed(1)}<span class="text-sm opacity-80">/10</span></p>
+        </div>
+        <div class="bg-white/15 backdrop-blur rounded-xl px-4 py-2.5 border border-white/20">
+          <p class="text-[10px] uppercase tracking-wide opacity-80 font-bold">Aptitud</p>
+          <p class="text-xl font-extrabold">${r.aptitudeByArea[r.predominant].toFixed(1)}<span class="text-sm opacity-80">/10</span></p>
+        </div>
+        <div class="bg-white/15 backdrop-blur rounded-xl px-4 py-2.5 border border-white/20">
+          <p class="text-[10px] uppercase tracking-wide opacity-80 font-bold">Kuder/Herrera</p>
+          <p class="text-xl font-extrabold">${(AREAS[r.predominant].kuderScales.reduce((s,k)=>s+r.kuder[k],0)/AREAS[r.predominant].kuderScales.length).toFixed(1)}<span class="text-sm opacity-80">/10</span></p>
+        </div>
+        <div class="bg-white/15 backdrop-blur rounded-xl px-4 py-2.5 border border-white/20">
+          <p class="text-[10px] uppercase tracking-wide opacity-80 font-bold">Índice Test Key</p>
+          <p class="text-xl font-extrabold">${r.integratedScore[r.predominant].toFixed(1)}<span class="text-sm opacity-80">/10</span></p>
+        </div>
+      </div>
+    </div>`;
+
+  /* --- Área Complementaria --- */
+  const secondaryCard = `
+    <div class="print-card bg-white rounded-xl border border-slate-200 p-5 shadow-sm print-break">
+      <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-1">Área Complementaria</p>
+      <div class="flex items-center gap-2 mb-2">
+        <span class="w-3 h-3 rounded-full" style="background:${S.color}"></span>
+        <h3 class="font-extrabold text-slate-800 text-lg">${S.name}</h3>
+        <span class="text-xs font-bold px-2 py-0.5 rounded-full" style="background:${S.bg};color:${S.color}">
+          ${r.integratedScore[r.secondary].toFixed(1)}/10
+        </span>
+      </div>
+      <p class="text-[13px] text-slate-600 leading-relaxed">${S.desc}</p>
+    </div>`;
+
+  /* --- Diagnóstico Test Key --- */
+  const diagBlock = `
+    <div class="rounded-xl p-5 border-2 print-break" style="background:${r.diagBg};border-color:${r.diagColor}40">
+      <div class="flex items-start gap-3">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center text-xl shrink-0"
+             style="background:${r.diagColor}20">🔑</div>
+        <div>
+          <p class="text-[11px] font-bold uppercase tracking-widest mb-0.5" style="color:${r.diagColor}">
+            Test Key · Triangulación Múltiple
+          </p>
+          <h3 class="text-lg sm:text-xl font-extrabold" style="color:${r.diagColor}">${r.diagnosis}</h3>
+          <p class="text-[13px] sm:text-sm text-slate-700 mt-2 leading-relaxed">${r.diagDesc}</p>
+          <p class="text-[12px] text-slate-500 mt-2">
+            <strong>Índice de convergencia global:</strong> ${r.coherence}% &nbsp;·&nbsp;
+            <strong>Brecha media:</strong> ${r.meanDiff.toFixed(2)} puntos (escala 0-10)
+          </p>
+        </div>
+      </div>
+    </div>`;
+
+  /* --- Gráfico Radar CHASIDE --- */
+  const radarCHASIDECard = `
+    <div class="print-card bg-white rounded-xl border border-slate-200 p-4 sm:p-6 shadow-sm print-break">
+      <h3 class="text-base sm:text-lg font-extrabold text-slate-800 mb-1 flex items-center gap-2">
+        <span>📊</span> Perfil CHASIDE Multidimensional
+      </h3>
+      <p class="text-[12px] text-slate-500 mb-4">
+        Comparativa entre <strong class="text-indigo-600">Intereses</strong>,
+        <strong class="text-emerald-600">Aptitudes</strong> y
+        <strong class="text-amber-600">Personalidad Holland</strong> en las 7 áreas.
+      </p>
+      <div class="h-[360px] sm:h-[460px] relative">
+        <canvas id="radarCHASIDE"></canvas>
+      </div>
+    </div>`;
+
+  /* --- Gráfico Radar Kuder/Herrera --- */
+  const radarKUDERCard = `
+    <div class="print-card bg-white rounded-xl border border-slate-200 p-4 sm:p-6 shadow-sm print-break">
+      <h3 class="text-base sm:text-lg font-extrabold text-slate-800 mb-1 flex items-center gap-2">
+        <span>🎯</span> Perfil Kuder / Herrera y Montes (10 Escalas)
+      </h3>
+      <p class="text-[12px] text-slate-500 mb-4">
+        Puntajes normalizados (0-10) en las 10 escalas del inventario de preferencias vocacionales.
+      </p>
+      <div class="h-[360px] sm:h-[460px] relative">
+        <canvas id="radarKUDER"></canvas>
+      </div>
+    </div>`;
+
+  /* --- Matriz de Triangulación --- */
+  const comparisonRows = AREA_ORDER.map(a => {
+    const A = AREAS[a];
+    const c = r.coherenceByArea[a];
+    const badgeCls = c.label === 'Convergente' ? 'bg-emerald-100 text-emerald-700' :
+                     c.label === 'Moderada' ? 'bg-amber-100 text-amber-700' : 'bg-rose-100 text-rose-700';
+
+    return `
+      <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm print-break">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-2 min-w-0">
+            <span class="w-2.5 h-2.5 rounded-full shrink-0" style="background:${A.color}"></span>
+            <span class="font-bold text-[13px] text-slate-800 truncate">${A.name}</span>
+          </div>
+          <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-full ${badgeCls} shrink-0">${c.label}</span>
+        </div>
+        <div class="space-y-2">
+          <div>
+            <div class="flex justify-between text-[11px] text-slate-500 mb-1">
+              <span class="font-semibold">Interés</span>
+              <span class="font-bold text-indigo-600">${c.interest.toFixed(1)}/10</span>
+            </div>
+            <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+              <div class="h-full rounded-full bg-gradient-to-r from-indigo-500 to-violet-500"
+                   style="width:${(c.interest / 10) * 100}%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-[11px] text-slate-500 mb-1">
+              <span class="font-semibold">Aptitud</span>
+              <span class="font-bold text-emerald-600">${c.aptitude.toFixed(1)}/10</span>
+            </div>
+            <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+              <div class="h-full rounded-full bg-gradient-to-r from-emerald-500 to-teal-500"
+                   style="width:${(c.aptitude / 10) * 100}%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-[11px] text-slate-500 mb-1">
+              <span class="font-semibold">Kuder/Herrera</span>
+              <span class="font-bold text-amber-600">${c.kuderAvg.toFixed(1)}/10</span>
+            </div>
+            <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+              <div class="h-full rounded-full bg-gradient-to-r from-amber-500 to-orange-500"
+                   style="width:${(c.kuderAvg / 10) * 100}%"></div>
+            </div>
+          </div>
+          <div class="pt-1 border-t border-slate-100">
+            <div class="flex justify-between text-[11px]">
+              <span class="font-bold text-slate-600">Índice Test Key</span>
+              <span class="font-extrabold text-violet-600">${c.integrated.toFixed(1)}/10</span>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+
+  /* --- Big Five + Holland --- */
+  const bigFiveBars = Object.entries(r.bigFive).map(([k, v]) => {
+    const labels = { apertura: 'Apertura', responsabilidad: 'Responsabilidad', extraversion: 'Extraversión', amabilidad: 'Amabilidad', estabilidad: 'Estabilidad' };
+    const colors = { apertura: '#8b5cf6', responsabilidad: '#3b82f6', extraversion: '#f59e0b', amabilidad: '#ec4899', estabilidad: '#10b981' };
+    return `
+      <div>
+        <div class="flex justify-between text-[11px] text-slate-500 mb-1">
+          <span class="font-semibold">${labels[k]}</span>
+          <span class="font-bold" style="color:${colors[k]}">${v.toFixed(1)}/10</span>
+        </div>
+        <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+          <div class="h-full rounded-full transition-all duration-700"
+               style="width:${(v/10)*100}%;background:${colors[k]}"></div>
+        </div>
+      </div>`;
+  }).join('');
+
+  const hollandBars = Object.entries(r.holland).map(([k, v]) => {
+    const labels = { Realista: 'Realista (R)', Investigador: 'Investigador (I)', Artístico: 'Artístico (A)', Social: 'Social (S)', Emprendedor: 'Emprendedor (E)', Convencional: 'Convencional (C)' };
+    return `
+      <div>
+        <div class="flex justify-between text-[11px] text-slate-500 mb-1">
+          <span class="font-semibold">${labels[k]}</span>
+          <span class="font-bold text-slate-700">${v.toFixed(1)}/10</span>
+        </div>
+        <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+          <div class="h-full rounded-full bg-gradient-to-r from-slate-600 to-slate-800 transition-all duration-700"
+               style="width:${(v/10)*100}%"></div>
+        </div>
+      </div>`;
+  }).join('');
+
+  const personalityBlock = `
+    <div class="print-card bg-white rounded-xl border border-slate-200 p-5 sm:p-6 shadow-sm print-break">
+      <h3 class="text-base sm:text-lg font-extrabold text-slate-800 mb-1 flex items-center gap-2">
+        <span>🧠</span> Perfil de Personalidad y Holland (RIASEC)
+      </h3>
+      <p class="text-[12px] text-slate-500 mb-4">
+        El Test Key integra el modelo <strong>Big Five</strong> con los <strong>tipos Holland</strong> derivados del CHASIDE.
+      </p>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h4 class="text-sm font-extrabold text-violet-700 mb-3">Big Five</h4>
+          <div class="space-y-3">${bigFiveBars}</div>
+        </div>
+        <div>
+          <h4 class="text-sm font-extrabold text-slate-700 mb-3">Holland (RIASEC)</h4>
+          <div class="space-y-3">${hollandBars}</div>
+        </div>
+      </div>
+    </div>`;
+
+  /* --- Resumen del Proyecto de Vida --- */
+  const getM3 = (id) => {
+    const q = M3.find(x => x.id === id);
+    const idx = state.m3[id];
+    return (idx === undefined || idx === null) ? '—' : q.options[idx];
+  };
+
+  const valorTxt = getM3('valor');
+  const obstaculoTxt = getM3('obstaculo');
+  const entornoTxt = getM3('entorno');
+  const modalidadTxt = getM3('modalidad');
+  const tiempoTxt = getM3('tiempo');
+  const movilidadTxt = getM3('movilidad');
+  const tip = OBSTACLE_TIPS[obstaculoTxt] || '';
+
+  const infoItem = (label, value, icon) => `
+    <div class="bg-slate-50 rounded-lg p-3 border border-slate-100">
+      <p class="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 mb-1">${icon} ${label}</p>
+      <p class="text-[13px] font-semibold text-slate-800 leading-snug">${escapeHTML(value)}</p>
+    </div>`;
+
+  const proyectoBlock = `
+    <div class="print-card bg-white rounded-xl border border-slate-200 p-5 sm:p-6 shadow-sm print-break">
+      <h3 class="text-base sm:text-lg font-extrabold text-slate-800 mb-4 flex items-center gap-2">
+        <span>🧬</span> Resumen del Proyecto de Vida
+      </h3>
+
+      <div class="grid sm:grid-cols-2 gap-3 mb-5">
+        ${infoItem('Valor profesional principal', valorTxt, '💎')}
+        ${infoItem('Obstáculo detectado', obstaculoTxt, '🚧')}
+        ${infoItem('Entorno laboral preferido', entornoTxt, '🏢')}
+        ${infoItem('Modalidad de formación', modalidadTxt, '🎓')}
+        ${infoItem('Tiempo de formación', tiempoTxt, '⏳')}
+        ${infoItem('Movilidad geográfica', movilidadTxt, '✈️')}
+      </div>
+
+      ${tip ? `
+      <div class="bg-indigo-50 border-l-4 border-indigo-500 rounded-r-lg p-4 mb-5">
+        <p class="text-[11px] font-extrabold uppercase tracking-widest text-indigo-700 mb-1">💡 Recomendación estratégica</p>
+        <p class="text-[13px] text-indigo-900 leading-relaxed">${tip}</p>
+      </div>` : ''}
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-violet-50 rounded-lg p-4 border border-violet-100">
+          <p class="text-[10px] font-extrabold uppercase tracking-widest text-violet-700 mb-2">
+            ✍️ Proyección a 5 años
+          </p>
+          <p class="text-[13px] text-slate-700 leading-relaxed whitespace-pre-line">${escapeHTML(state.m4.f1) || '<em class="text-slate-400">Sin respuesta</em>'}</p>
+        </div>
+        <div class="bg-cyan-50 rounded-lg p-4 border border-cyan-100">
+          <p class="text-[10px] font-extrabold uppercase tracking-widest text-cyan-700 mb-2">
+            🎯 Técnica R-O · Realidad Ocupacional
+          </p>
+          <p class="text-[13px] text-slate-700 leading-relaxed whitespace-pre-line">${escapeHTML(state.m4.f2) || '<em class="text-slate-400">Sin respuesta</em>'}</p>
+        </div>
+      </div>
+    </div>`;
+
+  /* --- Bloque de descarga del informe para el orientador --- */
+  const nombreMostrar = state.identificacion.nombre || 'Estudiante';
+  const informeBlock = `
+    <div class="print-card bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl border-2 border-emerald-300 p-5 sm:p-6 shadow-md print-break">
+      <h3 class="text-base sm:text-lg font-extrabold text-emerald-900 mb-1 flex items-center gap-2">
+        <span>📥</span> Descarga tu informe para el Orientador Vocacional
+      </h3>
+      <p class="text-[13px] text-emerald-800 leading-relaxed mb-4">
+        Este es el último paso. <strong>El Test Key no muestra carreras sugeridas</strong> porque esas deben ser interpretadas por un profesional.
+        Descarga el informe completo (contiene <strong>todas tus respuestas, puntuaciones, perfiles y datos de identificación</strong>)
+        y envíalo a tu orientador vocacional. Él lo analizará y te devolverá un resumen personalizado con las <strong>carreras sugeridas</strong>.
+      </p>
+
+      <div class="bg-white/70 rounded-lg p-4 mb-4 border border-emerald-200">
+        <p class="text-[11px] font-extrabold uppercase tracking-widest text-emerald-700 mb-2">📋 Pasos a seguir</p>
+        <ol class="text-[12px] text-emerald-900 space-y-1.5 list-decimal list-inside font-medium">
+          <li>Haz clic en <strong>"Descargar informe completo"</strong> (archivo <code class="bg-emerald-100 px-1 rounded">.json</code>).</li>
+          <li>Envía el archivo a tu orientador vocacional por correo o el medio que te indique.</li>
+          <li>El orientador procesará el informe y te devolverá un resumen con las <strong>carreras más compatibles</strong>.</li>
+          <li>Agenda una sesión de retroalimentación para profundizar en los resultados.</li>
+        </ol>
+      </div>
+
+      <div class="bg-white/70 rounded-lg p-4 mb-4 border border-emerald-200">
+        <p class="text-[11px] font-extrabold uppercase tracking-widest text-emerald-700 mb-2">👤 Datos que se incluirán en el informe</p>
+        <div class="grid sm:grid-cols-2 gap-2 text-[12px] text-emerald-900 font-medium">
+          <div>• Nombre: <strong>${escapeHTML(nombreMostrar)}</strong></div>
+          <div>• Edad: <strong>${escapeHTML(state.identificacion.edad) || '—'}</strong></div>
+          <div>• Email: <strong>${escapeHTML(state.identificacion.email) || '—'}</strong></div>
+          <div>• Género: <strong>${escapeHTML(state.identificacion.genero) || 'No especificado'}</strong></div>
+          <div class="sm:col-span-2">• Institución / Ciudad: <strong>${escapeHTML(state.identificacion.institucion) || '—'}</strong></div>
+          <div class="sm:col-span-2 text-emerald-700">• Todas las respuestas, puntuaciones CHASIDE/Kuder/DAT/Holland/Big Five, orden de presentación de ítems y marcas de tiempo.</div>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3">
+        <button type="button" id="btnDownloadJSON"
+          class="flex-1 px-5 py-3.5 rounded-xl font-bold text-sm bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg shadow-emerald-500/30 hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
+          📥 Descargar informe completo (.json)
+        </button>
+        <button type="button" id="btnCopyJSON"
+          class="px-5 py-3.5 rounded-xl font-bold text-sm bg-white text-emerald-700 border-2 border-emerald-300 hover:bg-emerald-50 transition-all flex items-center justify-center gap-2">
+          📋 Copiar informe
+        </button>
+      </div>
+
+      <p class="text-[11px] text-emerald-700 mt-3 italic text-center">
+        Guarda una copia del informe. Contiene información confidencial que solo debe compartirse con tu orientador.
+      </p>
+    </div>`;
+
+  /* --- Ensamblado final --- */
+  return `
+    <div class="space-y-5">
+
+      <div class="text-center mb-2 print-break">
+        <div class="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-1.5 shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="text-[11px] font-extrabold uppercase tracking-widest text-slate-500">Test Key Completado</span>
+        </div>
+        <h2 class="text-xl sm:text-2xl font-extrabold text-slate-800 mt-3">Tu Perfil Vocacional Integrado</h2>
+        <p class="text-[13px] text-slate-500 mt-1 max-w-2xl mx-auto">
+          Resultado unificado de <strong>Kuder · Herrera y Montes · CHASIDE · Holland · DAT · Big Five · Allport · Mooney</strong>.
+          Las carreras sugeridas te las entregará tu orientador tras analizar este informe.
+        </p>
+      </div>
+
+      ${predCard}
+
+      ${radarCHASIDECard}
+
+      ${radarKUDERCard}
+
+      ${secondaryCard}
+
+      ${diagBlock}
+
+      <div class="print-card bg-white rounded-xl border border-slate-200 p-5 sm:p-6 shadow-sm print-break">
+        <h3 class="text-base sm:text-lg font-extrabold text-slate-800 mb-1 flex items-center gap-2">
+          <span>🔺</span> Matriz de Triangulación Test Key
+        </h3>
+        <p class="text-[12px] text-slate-500 mb-4">
+          Detalle comparativo área por área entre <strong>Interés</strong>, <strong>Aptitud</strong> y el <strong>Índice Test Key</strong> integrado.
+        </p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          ${comparisonRows}
+        </div>
+      </div>
+
+      ${personalityBlock}
+
+      ${proyectoBlock}
+
+      ${informeBlock}
+
+      <div class="print-card bg-slate-50 rounded-xl border border-slate-200 p-5 print-break">
+        <h3 class="text-sm font-extrabold text-slate-700 mb-2">📌 Nota metodológica del Test Key</h3>
+        <p class="text-[12px] text-slate-500 leading-relaxed">
+          El <strong>Test Key</strong> integra seis instrumentos en un solo flujo: <strong>Kuder</strong> y <strong>Herrera y Montes</strong>
+          para intereses vocacionales, <strong>CHASIDE</strong> para las 7 áreas, <strong>Holland (RIASEC)</strong> para personalidad vocacional,
+          <strong>DAT</strong> para aptitudes, y <strong>Big Five, Allport y Mooney</strong> para personalidad, valores y contexto.
+          Los ítems se presentan en orden aleatorio y sin etiquetas visibles para evitar sesgos de respuesta (evaluación ciega).
+          El índice integrado pondera: <em>50% interés CHASIDE, 30% aptitud DAT y 20% Kuder/Herrera</em>.
+          La convergencia entre las tres fuentes determina la confiabilidad del perfil.
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row justify-center gap-3 pt-2 no-print">
+        <button onclick="window.print()"
+          class="px-6 py-3.5 rounded-xl font-bold text-sm bg-white text-slate-600 border border-slate-200 shadow-sm hover:bg-slate-50 hover:text-indigo-600 transition-all flex items-center justify-center gap-2">
+          🖨️ Imprimir esta vista
+        </button>
+        <button id="btnRestart"
+          class="px-6 py-3.5 rounded-xl font-bold text-sm bg-white text-slate-600 border border-slate-200 shadow-sm hover:bg-slate-50 hover:text-indigo-600 transition-all flex items-center justify-center gap-2">
+          🔄 Realizar nueva evaluación
+        </button>
+      </div>
+
+    </div>`;
+}
+
+/* =========================================================
+   8. GRÁFICOS RADAR
+   ========================================================= */
+function createRadarCHASIDE() {
+  const canvas = document.getElementById('radarCHASIDE');
+  if (!canvas || !lastResults) return;
+
+  if (chartCHASIDE) { chartCHASIDE.destroy(); chartCHASIDE = null; }
+
+  const r = lastResults;
+  const labels = AREA_ORDER.map(a => AREAS[a].name);
+  const interestData = AREA_ORDER.map(a => Number(r.chaside[a].toFixed(2)));
+  const aptitudeData = AREA_ORDER.map(a => Number(r.aptitudeByArea[a].toFixed(2)));
+  const hollandData = AREA_ORDER.map(a => {
+    if (a === 'C') return r.holland.Convencional;
+    if (a === 'H') return r.holland.Social;
+    if (a === 'A') return r.holland.Artístico;
+    if (a === 'S') return r.holland.Social;
+    if (a === 'I') return (r.holland.Realista + r.holland.Investigador) / 2;
+    if (a === 'D') return r.holland.Emprendedor;
+    if (a === 'E') return r.holland.Investigador;
+    return 0;
+  }).map(v => Number(v.toFixed(2)));
+
+  chartCHASIDE = new Chart(canvas.getContext('2d'), {
+    type: 'radar',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Intereses (CHASIDE)',
+          data: interestData,
+          backgroundColor: 'rgba(79, 70, 229, 0.15)',
+          borderColor: '#4f46e5',
+          borderWidth: 2.5,
+          pointBackgroundColor: '#4f46e5',
+          pointBorderColor: '#ffffff',
+          pointBorderWidth: 2,
+          pointRadius: 4
+        },
+        {
+          label: 'Aptitudes (DAT)',
+          data: aptitudeData,
+          backgroundColor: 'rgba(16, 185, 129, 0.13)',
+          borderColor: '#10b981',
+          borderWidth: 2.5,
+          pointBackgroundColor: '#10b981',
+          pointBorderColor: '#ffffff',
+          pointBorderWidth: 2,
+          pointRadius: 4
+        },
+        {
+          label: 'Personalidad (Holland)',
+          data: hollandData,
+          backgroundColor: 'rgba(245, 158, 11, 0.13)',
+          borderColor: '#f59e0b',
+          borderWidth: 2.5,
+          pointBackgroundColor: '#f59e0b',
+          pointBorderColor: '#ffffff',
+          pointBorderWidth: 2,
+          pointRadius: 4
+        }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      animation: { duration: 900 },
+      scales: {
+        r: {
+          suggestedMin: 0, suggestedMax: 10,
+          ticks: { stepSize: 2, backdropColor: 'transparent', color: '#94a3b8', font: { size: 10 } },
+          grid: { color: '#e2e8f0' },
+          angleLines: { color: '#e2e8f0' },
+          pointLabels: { color: '#334155', font: { size: 12, weight: '700' } }
+        }
+      },
+      plugins: {
+        legend: { position: 'bottom', labels: { usePointStyle: true, pointStyle: 'circle', padding: 15, color: '#475569', font: { size: 11, weight: '600' } } },
+        tooltip: { backgroundColor: 'rgba(15, 23, 42, 0.92)', padding: 12, cornerRadius: 8, callbacks: { label: ctx => ' ' + ctx.dataset.label + ': ' + ctx.parsed.r + ' / 10' } }
+      }
+    }
+  });
+}
+
+function createRadarKUDER() {
+  const canvas = document.getElementById('radarKUDER');
+  if (!canvas || !lastResults) return;
+
+  if (chartKUDER) { chartKUDER.destroy(); chartKUDER = null; }
+
+  const r = lastResults;
+  const labels = KUDER_SCALES;
+  const data = KUDER_SCALES.map(s => Number(r.kuder[s].toFixed(2)));
+
+  chartKUDER = new Chart(canvas.getContext('2d'), {
+    type: 'radar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Puntaje Kuder/Herrera',
+        data: data,
+        backgroundColor: 'rgba(139, 92, 246, 0.18)',
+        borderColor: '#8b5cf6',
+        borderWidth: 2.5,
+        pointBackgroundColor: '#8b5cf6',
+        pointBorderColor: '#ffffff',
+        pointBorderWidth: 2,
+        pointRadius: 5
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      animation: { duration: 900 },
+      scales: {
+        r: {
+          suggestedMin: 0, suggestedMax: 10,
+          ticks: { stepSize: 2, backdropColor: 'transparent', color: '#94a3b8', font: { size: 10 } },
+          grid: { color: '#e2e8f0' },
+          angleLines: { color: '#e2e8f0' },
+          pointLabels: { color: '#334155', font: { size: 11, weight: '700' } }
+        }
+      },
+      plugins: {
+        legend: { position: 'bottom', labels: { usePointStyle: true, pointStyle: 'circle', padding: 15, color: '#475569', font: { size: 11, weight: '600' } } },
+        tooltip: { backgroundColor: 'rgba(15, 23, 42, 0.92)', padding: 12, cornerRadius: 8, callbacks: { label: ctx => ' ' + ctx.dataset.label + ': ' + ctx.parsed.r + ' / 10' } }
+      }
+    }
+  });
+}
+
+/* =========================================================
+   9. VALIDACIÓN
+   ========================================================= */
+function markMissing(prefix, ids) {
+  ids.forEach(id => {
+    const el = document.getElementById(`${prefix}-${id}`);
+    if (el) el.classList.add('missing-card');
+  });
+}
+
+function validateStep(step) {
+  if (step === 1) {
+    const identifMissing = [];
+    if (!state.identificacion.nombre.trim()) identifMissing.push('id_nombre');
+    if (!state.identificacion.email.trim() || !state.identificacion.email.includes('@')) identifMissing.push('id_email');
+    if (!state.identificacion.edad.trim()) identifMissing.push('id_edad');
+    if (identifMissing.length) {
+      identifMissing.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.add('missing');
+      });
+      showAlert('Debes completar los campos obligatorios de identificación: Nombre, Correo electrónico y Edad.');
+      return false;
+    }
+    const missing = M1.filter(q => !state.m1[q.id]).map(q => q.id);
+    if (missing.length) {
+      markMissing('card-m1', missing);
+      showAlert(`Faltan ${missing.length} afirmación(es) por responder en el Módulo 1. Debes responder las 56 para continuar.`);
+      return false;
+    }
+  }
+  if (step === 2) {
+    const missing = M2.filter(q => !state.m2[q.id]).map(q => q.id);
+    if (missing.length) {
+      markMissing('card-m2', missing);
+      showAlert(`Faltan ${missing.length} competencia(s) por autoevaluar en el Módulo 2. Debes responder las 12 para continuar.`);
+      return false;
+    }
+  }
+  if (step === 3) {
+    const missing = M3.filter(q => state.m3[q.id] === undefined).map(q => q.id);
+    if (missing.length) {
+      markMissing('card-m3', missing);
+      showAlert(`Faltan ${missing.length} pregunta(s) por responder en el Módulo 3.`);
+      return false;
+    }
+  }
+  if (step === 4) {
+    const faltantes = [];
+    if (!state.m4.f1.trim() || state.m4.f1.trim().length < 5) faltantes.push('f1');
+    if (!state.m4.f2.trim() || state.m4.f2.trim().length < 5) faltantes.push('f2');
+    if (faltantes.length) {
+      markMissing('card-m4', faltantes);
+      showAlert('Debes completar ambos ejercicios proyectivos (mínimo 5 caracteres cada uno) antes de generar el Test Key.');
+      return false;
+    }
+  }
+  return true;
+}
+
+/* =========================================================
+   10. NAVEGACIÓN
+   ========================================================= */
+const STEP_NAMES = {
+  1: 'Identificación e Intereses',
+  2: 'Aptitudes',
+  3: 'Personalidad y Valores',
+  4: 'Exploración Proyectiva',
+  5: 'Test Key · Informe'
+};
+
+function updateProgress() {
+  const pct = (currentStep / 5) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('stepLabel').textContent = `Paso ${currentStep} de 5`;
+  document.getElementById('stepName').textContent = STEP_NAMES[currentStep];
+
+  document.querySelectorAll('[data-stepdot]').forEach(el => {
+    const s = Number(el.getAttribute('data-stepdot'));
+    if (s === currentStep) el.className = 'text-center text-indigo-600 font-extrabold';
+    else if (s < currentStep) el.className = 'text-center text-emerald-600 font-bold';
+    else el.className = 'text-center text-slate-400';
+  });
+}
+
+function updateNav() {
+  const btnPrev = document.getElementById('btnPrev');
+  const btnNext = document.getElementById('btnNext');
+  btnPrev.style.visibility = currentStep === 1 ? 'hidden' : 'visible';
+
+  if (currentStep === 5) {
+    btnNext.classList.add('hidden');
+    btnPrev.textContent = '← Volver a editar respuestas';
+  } else {
+    btnNext.classList.remove('hidden');
+    btnPrev.textContent = '← Anterior';
+    btnNext.textContent = currentStep === 4 ? '🔑 Generar Test Key' : 'Siguiente →';
+  }
+}
+
+function renderStep() {
+  const content = document.getElementById('content');
+  clearAlert();
+
+  if (currentStep === 1) content.innerHTML = renderModule1();
+  else if (currentStep === 2) content.innerHTML = renderModule2();
+  else if (currentStep === 3) content.innerHTML = renderModule3();
+  else if (currentStep === 4) content.innerHTML = renderModule4();
+  else {
+    content.innerHTML = renderResults();
+    requestAnimationFrame(() => { createRadarCHASIDE(); createRadarKUDER(); });
+  }
+
+  content.classList.remove('fade-in');
+  void content.offsetWidth;
+  content.classList.add('fade-in');
+
+  updateProgress();
+  updateNav();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* =========================================================
+   11. GENERACIÓN DEL INFORME JSON
+   ========================================================= */
+function buildFullReport() {
+  const r = lastResults || computeTestKey();
+
+  const m1Detallado = M1.map(q => ({
+    id: q.id,
+    areaInterna: q.area,
+    escalaKuder: q.kuder,
+    texto: q.text,
+    respuesta: state.m1[q.id] || null
+  }));
+
+  const m2Detallado = M2.map(q => ({
+    id: q.id,
+    areaInterna: q.area,
+    titulo: q.title,
+    descripcion: q.desc,
+    respuesta: state.m2[q.id] || null
+  }));
+
+  const m3Detallado = M3.map(q => ({
+    id: q.id,
+    pregunta: q.title,
+    opciones: q.options,
+    respuestaIndice: state.m3[q.id] !== undefined ? state.m3[q.id] : null,
+    respuestaTexto: state.m3[q.id] !== undefined ? q.options[state.m3[q.id]] : null
+  }));
+
+  return {
+    metadata: {
+      testName: 'Test Key · Batería Integrada de Orientación Vocacional',
+      version: '1.0',
+      instruments: ['Kuder', 'Herrera y Montes', 'CHASIDE', 'Holland (RIASEC)', 'DAT', 'Big Five', 'Allport', 'Mooney'],
+      generatedAt: new Date().toISOString(),
+      generatedAtLocal: new Date().toLocaleString('es-MX'),
+      blindTesting: true,
+      totalItems: M1.length + M2.length + M3.length + 2
+    },
+    identificacion: {
+      nombre: state.identificacion.nombre,
+      edad: state.identificacion.edad,
+      email: state.identificacion.email,
+      genero: state.identificacion.genero || 'No especificado',
+      institucion: state.identificacion.institucion || 'No especificada'
+    },
+    respuestasDetalladas: {
+      modulo1_intereses: m1Detallado,
+      modulo2_aptitudes: m2Detallado,
+      modulo3_personalidad_valores: m3Detallado,
+      modulo4_proyectiva: {
+        proyeccion5años: state.m4.f1,
+        tecnicaRO: state.m4.f2
+      }
+    },
+    ordenPresentacion: {
+      nota: 'Orden aleatorio de presentación de ítems (blind testing). Se incluye para auditoría y detección de patrones de respuesta.',
+      modulo1: M1_DISPLAY_ORDER,
+      modulo2: M2_DISPLAY_ORDER,
+      modulo3: M3_DISPLAY_ORDER
+    },
+    resultadosCalculados: {
+      areaPredominante: {
+        codigo: r.predominant,
+        nombre: AREAS[r.predominant].name,
+        nombreCompleto: AREAS[r.predominant].full,
+        indiceTestKey: Number(r.integratedScore[r.predominant].toFixed(2))
+      },
+      areaSecundaria: {
+        codigo: r.secondary,
+        nombre: AREAS[r.secondary].name,
+        nombreCompleto: AREAS[r.secondary].full,
+        indiceTestKey: Number(r.integratedScore[r.secondary].toFixed(2))
+      },
+      coherenciaGlobal: r.coherence,
+      brechaMedia: Number(r.meanDiff.toFixed(2)),
+      diagnostico: r.diagnosis,
+      diagnosticoDescripcion: r.diagDesc,
+      puntuacionesCHASIDE: Object.fromEntries(AREA_ORDER.map(a => [AREAS[a].name, Number(r.chaside[a].toFixed(2))])),
+      puntuacionesCHASIDERaw: Object.fromEntries(AREA_ORDER.map(a => [AREAS[a].name, r.chasideRaw[a]])),
+      puntuacionesKuderHerrera: Object.fromEntries(KUDER_SCALES.map(s => [s, Number(r.kuder[s].toFixed(2))])),
+      puntuacionesKuderRaw: Object.fromEntries(KUDER_SCALES.map(s => [s, r.kuderRaw[s]])),
+      aptitudesDAT: Object.fromEntries(Object.entries(r.aptitudes).map(([k, v]) => [k, Number(v.toFixed(2))])),
+      aptitudPorArea: Object.fromEntries(AREA_ORDER.map(a => [AREAS[a].name, Number(r.aptitudeByArea[a].toFixed(2))])),
+      perfilBigFive: Object.fromEntries(Object.entries(r.bigFive).map(([k, v]) => [k, Number(v.toFixed(2))])),
+      perfilHolland: Object.fromEntries(Object.entries(r.holland).map(([k, v]) => [k, Number(v.toFixed(2))])),
+      indiceTestKeyPorArea: Object.fromEntries(AREA_ORDER.map(a => [AREAS[a].name, Number(r.integratedScore[a].toFixed(2))])),
+      coherenciaPorArea: Object.fromEntries(AREA_ORDER.map(a => [
+        AREAS[a].name,
+        {
+          etiqueta: r.coherenceByArea[a].label,
+          diferencia: Number(r.coherenceByArea[a].diff.toFixed(2)),
+          interes: Number(r.coherenceByArea[a].interest.toFixed(2)),
+          aptitud: Number(r.coherenceByArea[a].aptitude.toFixed(2)),
+          kuderPromedio: Number(r.coherenceByArea[a].kuderAvg.toFixed(2)),
+          indiceIntegrado: Number(r.coherenceByArea[a].integrated.toFixed(2))
+        }
+      ]))
+    },
+    interpretacionParaOrientador: {
+      nota: 'Este informe contiene los datos crudos y calculados del Test Key. El orientador vocacional debe interpretar estos resultados y devolver al estudiante un resumen personalizado con las carreras sugeridas.',
+      ponderacionIndiceTestKey: '50% Interés CHASIDE + 30% Aptitud DAT + 20% Kuder/Herrera',
+      umbralesCoherencia: {
+        alta: '≥75% (Alta Convergencia)',
+        media: '55-74% (Convergencia Moderada)',
+        baja: '<55% (Divergencia / Requiere Exploración)'
+      }
+    }
+  };
+}
+
+function descargarJSON() {
+  try {
+    const report = buildFullReport();
+    const json = JSON.stringify(report, null, 2);
+    const blob = new Blob([json], { type: 'application/json;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+
+    const nombreArchivo = (state.identificacion.nombre || 'estudiante')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '_')
+      .replace(/^_+|_+$/g, '') || 'estudiante';
+
+    const fecha = new Date().toISOString().slice(0, 10);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `test_key_${nombreArchivo}_${fecha}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    showSuccess('✅ Informe descargado correctamente. Envíalo a tu orientador vocacional.');
+  } catch (err) {
+    console.error(err);
+    alert('Ocurrió un error al generar el informe. Por favor, inténtalo de nuevo.');
+  }
+}
+
+function copiarJSON() {
+  try {
+    const report = buildFullReport();
+    const json = JSON.stringify(report, null, 2);
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(json).then(() => {
+        showSuccess('✅ Informe copiado al portapapeles. Pégalo en un correo o mensaje para tu orientador.');
+      }).catch(() => copiarFallback(json));
+    } else {
+      copiarFallback(json);
+    }
+  } catch (err) {
+    console.error(err);
+    alert('No se pudo copiar el informe. Intenta descargarlo.');
+  }
+}
+
+function copiarFallback(texto) {
+  const ta = document.createElement('textarea');
+  ta.value = texto;
+  ta.style.position = 'fixed';
+  ta.style.left = '-9999px';
+  document.body.appendChild(ta);
+  ta.select();
+  try {
+    document.execCommand('copy');
+    showSuccess('✅ Informe copiado al portapapeles.');
+  } catch (e) {
+    alert('No se pudo copiar automáticamente. Descarga el informe en su lugar.');
+  }
+  document.body.removeChild(ta);
+}
+
+/* =========================================================
+   12. EVENTOS
+   ========================================================= */
+document.getElementById('btnNext').addEventListener('click', () => {
+  if (!validateStep(currentStep)) return;
+  if (currentStep < 5) {
+    currentStep++;
+    renderStep();
+  }
+});
+
+document.getElementById('btnPrev').addEventListener('click', () => {
+  if (currentStep > 1) {
+    currentStep--;
+    renderStep();
+  }
+});
+
+document.getElementById('content').addEventListener('click', (e) => {
+  // Likert Módulo 1
+  const b1 = e.target.closest('[data-m1]');
+  if (b1) {
+    const qid = Number(b1.getAttribute('data-m1'));
+    const val = Number(b1.getAttribute('data-value'));
+    state.m1[qid] = val;
+    const container = document.querySelector(`[data-qid="m1-${qid}"]`);
+    if (container) container.querySelectorAll('.likert-btn').forEach(b => b.classList.remove('selected'));
+    b1.classList.add('selected');
+    const card = document.getElementById(`card-m1-${qid}`);
+    if (card) card.classList.remove('missing-card');
+    return;
+  }
+
+  // Likert Módulo 2
+  const b2 = e.target.closest('[data-m2]');
+  if (b2) {
+    const qid = Number(b2.getAttribute('data-m2'));
+    const val = Number(b2.getAttribute('data-value'));
+    state.m2[qid] = val;
+    const container = document.querySelector(`[data-qid="m2-${qid}"]`);
+    if (container) container.querySelectorAll('.likert-btn').forEach(b => b.classList.remove('selected'));
+    b2.classList.add('selected');
+    const card = document.getElementById(`card-m2-${qid}`);
+    if (card) card.classList.remove('missing-card');
+    return;
+  }
+
+  // Opciones Módulo 3
+  const b3 = e.target.closest('[data-m3]');
+  if (b3) {
+    const qid = b3.getAttribute('data-m3');
+    const idx = Number(b3.getAttribute('data-idx'));
+    state.m3[qid] = idx;
+    const card = document.getElementById(`card-m3-${qid}`);
+    if (card) {
+      card.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
+      card.classList.remove('missing-card');
+    }
+    b3.classList.add('selected');
+    return;
+  }
+
+  // Descargar JSON
+  if (e.target.closest('#btnDownloadJSON')) {
+    descargarJSON();
+    return;
+  }
+
+  // Copiar JSON
+  if (e.target.closest('#btnCopyJSON')) {
+    copiarJSON();
+    return;
+  }
+
+  // Reinicio
+  const bRestart = e.target.closest('#btnRestart');
+  if (bRestart) {
+    if (confirm('¿Deseas borrar todas tus respuestas y comenzar una nueva evaluación?')) {
+      resetAll();
+    }
+    return;
+  }
+});
+
+/* Manejo de inputs de identificación y Módulo 4 */
+document.getElementById('content').addEventListener('input', (e) => {
+  const idField = e.target.id;
+  if (idField === 'id_nombre') { state.identificacion.nombre = e.target.value; e.target.classList.remove('missing'); return; }
+  if (idField === 'id_email') { state.identificacion.email = e.target.value; e.target.classList.remove('missing'); return; }
+  if (idField === 'id_edad') { state.identificacion.edad = e.target.value; e.target.classList.remove('missing'); return; }
+  if (idField === 'id_institucion') { state.identificacion.institucion = e.target.value; return; }
+
+  const t = e.target.closest('[data-m4]');
+  if (t) {
+    const field = t.getAttribute('data-m4');
+    state.m4[field] = t.value;
+    const card = document.getElementById(`card-m4-${field}`);
+    if (card) card.classList.remove('missing-card');
+  }
+});
+
+/* Select de género */
+document.getElementById('content').addEventListener('change', (e) => {
+  if (e.target.id === 'id_genero') {
+    state.identificacion.genero = e.target.value;
+  }
+});
+
+function resetAll() {
+  state.identificacion = { nombre: '', edad: '', email: '', genero: '', institucion: '' };
+  state.m1 = {};
+  state.m2 = {};
+  state.m3 = {};
+  state.m4 = { f1: '', f2: '' };
+  lastResults = null;
+  if (chartCHASIDE) { chartCHASIDE.destroy(); chartCHASIDE = null; }
+  if (chartKUDER) { chartKUDER.destroy(); chartKUDER = null; }
+  currentStep = 1;
+  clearAlert();
+  buildBlindOrder();
+  renderStep();
+}
+
+/* =========================================================
+   13. INICIALIZACIÓN
+   ========================================================= */
+buildBlindOrder();
+renderStep();
+</script>
+</body>
+</html>
