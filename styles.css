@@ -407,92 +407,42 @@ section { scroll-margin-top:82px; }
 
 /* =========================================================
    7. SISTEMA DE UTILIDADES (ÍCONOS, FOTOS Y CORCHETES)
-   Usa estas clases en cualquier parte para no tocar el CSS.
 ========================================================= */
-
-/* --- Manejo de Fotos / Imágenes --- */
 .img-cover { width: 100%; height: 100%; object-fit: cover; display: block; }
 .img-contain { width: 100%; height: 100%; object-fit: contain; display: block; }
 .img-rounded { border-radius: var(--radius-sm); }
-
-/* --- Tamaños de Íconos (se adaptan si los pones dentro de botones) --- */
 .icon-xs { width: 12px !important; height: 12px !important; }
 .icon-sm { width: 16px !important; height: 16px !important; }
 .icon-md { width: 24px !important; height: 24px !important; }
 .icon-lg { width: 32px !important; height: 32px !important; }
 .icon-xl { width: 48px !important; height: 48px !important; }
 .icon-auto { height: 1em; width: auto; vertical-align: middle; display: inline-block; }
-
-/* --- Colores de Íconos (Filtros para SVGs o PNGs oscuros) --- */
 .icon-white { filter: brightness(0) invert(1); }
 .icon-black { filter: brightness(0); }
 .icon-blue { filter: invert(29%) sepia(94%) saturate(2845%) hue-rotate(202deg) brightness(98%) contrast(101%); }
 .icon-green { filter: invert(72%) sepia(52%) saturate(476%) hue-rotate(83deg) brightness(95%) contrast(92%); }
 
-/* --- Corchetes decorativos --- */
-.corchete-icon {
-    display: inline-block;
-    height: 0.8em; 
-    width: auto;
-    vertical-align: baseline;
-    margin: 0 8px;
-    opacity: 0.7;
-    filter: brightness(0); /* Negros por defecto */
-}
+.corchete-icon { display: inline-block; height: 0.8em; width: auto; vertical-align: baseline; margin: 0 8px; opacity: 0.7; filter: brightness(0); }
+.section-dark .corchete-icon, .seed-side .corchete-icon, .cide-link .corchete-icon, .hero .corchete-icon { filter: brightness(0) invert(1); }
 
-/* Si está en un fondo oscuro o sección negra, se vuelven blancos */
-.section-dark .corchete-icon,
-.seed-side .corchete-icon,
-.cide-link .corchete-icon,
-.hero .corchete-icon {
-    filter: brightness(0) invert(1);
-}
+a:hover .icon-auto, button:hover .icon-auto, .header-button:hover img, .hook-button:hover img, .contact-button:hover img, .method-row:hover .arrow-icon img { transform: translateX(4px); }
 
-/* Animación para cualquier ícono dentro de un botón al hacer hover */
-a:hover .icon-auto,
-button:hover .icon-auto,
-.header-button:hover img,
-.hook-button:hover img,
-.contact-button:hover img,
-.method-row:hover .arrow-icon img {
-    transform: translateX(4px);
-}
-/* =========================================================
-   FIX DEFINITIVO PARA ÍCONOS SVG Y FLECHAS
-========================================================= */
-
-/* Controla el tamaño de TODOS los SVGs en línea (evita las flechas gigantes) */
-.svg-icon {
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    flex: 0 0 auto;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.8;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    vertical-align: middle;
-}
-
-/* Tamaños específicos para los íconos del sitio */
+/* FIX DEFINITIVO PARA ÍCONOS SVG Y FLECHAS */
+.svg-icon { display: inline-block; width: 1em; height: 1em; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; vertical-align: middle; }
 .svg-arrow { width: 1.12em; height: 1.12em; }
 .svg-spark { width: 0.82em; height: 0.82em; }
 .card-icon .svg-icon { width: 32px; height: 32px; }
 .seed-circle .svg-icon { width: 32px; height: 32px; }
+.arrow-icon img, .card-arrow img { display: inline-block; vertical-align: middle; }
 
-/* Asegura que las imágenes de flechas no se deformen */
-.arrow-icon img, .card-arrow img {
-    display: inline-block;
-    vertical-align: middle;
-}
 /* =========================================================
-   EFECTO HOVER: EXPANSIÓN DE BOTÓN Y DESPLAZAMIENTO DE FLECHA
+   EFECTO HOVER: EXPANSIÓN ANCLADA A LA IZQUIERDA
+   El botón solo se estira hacia la derecha, el texto no se mueve.
 ========================================================= */
 
 /* 1. Botón "Conocer Windsor One" (.hook-button) */
 .hook-button {
-    transition: background 0.3s ease, padding 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition: background 0.3s ease, padding 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .hook-button img {
     transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -500,8 +450,8 @@ button:hover .icon-auto,
 .hook-button:hover {
     background: var(--green);
     color: var(--black);
-    padding-right: 38px; /* El botón se alarga (antes era 28px) */
-    transform: none; /* Quitamos el movimiento del botón entero */
+    padding-right: 38px; /* Crece 10px a la derecha */
+    transform: translateX(5px); /* Compensa el centrado para que el lado izquierdo no se mueva */
 }
 .hook-button:hover img {
     transform: translateX(6px); /* La flecha se desliza a la derecha */
@@ -509,15 +459,15 @@ button:hover .icon-auto,
 
 /* 2. Botón "Ir al formulario" (.contact-button) */
 .contact-button {
-    transition: background 0.3s ease, padding 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition: background 0.3s ease, padding 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .contact-button img {
     transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .contact-button:hover {
     background: var(--white);
-    padding-right: 32px; /* Se alarga (antes era 22px) */
-    transform: none;
+    padding-right: 32px; /* Crece 10px a la derecha */
+    transform: translateX(5px); /* Compensa el centrado */
 }
 .contact-button:hover img {
     transform: translateX(6px);
@@ -525,7 +475,7 @@ button:hover .icon-auto,
 
 /* 3. Botón "Hablemos" del Header (.header-button) */
 .header-button {
-    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease, padding 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition: background 0.25s ease, color 0.25s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), padding 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .header-button img {
     transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -534,8 +484,8 @@ button:hover .icon-auto,
     background: var(--green);
     color: var(--black);
     border-color: var(--green);
-    transform: translateY(-2px); /* Mantenemos el pequeño salto hacia arriba */
-    padding-right: 26px; /* Se alarga un poco (antes era 20px) */
+    padding-right: 26px; /* Crece 6px a la derecha */
+    transform: translateY(-2px) translateX(3px); /* Mantiene el salto y compensa el centrado */
 }
 .header-button:hover img {
     transform: translateX(4px);
