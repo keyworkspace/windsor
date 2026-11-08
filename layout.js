@@ -1,8 +1,6 @@
 /* =========================================================
    WINDSOR — LAYOUT CENTRALIZADO
-   Header y footer únicos para todas las páginas.
 ========================================================= */
-
 (function () {
   const headerHTML = `
 <header class="header">
@@ -32,12 +30,7 @@
 <div class="header-actions">
 <a class="header-button" href="contacto.html">
 Hablemos
-<span aria-hidden="true" class="arrow-icon">
-<svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="16">
-<line x1="7" x2="17" y1="17" y2="7"></line>
-<polyline points="7 7 17 7 17 17"></polyline>
-</svg>
-</span>
+<img src="assets/flechacinfondo.svg" alt="→" style="width: 16px; height: 16px;">
 </a>
 </div>
 <button aria-expanded="false" aria-label="Abrir menú" class="menu-button"><span></span><span></span></button>
@@ -88,7 +81,6 @@ Hablemos
   if (headerSlot) headerSlot.outerHTML = headerHTML;
   if (footerSlot) footerSlot.outerHTML = footerHTML;
 
-  // Marcar enlace activo según la URL actual
   const currentPath = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
   document.querySelectorAll('.nav-list a, .submenu a, .mobile-menu a, .footer-group a').forEach(function (link) {
     const href = (link.getAttribute('href') || '').split('#')[0].toLowerCase();
