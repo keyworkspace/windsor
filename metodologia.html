@@ -1,120 +1,68 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Windsor — Metodología: Break The Rules</title>
-<meta content="Conoce la metodología Windsor: Entender, Definir, Construir, Refinar. Precisión aplicada en cada proyecto." name="description"/>
-<link href="assets/favicon.png" rel="icon" type="image/png"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;family=Open+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="styles.css" rel="stylesheet"/>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Windsor · Metodología</title>
+<meta content="Conoce la metodología Windsor: Entender, Definir, Construir, Refinar. Precisión aplicada en cada proyecto." name="description">
+<link href="assets/favicon.png" rel="icon" type="image/png">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="styles.css" rel="stylesheet">
 </head>
 <body>
+
 <div class="preloader">
 <div class="preloader-logo">W</div>
 <div class="preloader-line"><span></span></div>
 <div class="preloader-text">WINDSOR</div>
-</div><header class="header">
-<a class="logo" href="index.html">
-<img alt="Windsor" class="logo-icon" src="assets/favicon.png"/>
-<span class="logo-name">WINDSOR</span>
-</a>
-<nav class="desktop-nav">
-<ul class="nav-list">
-<li><a href="index.html">Inicio</a></li>
-<li class="dropdown">
-<a href="metodologia.html">Sobre</a>
-<ul class="submenu">
-<li><a class="active" href="metodologia.html">Metodología</a></li>
-<li><a href="inspiracion.html">Inspiración</a></li>
-</ul>
-</li>
-<li class="dropdown">
-<a href="cide.html">Servicios</a>
-<ul class="submenu">
-<li><a href="cide.html">CIDE</a></li>
-<li><a href="windsor-one.html">Windsor One</a></li>
-<li><a href="BeQueer.html">BeQueer</a></li>
-</ul>
-</li>
-<li class="dropdown">
-<a href="recomendados.html">Recursos</a>
-<ul class="submenu">
-<li><a href="orientacion-vocacional.html">Orientación</a></li>
-<li><a href="recomendados.html">Recomendados</a></li>
-<li><a href="proyectos.html">Proyectos</a></li>
-</ul>
-</li>
-<li class="dropdown">
-<a href="becas.html">Programas</a>
-<ul class="submenu">
-<li><a href="becas.html">BK2</a></li>
-<li><a href="careers.html">Careers</a></li>
-</ul>
-</li>
-<li><a href="contacto.html">Contacto</a></li>
-</ul>
-</nav>
-<div class="header-actions">
-<a class="header-button" href="contacto.html">
-                Hablemos
-                <span aria-hidden="true" class="arrow-icon">
-<svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16">
-<line x1="7" x2="17" y1="17" y2="7"></line>
-<polyline points="7 7 17 7 17 17"></polyline>
-</svg>
-</span>
-</a>
 </div>
-<button aria-expanded="false" aria-label="Abrir menú" class="menu-button"><span></span><span></span></button>
-</header><div class="mobile-menu">
-<div class="mobile-menu-inner">
-<div class="mobile-menu-label">NAVEGACIÓN</div>
-<a href="index.html">Inicio</a>
-<div class="mobile-group-title">Sobre</div>
-<a class="active" href="metodologia.html">Metodología</a>
-<a href="inspiracion.html">Inspiración</a>
-<div class="mobile-group-title">Servicios</div>
-<a href="cide.html">CIDE</a>
-<a href="windsor-one.html">Windsor One</a>
-<a href="BeQueer.html">BeQueer</a>
-<div class="mobile-group-title">Recursos</div>
-<a href="orientacion-vocacional.html">Orientación</a>
-<a href="recomendados.html">Recomendados</a>
-<a href="proyectos.html">Proyectos</a>
-<div class="mobile-group-title">Programas</div>
-<a href="becas.html">BK2</a>
-<a href="careers.html">Careers</a>
-<a href="contacto.html">Contacto</a>
-</div>
-</div>
+
+<!-- HEADER INYECTADO POR LAYOUT.JS -->
+<div id="site-header"></div>
+
 <main>
+<!-- HERO METODOLOGÍA -->
 <section class="metodologia-hero">
 <div class="hero-noise"></div>
+<div class="hero-topline" style="position: relative; z-index: 2; display: flex; justify-content: space-between; margin-bottom: 30px; opacity: 0.55; font-size: 8px; font-weight: 700; letter-spacing: 0.16em;">
+    <span>
+        <img src="assets/corchetesabiertos.svg" class="corchete-icon" alt=""> 
+        MÉTODO 
+        <img src="assets/corchetescerrados.svg" class="corchete-icon" alt="">
+    </span>
+    <span>WINDSOR / 02</span>
+</div>
+
 <div class="break-title">
 <span class="char">B</span><span class="char">r</span><span class="char">e</span><span class="char">a</span><span class="char">k</span>
 <span class="char" style="margin-left:0.2em;">T</span><span class="char">h</span><span class="char">e</span>
 <span class="char" style="margin-left:0.2em;">R</span><span class="char">u</span><span class="char">l</span><span class="char">e</span><span class="char">s</span>
 </div>
 <div class="sub-method">
-                Método Windsor
-                <em>Precisión aplicada.</em>
+Método Windsor
+<em>Precisión aplicada.</em>
 </div>
 <p>Cada proyecto se aborda con método, investigación y sensibilidad estética.</p>
 </section>
+
+<!-- PROCESO (4 PASOS) -->
 <section class="section" style="background:var(--white);">
-<div class="section-meta"><span>01</span><span>NUESTRO PROCESO</span></div>
+<div class="section-meta">
+    <span>
+        <img src="assets/corchetesabiertos.svg" class="corchete-icon" alt="">01<img src="assets/corchetescerrados.svg" class="corchete-icon" alt="">
+    </span>
+    <span>NUESTRO PROCESO</span>
+</div>
 <div class="container">
-<h2 style="font-size:clamp(2.5rem,5vw,4rem); letter-spacing:-0.06em; line-height:0.9; margin-bottom:20px;">
-                    Cuatro pasos,
-                    <span style="display:block; font-family:var(--sans); font-weight:900; text-decoration:underline; text-decoration-thickness:0.07em; text-underline-offset:0.1em; color:var(--blue);">resultados concretos.</span>
+<h2 style="font-size:clamp(2.5rem,5vw,4rem); letter-spacing:-0.06em; line-height:0.9; margin-bottom:20px; margin-top:40px;">
+Cuatro pasos,
+<span style="display:block; font-family:var(--sans); font-weight:900; text-decoration:underline; text-decoration-thickness:0.07em; text-underline-offset:0.1em; color:var(--blue);">resultados concretos.</span>
 </h2>
 <p style="color:#555; max-width:600px; font-size:15px; line-height:1.7; margin-bottom:40px;">
-                    Nuestra metodología es flexible pero rigurosa. Cada fase está diseñada para reducir la incertidumbre y aumentar la claridad.
-                </p>
+Nuestra metodología es flexible pero rigurosa. Cada fase está diseñada para reducir la incertidumbre y aumentar la claridad.
+</p>
 <div class="metodologia-grid">
 <div class="metodologia-item" data-reveal="">
 <div class="card-inner">
@@ -122,7 +70,7 @@
 <div class="card-body">
 <span class="num">01</span><h3>Entender</h3>
 <p>Investigamos el contexto, el problema, el mercado y las personas involucradas.</p>
-<a class="card-link" href="contacto.html"><span class="link-text">Conocer más</span><span class="arrow-icon"><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><line x1="7" x2="17" y1="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a>
+<a class="card-link" href="contacto.html"><span class="link-text">Conocer más</span><span class="arrow-icon"><img src="assets/flechasinfondo.svg" class="icon-sm icon-black" alt=""></span></a>
 <div class="bottom-bar" style="width:40%;"></div>
 </div>
 </div>
@@ -133,7 +81,7 @@
 <div class="card-body">
 <span class="num">02</span><h3>Definir</h3>
 <p>Convertimos información en una dirección estratégica clara.</p>
-<a class="card-link" href="contacto.html"><span class="link-text">Conocer más</span><span class="arrow-icon"><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><line x1="7" x2="17" y1="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a>
+<a class="card-link" href="contacto.html"><span class="link-text">Conocer más</span><span class="arrow-icon"><img src="assets/flechasinfondo.svg" class="icon-sm icon-black" alt=""></span></a>
 <div class="bottom-bar" style="width:40%;"></div>
 </div>
 </div>
@@ -144,7 +92,7 @@
 <div class="card-body">
 <span class="num">03</span><h3>Construir</h3>
 <p>Diseñamos y desarrollamos soluciones específicas para cada proyecto.</p>
-<a class="card-link" href="contacto.html"><span class="link-text">Conocer más</span><span class="arrow-icon"><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><line x1="7" x2="17" y1="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a>
+<a class="card-link" href="contacto.html"><span class="link-text">Conocer más</span><span class="arrow-icon"><img src="assets/flechasinfondo.svg" class="icon-sm icon-black" alt=""></span></a>
 <div class="bottom-bar" style="width:40%;"></div>
 </div>
 </div>
@@ -155,7 +103,7 @@
 <div class="card-body">
 <span class="num">04</span><h3>Refinar</h3>
 <p>Revisamos, probamos y mejoramos antes de considerar el proyecto terminado.</p>
-<a class="card-link" href="contacto.html"><span class="link-text">Conocer más</span><span class="arrow-icon"><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><line x1="7" x2="17" y1="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a>
+<a class="card-link" href="contacto.html"><span class="link-text">Conocer más</span><span class="arrow-icon"><img src="assets/flechasinfondo.svg" class="icon-sm icon-black" alt=""></span></a>
 <div class="bottom-bar" style="width:40%;"></div>
 </div>
 </div>
@@ -163,56 +111,43 @@
 </div>
 </div>
 </section>
+
+<!-- STATEMENT MARQUEE -->
 <div class="statement-marquee" style="background:var(--black); color:var(--white);">
 <div class="statement-track">
-<span>MÉTODO</span> <b><svg aria-hidden="true" class="svg-icon svg-spark" viewbox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b><span>INVESTIGACIÓN</span> <b><svg aria-hidden="true" class="svg-icon svg-spark" viewbox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b><span>PRECISIÓN</span> <b><svg aria-hidden="true" class="svg-icon svg-spark" viewbox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b><span>SENSIBILIDAD</span> <b><svg aria-hidden="true" class="svg-icon svg-spark" viewbox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
-<span>MÉTODO</span> <b><svg aria-hidden="true" class="svg-icon svg-spark" viewbox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b><span>INVESTIGACIÓN</span> <b><svg aria-hidden="true" class="svg-icon svg-spark" viewbox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b><span>PRECISIÓN</span> <b><svg aria-hidden="true" class="svg-icon svg-spark" viewbox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b><span>SENSIBILIDAD</span> <b><svg aria-hidden="true" class="svg-icon svg-spark" viewbox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+<span>MÉTODO</span> <b><svg class="svg-icon svg-spark" viewbox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b><span>INVESTIGACIÓN</span> <b><svg class="svg-icon svg-spark" viewbox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b><span>PRECISIÓN</span> <b><svg class="svg-icon svg-spark" viewbox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b><span>SENSIBILIDAD</span> <b><svg class="svg-icon svg-spark" viewbox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+<span>MÉTODO</span> <b><svg class="svg-icon svg-spark" viewbox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b><span>INVESTIGACIÓN</span> <b><svg class="svg-icon svg-spark" viewbox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b><span>PRECISIÓN</span> <b><svg class="svg-icon svg-spark" viewbox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b><span>SENSIBILIDAD</span> <b><svg class="svg-icon svg-spark" viewbox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
 </div>
 </div>
-<div class="container" style="margin:60px auto;">
+
+<!-- CTA FINAL -->
+<section class="section" style="background:var(--cream);">
+<div class="container">
 <div style="background:var(--blue); color:var(--white); padding:40px; display:flex; justify-content:space-between; align-items:center; gap:30px; flex-wrap:wrap;">
 <div>
-<h3 style="font-size:1.8rem; line-height:1.1;">¿Listo para aplicar el método?</h3>
-<p style="color:rgba(255,255,255,0.8); max-width:500px; font-size:14px; line-height:1.6;">Contanos tu proyecto y empecemos a trabajar con nuestra metodología.</p>
+<h3 style="font-size:1.8rem; line-height:1.1; display:flex; align-items:center; gap:10px;">
+    <img src="assets/corchetesabiertos.svg" class="corchete-icon" alt=""> 
+    ¿Listo para aplicar el método?
+    <img src="assets/corchetescerrados.svg" class="corchete-icon" alt="">
+</h3>
+<p style="color:rgba(255,255,255,0.8); max-width:500px; font-size:14px; line-height:1.6; margin-top:15px;">
+    Contanos tu proyecto y empecemos a trabajar con nuestra metodología.
+</p>
 </div>
-<a href="contacto.html" style="padding:14px 28px; background:var(--green); color:var(--black); font-size:9px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; transition:transform 0.25s; display:inline-flex; align-items:center; gap:12px;">Iniciar proyecto <svg aria-hidden="true" class="svg-icon svg-arrow" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
-</div>
-</div>
-</main><footer class="footer">
-<div class="footer-logo">
-<img alt="Windsor" src="assets/favicon.png" style="width:34px; height:34px; display:block;"/>
-<span>WINDSOR</span>
-</div>
-<div class="footer-groups">
-<div class="footer-group">
-<h4>Sobre</h4>
-<a class="active" href="metodologia.html">Metodología</a>
-<a href="inspiracion.html">Inspiración</a>
-</div>
-<div class="footer-group">
-<h4>Servicios</h4>
-<a href="cide.html">CIDE</a>
-<a href="windsor-one.html">Windsor One</a>
-<a href="BeQueer.html">BeQueer</a>
-</div>
-<div class="footer-group">
-<h4>Recursos</h4>
-<a href="orientacion-vocacional.html">Orientación</a>
-<a href="recomendados.html">Recomendados</a>
-<a href="proyectos.html">Proyectos</a>
-</div>
-<div class="footer-group">
-<h4>Programas</h4>
-<a href="becas.html">BK2</a>
-<a href="careers.html">Careers</a>
-</div>
-<div class="footer-group">
-<h4>Contacto</h4>
-<a href="contacto.html">Contáctanos</a>
+<a href="contacto.html" class="hook-button" style="margin-top:0;">
+    Iniciar proyecto 
+    <img src="assets/flechasinfondo.svg" class="icon-sm icon-white" alt="">
+</a>
 </div>
 </div>
-<div class="footer-tagline">Precisión aplicada.</div>
-</footer>
+</section>
+
+</main>
+
+<!-- FOOTER INYECTADO POR LAYOUT.JS -->
+<div id="site-footer"></div>
+
+<script src="layout.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
