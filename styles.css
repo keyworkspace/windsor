@@ -2610,3 +2610,30 @@ section { scroll-margin-top:82px; }
 @media (max-width:640px) {
   .test-auto-hint { padding:0 5px; font-size:7px; line-height:1.35; }
 }
+/* =========================================================
+   FIX: SECCIÓN PRINCIPIOS (NUESTRA FILOSOFÍA)
+========================================================= */
+.principles-grid {
+    padding-top: 0 !important; /* Elimina el padding que causaba el bloque gris */
+    margin-top: var(--space-content) !important;
+    gap: 18px; /* Separación real entre tarjetas */
+    background: transparent; /* Quita el fondo gris que se veía en las esquinas */
+}
+
+.principles-grid > div {
+    background: var(--white); /* Tarjetas blancas para contrastar con el fondo crema */
+    border: 1px solid var(--line); /* Borde sutil en lugar del gap de 1px */
+    border-radius: var(--radius-sm);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.principles-grid > div:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(10,10,12,0.06); /* Efecto hover igual al resto del sitio */
+}
+
+@media (max-width: 800px) {
+    .principles-grid {
+        margin-top: var(--space-content) !important;
+    }
+}
