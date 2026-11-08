@@ -568,3 +568,32 @@ section { scroll-margin-top:82px; }
     background-position: center; 
     background-attachment: fixed;
 }
+/* =========================================================
+   FIX DEFINITIVO: LÍMITES DE TAMAÑO PARA ÍCONOS Y FLECHAS
+========================================================= */
+.one-card .icon-wrap svg {
+    width: 28px !important;
+    height: 28px !important;
+    max-width: 28px;
+    max-height: 28px;
+}
+
+.method-row .arrow-icon img, 
+.method-row .arrow-icon svg {
+    width: 24px !important;
+    height: 24px !important;
+    max-width: 24px;
+    max-height: 24px;
+    object-fit: contain;
+}
+
+@media (max-width: 800px) {
+    .one-card .icon-wrap svg {
+        width: 24px !important;
+        height: 24px !important;
+    }
+    .method-row .arrow-icon img {
+        width: 20px !important;
+        height: 20px !important;
+    }
+}
