@@ -155,10 +155,12 @@ section { scroll-margin-top:82px; }
 /* Hero */
 .hero { position:relative; min-height:max(720px, 100svh); background:var(--black); color:var(--white); overflow:hidden; display:flex; flex-direction:column; }
 .hero-bg-lab {
-    background-image: linear-gradient(rgba(10,10,12,0.85), rgba(10,10,12,0.95)), url('assets/laboratorio.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background-image: linear-gradient(rgba(10,10,12,0.65), rgba(10,10,12,0.95)), url('assets/laboratorio.png');
+    background-size: cover; background-position: center; background-attachment: fixed;
+}
+.hero-bg-research {
+    background-image: linear-gradient(rgba(10,10,12,0.65), rgba(10,10,12,0.95)), url('assets/investigacion.png');
+    background-size: cover; background-position: center; background-attachment: fixed;
 }
 .hero-noise { position:absolute; inset:0; opacity:0.08; pointer-events:none; background-image:radial-gradient(rgba(255,255,255,0.8) 0.6px, transparent 0.6px); background-size:5px 5px; }
 .hero-topline { position:relative; z-index:2; display:flex; justify-content:space-between; gap:30px; padding:105px 6vw 0; font-size:8px; font-weight:700; letter-spacing:0.16em; opacity:0.55; }
@@ -320,100 +322,7 @@ section { scroll-margin-top:82px; }
 .footer-group a:hover { opacity:1; color:var(--green); }
 .footer-tagline { font-family:var(--serif); font-size:16px; color:var(--green); align-self:flex-end; margin-left:auto; }
 
-/* 6. RESPONSIVE GENERAL */
-@media (max-width: 1100px) {
-    .desktop-nav .nav-list { gap:20px; }
-    .service-card { min-height:540px; }
-    .principles-grid { grid-template-columns:repeat(2, minmax(0,1fr)); }
-}
-@media (max-width: 900px) {
-    .grid-2 { grid-template-columns:1fr; gap:30px; }
-    .testimonios { grid-template-columns:1fr; }
-    .programas-grid { grid-template-columns:1fr; }
-    .areas-grid { grid-template-columns:repeat(3,1fr); }
-    .benefits-grid { grid-template-columns:repeat(2,1fr); }
-}
-@media (max-width: 800px) {
-    .section { padding:80px 6vw; }
-    .desktop-nav .nav-list, .header-button { display:none; }
-    .menu-button { display:flex; }
-    .hero { min-height:100svh; height:auto; }
-    .hero-topline { padding-top:105px; align-items:flex-start; flex-direction:column; gap:8px; }
-    .hero-content { margin:0; padding-top:55px; padding-bottom:65px; }
-    .hero h1 { font-size:clamp(3rem, 12.75vw, 5.25rem); }
-    .hero-bottom { align-items:flex-start; flex-direction:column; margin-top:45px; }
-    .hero-bottom p { max-width:100%; }
-    .circle-button { width:90px; height:90px; }
-    .intro-layout, .services-heading, .method-heading, .careers-layout, .faq-layout, .hook-grid { grid-template-columns:1fr; gap:45px; }
-    .intro-layout, .services-heading, .method-heading, .faq-layout { padding-top:60px; }
-    .seed-section { min-height:auto; padding:120px 7vw 100px; background-attachment: scroll; }
-    .seed-side { top:35px; }
-    .seed-main h2 { font-size:clamp(2.625rem, 11.25vw, 5.25rem); }
-    .seed-main p { margin-top:35px; }
-    .seed-number { bottom:30px; }
-    .service-cards { grid-template-columns:1fr; }
-    .service-card { min-height:500px; }
-    .method-row { grid-template-columns:45px 1fr 25px; gap:15px; padding:25px 0; }
-    .principles-grid { grid-template-columns:1fr; }
-    .principles-grid > div { min-height:auto; }
-    .principles-grid span { margin-bottom:40px; }
-    .faq-layout { gap:50px; }
-    .contact { min-height:650px; padding:40px 6vw; }
-    .contact-main { padding:70px 0; }
-    .footer { flex-direction:column; align-items:stretch; gap:30px; }
-    .footer-groups { gap:25px; justify-content:space-between; }
-    .footer-tagline { margin-left:0; align-self:flex-start; }
-}
-@media (max-width: 520px) {
-    .header { height:70px; padding:0 5vw; }
-    .logo { font-size:11px; }
-    .logo-icon { width:30px; height:30px; }
-    .hero-topline { padding:95px 6vw 0; font-size:7px; }
-    .hero-content { padding:45px 6vw 55px; }
-    .hero-small { font-size:7px; flex-wrap:wrap; }
-    .hero h1 { font-size:clamp(2.7rem, 13.5vw, 4.5rem); }
-    .hero-bottom { margin-top:38px; }
-    .hero-bottom p { font-size:13px; }
-    .hero-marquee .marquee-track { gap:25px; padding:15px 0; }
-    .section { padding:65px 6vw; }
-    .section-meta { font-size:7px; }
-    .intro-layout h2, .services-heading h2 { font-size:clamp(2.25rem, 11.25vw, 3.75rem); }
-    .seed-section { padding:110px 7vw 80px; }
-    .seed-circle { width:80px; height:80px; margin-bottom:35px; }
-    .seed-circle span { font-size:32px; }
-    .seed-main h2 { font-size:clamp(2.25rem, 11.25vw, 3.75rem); }
-    .seed-main p { font-size:14px; }
-    .service-card { min-height:520px; padding:22px; }
-    .card-icon { width:70px; height:70px; font-size:32px; }
-    .card-content h3 { font-size:clamp(1.725rem, 9vw, 3rem); }
-    .card-content p { margin-top:20px; font-size:13px; }
-    .card-bottom { align-items:flex-end; }
-    .card-tags span { font-size:7px; }
-    .method-row { grid-template-columns:30px 1fr 20px; }
-    .method-row h3 { font-size:1.5rem; }
-    .method-row p { font-size:13px; }
-    .hook-button { width:100%; justify-content:center; }
-    .contact { min-height:620px; }
-    .contact-main h2 { font-size:clamp(2.85rem, 13.5vw, 4.5rem); }
-    .contact-main p { margin-top:30px; font-size:13px; }
-    .contact-top, .contact-bottom { font-size:7px; }
-    .footer-groups { flex-direction:column; gap:20px; }
-}
-@media (max-height: 700px) and (min-width: 801px) {
-    .hero { min-height:680px; }
-    .hero-topline { padding-top:95px; }
-    .hero-content { padding-top:40px; padding-bottom:45px; }
-    .hero-small { margin-bottom:20px; }
-    .hero-bottom { margin-top:35px; }
-}
-@media (prefers-reduced-motion:reduce) {
-    html { scroll-behavior:auto; }
-    *, *::before, *::after { animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
-}
-
-/* =========================================================
-   7. SISTEMA DE UTILIDADES (ÍCONOS, FOTOS Y CORCHETES)
-========================================================= */
+/* 6. SISTEMA DE UTILIDADES (ÍCONOS, FOTOS Y CORCHETES) */
 .img-cover { width: 100%; height: 100%; object-fit: cover; display: block; }
 .img-contain { width: 100%; height: 100%; object-fit: contain; display: block; }
 .img-rounded { border-radius: var(--radius-sm); }
@@ -428,29 +337,13 @@ section { scroll-margin-top:82px; }
 .icon-blue { filter: invert(29%) sepia(94%) saturate(2845%) hue-rotate(202deg) brightness(98%) contrast(101%); }
 .icon-green { filter: invert(72%) sepia(52%) saturate(476%) hue-rotate(83deg) brightness(95%) contrast(92%); }
 
-/* --- Corchetes decorativos (Solo apertura, más grandes) --- */
 .corchete-icon {
-    display: inline-block;
-    height: 1.4em;
-    width: auto;
-    vertical-align: middle;
-    margin-right: 12px;
-    margin-left: 0;
-    opacity: 0.8;
-    filter: brightness(0);
+    display: inline-block; height: 1.4em; width: auto;
+    vertical-align: middle; margin-right: 12px; margin-left: 0;
+    opacity: 0.8; filter: brightness(0);
 }
-.section-dark .corchete-icon,
-.seed-side .corchete-icon,
-.cide-link .corchete-icon,
-.hero .corchete-icon,
-.contact .corchete-icon,
-.metodologia-hero .corchete-icon {
-    filter: brightness(0) invert(1);
-}
+.section-dark .corchete-icon, .seed-side .corchete-icon, .cide-link .corchete-icon, .hero .corchete-icon, .contact .corchete-icon, .metodologia-hero .corchete-icon { filter: brightness(0) invert(1); }
 
-a:hover .icon-auto, button:hover .icon-auto, .header-button:hover img, .hook-button:hover img, .contact-button:hover img, .method-row:hover .arrow-icon img { transform: translateX(4px); }
-
-/* FIX DEFINITIVO PARA ÍCONOS SVG Y FLECHAS */
 .svg-icon { display: inline-block; width: 1em; height: 1em; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; vertical-align: middle; }
 .svg-arrow { width: 1.12em; height: 1.12em; }
 .svg-spark { width: 0.82em; height: 0.82em; }
@@ -458,246 +351,171 @@ a:hover .icon-auto, button:hover .icon-auto, .header-button:hover img, .hook-but
 .seed-circle .svg-icon { width: 32px; height: 32px; }
 .arrow-icon img, .card-arrow img { display: inline-block; vertical-align: middle; }
 
-/* =========================================================
-   EFECTO HOVER: EXPANSIÓN ANCLADA A LA IZQUIERDA (X4)
-   El botón solo se estira hacia la derecha, el texto no se mueve.
-========================================================= */
+/* 7. EFECTO HOVER: EXPANSIÓN ANCLADA A LA IZQUIERDA (X4) */
+.hook-button { transition: background 0.3s ease, padding 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.hook-button img { transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.hook-button:hover { background: var(--green); color: var(--black); padding-right: 68px; transform: translateX(20px); }
+.hook-button:hover img { transform: translateX(24px); }
 
-/* 1. Botón "Conocer Windsor One" (.hook-button) */
-.hook-button {
-    transition: background 0.3s ease, padding 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.hook-button img {
-    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.hook-button:hover {
-    background: var(--green);
-    color: var(--black);
-    padding-right: 68px; /* Crecimiento masivo */
-    transform: translateX(20px); /* Ancla el texto */
-}
-.hook-button:hover img {
-    transform: translateX(24px); /* La flecha viaja lejos */
-}
+.contact-button { transition: background 0.3s ease, padding 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.contact-button img { transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.contact-button:hover { background: var(--white); padding-right: 62px; transform: translateX(20px); }
+.contact-button:hover img { transform: translateX(24px); }
 
-/* 2. Botón "Ir al formulario" (.contact-button) */
-.contact-button {
-    transition: background 0.3s ease, padding 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.contact-button img {
-    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.contact-button:hover {
-    background: var(--white);
-    padding-right: 62px; 
-    transform: translateX(20px); 
-}
-.contact-button:hover img {
-    transform: translateX(24px);
-}
+.header-button { transition: background 0.25s ease, color 0.25s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), padding 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.header-button img { transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.header-button:hover { background: var(--green); color: var(--black); border-color: var(--green); padding-right: 44px; transform: translateY(-2px) translateX(12px); }
+.header-button:hover img { transform: translateX(16px); }
 
-/* 3. Botón "Hablemos" del Header (.header-button) */
-.header-button {
-    transition: background 0.25s ease, color 0.25s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), padding 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.header-button img {
-    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.header-button:hover {
-    background: var(--green);
-    color: var(--black);
-    border-color: var(--green);
-    padding-right: 44px; 
-    transform: translateY(-2px) translateX(12px); 
-}
-.header-button:hover img {
-    transform: translateX(16px);
-}
+.underlined-link img, .dark-link img, .method-row .arrow-icon img { transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.underlined-link:hover img, .dark-link:hover img { transform: translateX(8px); }
 
-/* 4. Enlaces con flechas (Orientación, Método, etc.) */
-.underlined-link img, .dark-link img, .method-row .arrow-icon img {
-    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.underlined-link:hover img, .dark-link:hover img {
-    transform: translateX(8px); 
-}
-
-/* =========================================================
-   RECUPERACIÓN: PÁGINA DE METODOLOGÍA
-========================================================= */
-.metodologia-hero {
-    background: var(--black);
-    color: var(--white);
-    padding: 140px 6vw 80px;
-    position: relative;
-    overflow: hidden;
-    min-height: auto;
-}
-.metodologia-hero .hero-noise {
-    position: absolute;
-    inset: 0;
-    opacity: 0.06;
-    pointer-events: none;
-    background-image: radial-gradient(rgba(255,255,255,0.8) 0.6px, transparent 0.6px);
-    background-size: 5px 5px;
-}
-.metodologia-hero .break-title {
-    font-size: clamp(3.5rem, 10vw, 8rem);
-    line-height: 0.85;
-    letter-spacing: -0.07em;
-    font-weight: 900;
-    font-family: var(--sans);
-    color: var(--blue);
-    position: relative;
-    margin-bottom: 10px;
-    opacity: 0;
-    animation: breakReveal 2s ease forwards;
-    animation-delay: 0.3s;
-}
-.metodologia-hero .break-title .char {
-    display: inline-block;
-    animation: breakChar 1.2s ease forwards;
-    opacity: 0;
-}
-@keyframes breakChar {
-    0% { transform: translateY(60px) rotate(20deg) scale(0.8); opacity: 0; color: #ff0000; }
-    30% { transform: translateY(-20px) rotate(-10deg) scale(1.1); opacity: 1; color: #ff8800; }
-    60% { transform: translateY(10px) rotate(5deg) scale(0.95); color: #00cc00; }
-    100% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; color: var(--blue); }
-}
-@keyframes breakReveal { 0% { opacity: 0; } 100% { opacity: 1; } }
-
-.metodologia-hero .sub-method {
-    font-size: clamp(1.5rem, 3vw, 2.5rem);
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    color: rgba(255,255,255,0.8);
-    margin-top: 10px;
-    opacity: 0;
-    animation: fadeUp 1.2s ease forwards;
-    animation-delay: 1.2s;
-}
-.metodologia-hero .sub-method em {
-    display: block;
-    color: var(--green);
-    font-family: var(--sans);
-    font-weight: 900;
-    text-decoration: underline;
-    text-decoration-thickness: 0.07em;
-    text-underline-offset: 0.1em;
-    margin-top: 4px;
-}
-@keyframes fadeUp { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
-
-.metodologia-hero p {
-    max-width: 580px;
-    margin-top: 30px;
-    color: rgba(255,255,255,0.6);
-    font-size: 16px;
-    line-height: 1.7;
-    opacity: 0;
-    animation: fadeUp 1.2s ease forwards;
-    animation-delay: 1.8s;
-}
-
-.metodologia-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-top: 60px;
-}
-.metodologia-item {
-    background: var(--white);
-    padding: 28px 24px 16px 24px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    border-radius: var(--radius-sm);
-}
-.metodologia-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-}
-.metodologia-item .card-inner {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    flex: 1;
-}
-.metodologia-item .icon-wrap {
-    flex: 0 0 56px;
-    width: 56px;
-    height: 56px;
-    background: rgba(0,0,0,0.04);
-    display: grid;
-    place-items: center;
-    color: var(--blue);
-    border-radius: 50%;
-}
-.metodologia-item .icon-wrap svg {
-    width: 28px;
-    height: 28px;
-    stroke: currentColor;
-    fill: none;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
+/* 8. METODOLOGÍA (NUEVO DISEÑO) */
+.metodologia-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 60px; }
+.metodologia-item { background: var(--white); padding: 28px 24px 16px 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; position: relative; border-radius: var(--radius-sm); }
+.metodologia-item:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+.metodologia-item .card-inner { display: flex; align-items: flex-start; gap: 20px; flex: 1; }
+.metodologia-item .icon-wrap { flex: 0 0 56px; width: 56px; height: 56px; background: rgba(0,0,0,0.04); display: grid; place-items: center; color: var(--blue); border-radius: 50%; }
+.metodologia-item .icon-wrap svg { width: 28px; height: 28px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .metodologia-item .card-body { flex:1; }
-.metodologia-item .card-body .num {
-    font-size: 9px;
-    font-weight: 700;
-    color: var(--blue);
-    opacity: 0.6;
-    letter-spacing: 0.15em;
-    display: block;
-    margin-bottom: 4px;
-}
-.metodologia-item .card-body h3 {
-    font-size: 1.6rem;
-    letter-spacing: -0.03em;
-    margin-bottom: 6px;
-}
-.metodologia-item .card-body p {
-    color: #555;
-    line-height: 1.7;
-    font-size: 15px;
-    margin: 0 0 16px 0;
-}
-.metodologia-item .card-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    transition: gap 0.25s ease, color 0.25s ease;
-    color: var(--blue);
-}
-.metodologia-item .bottom-bar {
-    height: 4px;
-    margin-top: 16px;
-    transition: width 0.4s cubic-bezier(.25,.46,.45,.94);
-    background-color: var(--blue);
-    border-radius: var(--radius-pill);
-}
+.metodologia-item .card-body .num { font-size: 9px; font-weight: 700; color: var(--blue); opacity: 0.6; letter-spacing: 0.15em; display: block; margin-bottom: 4px; }
+.metodologia-item .card-body h3 { font-size: 1.6rem; letter-spacing: -0.03em; margin-bottom: 6px; }
+.metodologia-item .card-body p { color: #555; line-height: 1.7; font-size: 15px; margin: 0 0 16px 0; }
+.metodologia-item .card-link { display: inline-flex; align-items: center; gap: 12px; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: gap 0.25s ease, color 0.25s ease; color: var(--blue); }
+.metodologia-item .bottom-bar { height: 4px; margin-top: 16px; transition: width 0.4s cubic-bezier(.25,.46,.45,.94); background-color: var(--blue); border-radius: var(--radius-pill); }
 .metodologia-item:hover .bottom-bar { width: 100% !important; }
 
+/* =========================================================
+   9. RESPONSIVE GENERAL (MEJORADO PARA TODAS LAS PANTALLAS)
+========================================================= */
+
+/* Tablets grandes / Laptops pequeñas */
+@media (max-width: 1100px) {
+    .desktop-nav .nav-list { gap:20px; }
+    .service-card { min-height:540px; }
+    .principles-grid { grid-template-columns:repeat(2, minmax(0,1fr)); }
+}
+
+/* Tablets verticales / Móviles grandes */
+@media (max-width: 900px) {
+    .grid-2 { grid-template-columns:1fr; gap:30px; }
+    .testimonios { grid-template-columns:1fr; }
+    .programas-grid { grid-template-columns:1fr; }
+    .areas-grid { grid-template-columns:repeat(3,1fr); }
+    .benefits-grid { grid-template-columns:repeat(2,1fr); }
+}
+
+/* Móviles */
 @media (max-width: 800px) {
-    .metodologia-hero { padding: 120px 6vw 60px; }
-    .metodologia-grid { grid-template-columns: 1fr; gap: 20px; }
+    .section { padding:80px 6vw; }
+    .desktop-nav .nav-list, .header-button { display:none; }
+    .menu-button { display:flex; }
+    
+    .hero { min-height:100svh; height:auto; background-attachment: scroll; }
+    .hero-topline { padding-top:105px; align-items:flex-start; flex-direction:column; gap:8px; }
+    .hero-content { margin:0; padding-top:55px; padding-bottom:65px; }
+    .hero h1 { font-size:clamp(3rem, 12.75vw, 5.25rem); }
+    .hero-bottom { align-items:flex-start; flex-direction:column; margin-top:45px; gap: 30px; }
+    .hero-bottom p { max-width:100%; }
+    .circle-button { width:90px; height:90px; }
+    
+    .intro-layout, .services-heading, .method-heading, .careers-layout, .faq-layout, .hook-grid { grid-template-columns:1fr; gap:45px; }
+    .intro-layout, .services-heading, .method-heading, .faq-layout { padding-top:60px; }
+    
+    .seed-section { min-height:auto; padding:120px 7vw 100px; background-attachment: scroll; }
+    .seed-side { position: relative; top: auto; left: auto; right: auto; margin-bottom: 40px; }
+    .seed-main h2 { font-size:clamp(2.625rem, 11.25vw, 5.25rem); }
+    .seed-main p { margin-top:35px; }
+    .seed-number { bottom:30px; }
+    
+    .service-cards { grid-template-columns:1fr; }
+    .service-card { min-height:500px; }
+    .method-row { grid-template-columns:45px 1fr 25px; gap:15px; padding:25px 0; }
+    
+    .principles-grid { grid-template-columns:1fr; }
+    .principles-grid > div { min-height:auto; }
+    .principles-grid span { margin-bottom:40px; }
+    
+    .faq-layout { gap:50px; }
+    .contact { min-height:650px; padding:40px 6vw; }
+    .contact-main { padding:70px 0; }
+    
+    .footer { flex-direction:column; align-items:stretch; gap:30px; }
+    .footer-groups { gap:25px; justify-content:space-between; }
+    .footer-tagline { margin-left:0; align-self:flex-start; }
+    
+    .metodologia-grid { grid-template-columns: 1fr; gap: 20px; margin-top: 40px; }
+    .cide-link h2 { flex-direction: column; }
 }
+
+/* Móviles pequeños */
 @media (max-width: 520px) {
-    .metodologia-hero { padding: 6.75rem 6vw 3.5rem; }
-    .metodologia-hero .break-title { font-size: clamp(2.8rem, 10vw, 5rem); }
+    .header { height:70px; padding:0 5vw; }
+    .logo { font-size:11px; }
+    .logo-icon { width:30px; height:30px; }
+    
+    .hero-topline { padding:95px 6vw 0; font-size:7px; }
+    .hero-content { padding:45px 6vw 55px; }
+    .hero-small { font-size:7px; flex-wrap:wrap; }
+    .hero h1 { font-size:clamp(2.7rem, 13.5vw, 4.5rem); }
+    .hero-bottom { margin-top:38px; }
+    .hero-bottom p { font-size:13px; }
+    .hero-marquee .marquee-track { gap:25px; padding:15px 0; }
+    
+    .section { padding:65px 6vw; }
+    .section-meta { font-size:7px; flex-direction: column; align-items: flex-start; gap: 10px; }
+    .corchete-icon { height: 1.1em; margin-right: 6px; }
+    
+    .intro-layout h2, .services-heading h2 { font-size:clamp(2.25rem, 11.25vw, 3.75rem); }
+    .seed-section { padding:110px 7vw 80px; }
+    .seed-circle { width:80px; height:80px; margin-bottom:35px; }
+    .seed-circle span { font-size:32px; }
+    .seed-main h2 { font-size:clamp(2.25rem, 11.25vw, 3.75rem); }
+    .seed-main p { font-size:14px; }
+    
+    .service-card { min-height:auto; padding:22px; }
+    .card-icon { width:70px; height:70px; font-size:32px; margin-bottom: 20px; }
+    .card-content h3 { font-size:clamp(1.725rem, 9vw, 3rem); }
+    .card-content p { margin-top:20px; font-size:13px; }
+    .card-bottom { align-items:flex-end; flex-direction: column; gap: 15px; }
+    .card-tags span { font-size:7px; }
+    
+    .method-row { grid-template-columns:30px 1fr 20px; }
+    .method-row h3 { font-size:1.5rem; }
+    .method-row p { font-size:13px; }
+    
+    .metodologia-item { padding: 20px 15px; }
+    .metodologia-item .card-inner { flex-direction: column; gap: 15px; }
+    .metodologia-item .icon-wrap { width: 48px; height: 48px; flex: 0 0 48px; }
+    .metodologia-item .icon-wrap svg { width: 24px; height: 24px; }
+    
+    .hook-button { width:100%; justify-content:center; }
+    .hook-button:hover { transform: translateX(0) scale(1.02); padding-right: 28px; } /* Evitar romper layout en móvil */
+    
+    .contact { min-height:620px; }
+    .contact-main h2 { font-size:clamp(2.85rem, 13.5vw, 4.5rem); }
+    .contact-main p { margin-top:30px; font-size:13px; }
+    .contact-top, .contact-bottom { font-size:7px; }
+    
+    .cide-link h2 span { font-size: 1.5rem; }
+    .cide-link p { font-size: 13px; }
+    
+    .footer-groups { flex-direction:column; gap:20px; }
+    
+    .metodologia-grid { gap: 15px; }
 }
-/* Fondo para el Hero de Metodología */
-.hero-bg-research {
-    background-image: linear-gradient(rgba(10,10,12,0.65), rgba(10,10,12,0.9)), url('assets/investigacion.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: scroll;
+
+/* Pantallas muy bajas (Landscape en móviles) */
+@media (max-height: 700px) and (min-width: 801px) {
+    .hero { min-height:680px; }
+    .hero-topline { padding-top:95px; }
+    .hero-content { padding-top:40px; padding-bottom:45px; }
+    .hero-small { margin-bottom:20px; }
+    .hero-bottom { margin-top:35px; }
+}
+
+/* Reducción de movimiento */
+@media (prefers-reduced-motion:reduce) {
+    html { scroll-behavior:auto; }
+    *, *::before, *::after { animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
 }
