@@ -411,7 +411,7 @@ section { scroll-margin-top:82px; }
     .section { padding:80px 8vw; }
     .hero-topline { padding:105px 8vw 0; }
     .hero-content { padding:55px 8vw 65px; }
-    .seed-section { padding:120px 8vw 100px; }
+    .seed-section { padding:100px 8vw 80px; }
     .contact { padding:40px 8vw; }
     .cide-link { padding:60px 8vw; }
     
@@ -435,10 +435,18 @@ section { scroll-margin-top:82px; }
     .intro-layout, .services-heading, .method-heading, .careers-layout, .faq-layout, .hook-grid { grid-template-columns:1fr; gap:45px; }
     .intro-layout, .services-heading, .method-heading, .faq-layout { padding-top:60px; }
     
-    .seed-section { min-height:auto; }
-    .seed-side { position: relative; top: auto; left: auto; right: auto; margin-bottom: 40px; }
-    .seed-main h2 { font-size:clamp(2.625rem, 11vw, 5.25rem); line-height: 0.9; }
-    .seed-main p { margin-top:35px; }
+    /* ARREGLO DE LA SEMILLA EN MÓVIL */
+    .seed-section { min-height: auto; }
+    .seed-side { 
+        position: relative; top: auto; left: auto; right: auto; 
+        margin-bottom: 40px; display: flex; justify-content: space-between; 
+        align-items: center; white-space: nowrap;
+    }
+    .seed-side .corchete-icon { height: 1em; width: auto; margin-right: 8px; vertical-align: text-bottom; }
+    .seed-circle { width: 70px; height: 70px; margin-bottom: 30px; }
+    .seed-main h2 { font-size: clamp(2.5rem, 11vw, 4.5rem); line-height: 1.05; letter-spacing: -0.04em; }
+    .seed-main h2 br { display: none; }
+    .seed-main p { margin-top: 25px; font-size: 15px; line-height: 1.6; }
     .seed-number { bottom:30px; }
     
     .service-cards { grid-template-columns:1fr; }
@@ -479,11 +487,13 @@ section { scroll-margin-top:82px; }
     .corchete-icon { height: 1.1em; margin-right: 6px; }
     
     .intro-layout h2, .services-heading h2 { font-size:clamp(2.25rem, 11vw, 3.75rem); line-height: 0.95; }
-    .seed-section { padding:110px 8vw 80px; }
-    .seed-circle { width:80px; height:80px; margin-bottom:35px; }
-    .seed-circle span { font-size:32px; }
-    .seed-main h2 { font-size:clamp(2.25rem, 11vw, 3.75rem); line-height: 0.95; }
-    .seed-main p { font-size:14px; }
+    
+    /* ARREGLO FINO SEMILLA EN PANTALLAS MUY PEQUEÑAS */
+    .seed-section { padding:90px 8vw 70px; }
+    .seed-circle { width: 60px; height: 60px; margin-bottom: 25px; }
+    .seed-circle span { font-size: 24px; }
+    .seed-main h2 { font-size: clamp(2.2rem, 12vw, 3.5rem); line-height: 1.1; }
+    .seed-main p { font-size:14px; margin-top: 20px; }
     
     /* FIX TARJETAS SERVICIOS */
     .service-card { min-height:auto; padding:22px; }
@@ -505,12 +515,12 @@ section { scroll-margin-top:82px; }
     .hook-button { width:100%; justify-content:center; }
     .hook-button:hover { transform: translateX(0) scale(1.02); padding-right: 28px; }
     
-    /* FIX SECCIÓN CONTACTO EN MÓVIL (Texto cortado) */
+    /* ARREGLO DEFINITIVO PARA CONTACTO (Para que no se corte) */
     .contact { min-height:620px; padding:40px 8vw; }
     .contact-main h2 { 
         font-size: clamp(2rem, 10vw, 3.5rem) !important; 
-        letter-spacing: -0.05em; 
-        line-height: 1; 
+        line-height: 1.1; 
+        letter-spacing: -0.03em;
         word-break: break-word;
     }
     .contact-main p { margin-top:30px; font-size:13px; }
