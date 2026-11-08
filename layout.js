@@ -30,7 +30,8 @@
 <div class="header-actions">
 <a class="header-button" href="contacto.html">
 Hablemos
-<img src="assets/flechacinfondo.svg" alt="→" style="width: 16px; height: 16px;">
+<!-- FILTRO INVERT APLICADO PARA QUE SE VEA BLANCA -->
+<img src="assets/flechacinfondo.svg" alt="" style="width: 16px; height: 16px; filter: brightness(0) invert(1);">
 </a>
 </div>
 <button aria-expanded="false" aria-label="Abrir menú" class="menu-button"><span></span><span></span></button>
