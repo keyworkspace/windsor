@@ -561,3 +561,10 @@ section { scroll-margin-top:82px; }
     html { scroll-behavior:auto; }
     *, *::before, *::after { animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
 }
+/* Fondo para el Hero de Windsor One */
+.hero-bg-happy {
+    background-image: linear-gradient(rgba(10,10,12,0.65), rgba(10,10,12,0.95)), url('assets/feliz.png');
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed;
+}
