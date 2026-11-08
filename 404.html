@@ -1,138 +1,283 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex">
-  <title>Página no encontrada · Windsor</title>
-  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    /* --- Solo lo específico de la 404. El resto lo hereda de styles.css --- */
-    .e404 {
-      min-height: calc(100vh - 160px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 64px 24px;
-    }
-    .e404__inner {
-      max-width: 560px;
-      width: 100%;
-    }
-    .e404__code {
-      font-size: 13px;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      opacity: 0.6;
-      margin: 0 0 14px;
-    }
-    .e404__title {
-      font-size: clamp(30px, 6vw, 52px);
-      line-height: 1.05;
-      margin: 0 0 18px;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-    }
-    .e404__text {
-      font-size: 16px;
-      line-height: 1.6;
-      opacity: 0.75;
-      margin: 0 0 32px;
-    }
-    .e404__actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .e404__btn {
-      display: inline-block;
-      padding: 12px 22px;
-      border-radius: 999px;
-      font-size: 15px;
-      text-decoration: none;
-      border: 1px solid currentColor;
-      color: inherit;
-      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
-    }
-    .e404__btn:hover {
-      transform: translateY(-1px);
-    }
-    .e404__btn--primary {
-      background: currentColor;
-      border-color: currentColor;
-    }
-    .e404__btn--primary span {
-      color: var(--bg, #0e0e10);
-    }
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta name="robots" content="noindex">
+<title>Página no encontrada — Windsor</title>
+<meta content="La página que buscas no existe o ya no está disponible." name="description">
+<link href="assets/favicon.png" rel="icon" type="image/png">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="styles.css" rel="stylesheet">
+<style>
+  .e404 {
+    position: relative;
+    min-height: max(640px, calc(100svh - 82px));
+    background: var(--black);
+    color: var(--white);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 110px 6vw 80px;
+  }
+  .e404-noise {
+    position: absolute;
+    inset: 0;
+    opacity: 0.08;
+    pointer-events: none;
+    background-image: radial-gradient(rgba(255,255,255,0.8) 0.6px, transparent 0.6px);
+    background-size: 5px 5px;
+  }
+  .e404-top {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    opacity: 0.55;
+  }
+  .e404-main {
+    position: relative;
+    z-index: 2;
+    width: min(100%, var(--max-width));
+    margin: auto;
+    padding: 60px 0 40px;
+  }
+  .e404-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    color: var(--green);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .e404-kicker .green-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: dotPulse 2s ease infinite;
+  }
+  .e404-title {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: clamp(3rem, 8vw, 8rem);
+    line-height: 0.82;
+    letter-spacing: -0.085em;
+    margin: 0;
+    max-width: 1100px;
+  }
+  .e404-title em {
+    display: block;
+    color: var(--green);
+    font-style: normal;
+    font-weight: 900;
+    text-decoration: underline;
+    text-decoration-thickness: 0.07em;
+    text-underline-offset: 0.1em;
+  }
+  .e404-bottom {
+    margin-top: 55px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .e404-bottom p {
+    max-width: 480px;
+    margin: 0;
+    color: rgba(255,255,255,0.65);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .e404-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .e404-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 15px 24px;
+    background: var(--blue);
+    color: var(--white);
+    border: 1px solid var(--blue);
+    border-radius: var(--radius-pill);
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  }
+  .e404-btn:hover {
+    background: var(--green);
+    color: var(--black);
+    border-color: var(--green);
+    transform: translateY(-2px);
+  }
+  .e404-btn--ghost {
+    background: transparent;
+    border-color: rgba(255,255,255,0.4);
+  }
+  .e404-btn--ghost:hover {
+    background: var(--white);
+    color: var(--black);
+    border-color: var(--white);
+  }
+  .e404-btn .arrow-icon {
+    display: inline-flex;
+    align-items: center;
+  }
 
-    /* --- Animaciones de entrada (solo contenido central) --- */
-    @keyframes e404-up {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .e404 [data-anim] {
-      opacity: 0;
-      animation: e404-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    }
-    .e404 [data-anim="1"] { animation-delay: 0.05s; }
-    .e404 [data-anim="2"] { animation-delay: 0.18s; }
-    .e404 [data-anim="3"] { animation-delay: 0.32s; }
-    .e404 [data-anim="4"] { animation-delay: 0.46s; }
+  @keyframes e404-fade-up {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .e404 [data-anim] {
+    opacity: 0;
+    animation: e404-fade-up 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+  .e404 [data-anim="1"] { animation-delay: 0.15s; }
+  .e404 [data-anim="2"] { animation-delay: 0.35s; }
+  .e404 [data-anim="3"] { animation-delay: 0.55s; }
+  .e404 [data-anim="4"] { animation-delay: 0.75s; }
+  .e404 [data-anim="5"] { animation-delay: 0.95s; }
 
-    @media (prefers-reduced-motion: reduce) {
-      .e404 [data-anim] {
-        opacity: 1;
-        animation: none;
-      }
-    }
-  </style>
+  @media (prefers-reduced-motion: reduce) {
+    .e404 [data-anim] { opacity: 1; animation: none; }
+  }
+  @media (max-width: 800px) {
+    .e404 { padding: 100px 6vw 60px; min-height: auto; }
+    .e404-title { font-size: clamp(2.8rem, 13vw, 5rem); }
+    .e404-bottom { flex-direction: column; align-items: flex-start; margin-top: 40px; }
+    .e404-actions { width: 100%; }
+    .e404-btn { width: 100%; justify-content: center; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- ============================================================
-       PEGA AQUÍ TU HEADER REAL (tal cual está en index.html)
-       Ejemplo de estructura, reemplázalo por el tuyo:
-       ============================================================ -->
-  <header class="site-header">
-    <div class="site-header__inner">
-      <a href="index.html" class="site-header__brand">Windsor</a>
-      <nav class="site-header__nav">
-        <a href="index.html">Inicio</a>
-        <a href="windsor-one.html">Windsor One</a>
-        <a href="metodologia.html">Metodología</a>
-        <a href="contacto.html">Contacto</a>
-      </nav>
+<header class="header">
+<a class="logo" href="index.html">
+<img alt="Windsor" class="logo-icon" src="assets/favicon.png">
+<span class="logo-name">WINDSOR</span>
+</a>
+<nav class="desktop-nav">
+<ul class="nav-list">
+<li><a href="index.html">Inicio</a></li>
+<li class="dropdown">
+<a href="metodologia.html">Sobre</a>
+<ul class="submenu">
+<li><a href="metodologia.html">Metodología</a></li>
+</ul>
+</li>
+<li class="dropdown">
+<a href="windsor-one.html">Servicios</a>
+<ul class="submenu">
+<li><a href="windsor-one.html">Windsor One</a></li>
+<li><a href="BeQueer.html">BeQueer</a></li>
+</ul>
+</li>
+<li><a href="contacto.html">Contacto</a></li>
+</ul>
+</nav>
+<div class="header-actions">
+<a class="header-button" href="contacto.html">
+                Hablemos
+                <span aria-hidden="true" class="arrow-icon">
+<svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="16">
+<line x1="7" x2="17" y1="17" y2="7"></line>
+<polyline points="7 7 17 7 17 17"></polyline>
+</svg>
+</span>
+</a>
+</div>
+<button aria-expanded="false" aria-label="Abrir menú" class="menu-button"><span></span><span></span></button>
+</header>
+
+<div class="mobile-menu">
+<div class="mobile-menu-inner">
+<div class="mobile-menu-label">NAVEGACIÓN</div>
+<a href="index.html">Inicio</a>
+<div class="mobile-group-title">Sobre</div>
+<a href="metodologia.html">Metodología</a>
+<div class="mobile-group-title">Servicios</div>
+<a href="windsor-one.html">Windsor One</a>
+<a href="BeQueer.html">BeQueer</a>
+<a href="contacto.html">Contacto</a>
+</div>
+</div>
+
+<main>
+<section class="e404">
+  <div class="e404-noise"></div>
+  <div class="e404-top" data-anim="1">
+    <span>ERROR 404</span>
+    <span>WINDSOR / PÁGINA NO ENCONTRADA</span>
+  </div>
+  <div class="e404-main">
+    <div class="e404-kicker" data-anim="2">
+      <span class="green-dot"></span> WINDSOR
     </div>
-  </header>
-  <!-- ======================= FIN HEADER ======================== -->
-
-
-  <main class="e404">
-    <div class="e404__inner">
-      <p class="e404__code" data-anim="1">Error 404</p>
-      <h1 class="e404__title" data-anim="2">Esta página no existe.</h1>
-      <p class="e404__text" data-anim="3">
-        Puede que la hayamos movido, que el enlace esté mal escrito o que ya no esté disponible.
-        Desde aquí puedes volver a lo que sí sigue en pie.
+    <h1 class="e404-title" data-anim="3">
+      Esta página<em>no existe.</em>
+    </h1>
+    <div class="e404-bottom">
+      <p data-anim="4">
+        Puede que la hayamos movido, que el enlace esté mal escrito o que ya no esté disponible. Desde aquí puedes volver a lo que sí sigue en pie.
       </p>
-      <div class="e404__actions" data-anim="4">
-        <a href="index.html" class="e404__btn e404__btn--primary"><span>Volver al inicio</span></a>
-        <a href="contacto.html" class="e404__btn">Contacto</a>
+      <div class="e404-actions" data-anim="5">
+        <a class="e404-btn" href="index.html">
+          Volver al inicio
+          <span aria-hidden="true" class="arrow-icon">
+            <svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="16">
+              <line x1="7" x2="17" y1="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </span>
+        </a>
+        <a class="e404-btn e404-btn--ghost" href="windsor-one.html">Windsor One</a>
+        <a class="e404-btn e404-btn--ghost" href="contacto.html">Contacto</a>
       </div>
     </div>
-  </main>
+  </div>
+</section>
+</main>
 
+<footer class="footer">
+<div class="footer-logo">
+<img alt="Windsor" src="assets/favicon.png" style="width:34px; height:34px; display:block;">
+<span>WINDSOR</span>
+</div>
+<div class="footer-groups">
+<div class="footer-group">
+<h4>Sobre</h4>
+<a href="metodologia.html">Metodología</a>
+</div>
+<div class="footer-group">
+<h4>Servicios</h4>
+<a href="windsor-one.html">Windsor One</a>
+<a href="BeQueer.html">BeQueer</a>
+</div>
+<div class="footer-group">
+<h4>Contacto</h4>
+<a href="contacto.html">Contáctanos</a>
+</div>
+</div>
+<div class="footer-tagline">Precisión aplicada.</div>
+</footer>
 
-  <!-- ============================================================
-       PEGA AQUÍ TU FOOTER REAL (tal cual está en index.html)
-       ============================================================ -->
-  <footer class="site-footer">
-    <div class="site-footer__inner">
-      <p>© Windsor. <a href="windsor-one.html">Windsor One</a></p>
-    </div>
-  </footer>
-  <!-- ======================= FIN FOOTER ======================== -->
-
+<script src="script.js"></script>
 </body>
 </html>
