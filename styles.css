@@ -154,8 +154,8 @@ section { scroll-margin-top:82px; }
 /* 5. COMPONENTES ESPECÍFICOS */
 /* Hero */
 .hero { position:relative; min-height:max(720px, 100svh); background:var(--black); color:var(--white); overflow:hidden; display:flex; flex-direction:column; }
-.hero-bg-plane {
-    background-image: linear-gradient(rgba(10,10,12,0.85), rgba(10,10,12,0.95)), url('assets/avion.png');
+.hero-bg-lab {
+    background-image: linear-gradient(rgba(10,10,12,0.85), rgba(10,10,12,0.95)), url('assets/laboratorio.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -428,24 +428,23 @@ section { scroll-margin-top:82px; }
 .icon-blue { filter: invert(29%) sepia(94%) saturate(2845%) hue-rotate(202deg) brightness(98%) contrast(101%); }
 .icon-green { filter: invert(72%) sepia(52%) saturate(476%) hue-rotate(83deg) brightness(95%) contrast(92%); }
 
-/* --- Corchetes decorativos (Más grandes y solo de apertura) --- */
+/* --- Corchetes decorativos (Solo apertura, más grandes) --- */
 .corchete-icon {
     display: inline-block;
-    height: 1.4em; /* Mucho más grandes */
+    height: 1.4em;
     width: auto;
     vertical-align: middle;
-    margin-right: 12px; /* Margen solo a la derecha */
+    margin-right: 12px;
     margin-left: 0;
     opacity: 0.8;
-    filter: brightness(0); /* Negros por defecto */
+    filter: brightness(0);
 }
-
-/* Si está en un fondo oscuro, se vuelven blancos */
 .section-dark .corchete-icon,
 .seed-side .corchete-icon,
 .cide-link .corchete-icon,
 .hero .corchete-icon,
-.contact .corchete-icon {
+.contact .corchete-icon,
+.metodologia-hero .corchete-icon {
     filter: brightness(0) invert(1);
 }
 
