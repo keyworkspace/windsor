@@ -1,20 +1,6 @@
 /* =========================================================
    WINDSOR — LAYOUT CENTRALIZADO
    Header y footer únicos para todas las páginas.
-
-   USO en cada página:
-     <body>
-       <div class="preloader">...</div>
-       <div id="site-header"></div>
-       <main>...</main>
-       <div id="site-footer"></div>
-       <script src="layout.js"></script>
-       <script src="script.js"></script>
-     </body>
-
-   layout.js se inyecta de forma síncrona al final del <body>,
-   por lo que script.js (que se ejecuta después) ya encuentra
-   el header y el footer en el DOM. No uses defer ni async.
 ========================================================= */
 
 (function () {
@@ -37,7 +23,7 @@
 <a href="windsor-one.html">Servicios</a>
 <ul class="submenu">
 <li><a href="windsor-one.html">Windsor One</a></li>
-<li><a href="BeQueer.html">BeQueer · piloto</a></li>
+<li><a href="BeQueer.html">BeQueer</a></li>
 </ul>
 </li>
 <li><a href="contacto.html">Contacto</a></li>
@@ -64,7 +50,7 @@ Hablemos
 <a href="metodologia.html">Metodología</a>
 <div class="mobile-group-title">Servicios</div>
 <a href="windsor-one.html">Windsor One</a>
-<a href="BeQueer.html">BeQueer · piloto</a>
+<a href="BeQueer.html">BeQueer</a>
 <div class="mobile-group-title">Contacto</div>
 <a href="contacto.html">Contacto</a>
 </div>
@@ -85,7 +71,7 @@ Hablemos
 <div class="footer-group">
 <h4>Servicios</h4>
 <a href="windsor-one.html">Windsor One</a>
-<a href="BeQueer.html">BeQueer · piloto</a>
+<a href="BeQueer.html">BeQueer</a>
 </div>
 <div class="footer-group">
 <h4>Contacto</h4>
