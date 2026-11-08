@@ -154,6 +154,12 @@ section { scroll-margin-top:82px; }
 /* 5. COMPONENTES ESPECÍFICOS */
 /* Hero */
 .hero { position:relative; min-height:max(720px, 100svh); background:var(--black); color:var(--white); overflow:hidden; display:flex; flex-direction:column; }
+.hero-bg-plane {
+    background-image: linear-gradient(rgba(10,10,12,0.85), rgba(10,10,12,0.95)), url('assets/avion.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
 .hero-noise { position:absolute; inset:0; opacity:0.08; pointer-events:none; background-image:radial-gradient(rgba(255,255,255,0.8) 0.6px, transparent 0.6px); background-size:5px 5px; }
 .hero-topline { position:relative; z-index:2; display:flex; justify-content:space-between; gap:30px; padding:105px 6vw 0; font-size:8px; font-weight:700; letter-spacing:0.16em; opacity:0.55; }
 .hero-content { position:relative; z-index:2; width:min(100%, var(--max-width)); margin:auto; padding:60px 6vw 70px; }
@@ -422,8 +428,26 @@ section { scroll-margin-top:82px; }
 .icon-blue { filter: invert(29%) sepia(94%) saturate(2845%) hue-rotate(202deg) brightness(98%) contrast(101%); }
 .icon-green { filter: invert(72%) sepia(52%) saturate(476%) hue-rotate(83deg) brightness(95%) contrast(92%); }
 
-.corchete-icon { display: inline-block; height: 0.8em; width: auto; vertical-align: baseline; margin: 0 8px; opacity: 0.7; filter: brightness(0); }
-.section-dark .corchete-icon, .seed-side .corchete-icon, .cide-link .corchete-icon, .hero .corchete-icon { filter: brightness(0) invert(1); }
+/* --- Corchetes decorativos (Más grandes y solo de apertura) --- */
+.corchete-icon {
+    display: inline-block;
+    height: 1.4em; /* Mucho más grandes */
+    width: auto;
+    vertical-align: middle;
+    margin-right: 12px; /* Margen solo a la derecha */
+    margin-left: 0;
+    opacity: 0.8;
+    filter: brightness(0); /* Negros por defecto */
+}
+
+/* Si está en un fondo oscuro, se vuelven blancos */
+.section-dark .corchete-icon,
+.seed-side .corchete-icon,
+.cide-link .corchete-icon,
+.hero .corchete-icon,
+.contact .corchete-icon {
+    filter: brightness(0) invert(1);
+}
 
 a:hover .icon-auto, button:hover .icon-auto, .header-button:hover img, .hook-button:hover img, .contact-button:hover img, .method-row:hover .arrow-icon img { transform: translateX(4px); }
 
@@ -450,11 +474,11 @@ a:hover .icon-auto, button:hover .icon-auto, .header-button:hover img, .hook-but
 .hook-button:hover {
     background: var(--green);
     color: var(--black);
-    padding-right: 68px; /* Crecimiento masivo (antes 28px, ahora +40px) */
-    transform: translateX(20px); /* Compensa la mitad del crecimiento para anclar el texto */
+    padding-right: 68px; /* Crecimiento masivo */
+    transform: translateX(20px); /* Ancla el texto */
 }
 .hook-button:hover img {
-    transform: translateX(24px); /* La flecha viaja mucho más lejos */
+    transform: translateX(24px); /* La flecha viaja lejos */
 }
 
 /* 2. Botón "Ir al formulario" (.contact-button) */
@@ -466,8 +490,8 @@ a:hover .icon-auto, button:hover .icon-auto, .header-button:hover img, .hook-but
 }
 .contact-button:hover {
     background: var(--white);
-    padding-right: 62px; /* Crecimiento masivo (antes 22px, ahora +40px) */
-    transform: translateX(20px); /* Ancla el texto a la izquierda */
+    padding-right: 62px; 
+    transform: translateX(20px); 
 }
 .contact-button:hover img {
     transform: translateX(24px);
@@ -484,8 +508,8 @@ a:hover .icon-auto, button:hover .icon-auto, .header-button:hover img, .hook-but
     background: var(--green);
     color: var(--black);
     border-color: var(--green);
-    padding-right: 44px; /* Crecimiento masivo (antes 20px, ahora +24px) */
-    transform: translateY(-2px) translateX(12px); /* Ancla el texto y mantiene el pequeño salto */
+    padding-right: 44px; 
+    transform: translateY(-2px) translateX(12px); 
 }
 .header-button:hover img {
     transform: translateX(16px);
@@ -496,5 +520,178 @@ a:hover .icon-auto, button:hover .icon-auto, .header-button:hover img, .hook-but
     transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .underlined-link:hover img, .dark-link:hover img {
-    transform: translateX(8px); /* Movimiento más pronunciado en los textos subrayados */
+    transform: translateX(8px); 
+}
+
+/* =========================================================
+   RECUPERACIÓN: PÁGINA DE METODOLOGÍA
+========================================================= */
+.metodologia-hero {
+    background: var(--black);
+    color: var(--white);
+    padding: 140px 6vw 80px;
+    position: relative;
+    overflow: hidden;
+    min-height: auto;
+}
+.metodologia-hero .hero-noise {
+    position: absolute;
+    inset: 0;
+    opacity: 0.06;
+    pointer-events: none;
+    background-image: radial-gradient(rgba(255,255,255,0.8) 0.6px, transparent 0.6px);
+    background-size: 5px 5px;
+}
+.metodologia-hero .break-title {
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    line-height: 0.85;
+    letter-spacing: -0.07em;
+    font-weight: 900;
+    font-family: var(--sans);
+    color: var(--blue);
+    position: relative;
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: breakReveal 2s ease forwards;
+    animation-delay: 0.3s;
+}
+.metodologia-hero .break-title .char {
+    display: inline-block;
+    animation: breakChar 1.2s ease forwards;
+    opacity: 0;
+}
+@keyframes breakChar {
+    0% { transform: translateY(60px) rotate(20deg) scale(0.8); opacity: 0; color: #ff0000; }
+    30% { transform: translateY(-20px) rotate(-10deg) scale(1.1); opacity: 1; color: #ff8800; }
+    60% { transform: translateY(10px) rotate(5deg) scale(0.95); color: #00cc00; }
+    100% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; color: var(--blue); }
+}
+@keyframes breakReveal { 0% { opacity: 0; } 100% { opacity: 1; } }
+
+.metodologia-hero .sub-method {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: rgba(255,255,255,0.8);
+    margin-top: 10px;
+    opacity: 0;
+    animation: fadeUp 1.2s ease forwards;
+    animation-delay: 1.2s;
+}
+.metodologia-hero .sub-method em {
+    display: block;
+    color: var(--green);
+    font-family: var(--sans);
+    font-weight: 900;
+    text-decoration: underline;
+    text-decoration-thickness: 0.07em;
+    text-underline-offset: 0.1em;
+    margin-top: 4px;
+}
+@keyframes fadeUp { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
+
+.metodologia-hero p {
+    max-width: 580px;
+    margin-top: 30px;
+    color: rgba(255,255,255,0.6);
+    font-size: 16px;
+    line-height: 1.7;
+    opacity: 0;
+    animation: fadeUp 1.2s ease forwards;
+    animation-delay: 1.8s;
+}
+
+.metodologia-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 60px;
+}
+.metodologia-item {
+    background: var(--white);
+    padding: 28px 24px 16px 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-radius: var(--radius-sm);
+}
+.metodologia-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+.metodologia-item .card-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    flex: 1;
+}
+.metodologia-item .icon-wrap {
+    flex: 0 0 56px;
+    width: 56px;
+    height: 56px;
+    background: rgba(0,0,0,0.04);
+    display: grid;
+    place-items: center;
+    color: var(--blue);
+    border-radius: 50%;
+}
+.metodologia-item .icon-wrap svg {
+    width: 28px;
+    height: 28px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.metodologia-item .card-body { flex:1; }
+.metodologia-item .card-body .num {
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--blue);
+    opacity: 0.6;
+    letter-spacing: 0.15em;
+    display: block;
+    margin-bottom: 4px;
+}
+.metodologia-item .card-body h3 {
+    font-size: 1.6rem;
+    letter-spacing: -0.03em;
+    margin-bottom: 6px;
+}
+.metodologia-item .card-body p {
+    color: #555;
+    line-height: 1.7;
+    font-size: 15px;
+    margin: 0 0 16px 0;
+}
+.metodologia-item .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: gap 0.25s ease, color 0.25s ease;
+    color: var(--blue);
+}
+.metodologia-item .bottom-bar {
+    height: 4px;
+    margin-top: 16px;
+    transition: width 0.4s cubic-bezier(.25,.46,.45,.94);
+    background-color: var(--blue);
+    border-radius: var(--radius-pill);
+}
+.metodologia-item:hover .bottom-bar { width: 100% !important; }
+
+@media (max-width: 800px) {
+    .metodologia-hero { padding: 120px 6vw 60px; }
+    .metodologia-grid { grid-template-columns: 1fr; gap: 20px; }
+}
+@media (max-width: 520px) {
+    .metodologia-hero { padding: 6.75rem 6vw 3.5rem; }
+    .metodologia-hero .break-title { font-size: clamp(2.8rem, 10vw, 5rem); }
 }
