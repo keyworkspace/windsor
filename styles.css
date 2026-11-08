@@ -457,3 +457,32 @@ button:hover .icon-auto,
 .method-row:hover .arrow-icon img {
     transform: translateX(4px);
 }
+/* =========================================================
+   FIX DEFINITIVO PARA ÍCONOS SVG Y FLECHAS
+========================================================= */
+
+/* Controla el tamaño de TODOS los SVGs en línea (evita las flechas gigantes) */
+.svg-icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    flex: 0 0 auto;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vertical-align: middle;
+}
+
+/* Tamaños específicos para los íconos del sitio */
+.svg-arrow { width: 1.12em; height: 1.12em; }
+.svg-spark { width: 0.82em; height: 0.82em; }
+.card-icon .svg-icon { width: 32px; height: 32px; }
+.seed-circle .svg-icon { width: 32px; height: 32px; }
+
+/* Asegura que las imágenes de flechas no se deformen */
+.arrow-icon img, .card-arrow img {
+    display: inline-block;
+    vertical-align: middle;
+}
