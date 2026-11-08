@@ -386,7 +386,7 @@ section { scroll-margin-top:82px; }
 .metodologia-item:hover .bottom-bar { width: 100% !important; }
 
 /* =========================================================
-   9. RESPONSIVE GENERAL (MEJORADO PARA TODAS LAS PANTALLAS)
+   9. RESPONSIVE GENERAL (ARREGLADO PARA MÓVILES)
 ========================================================= */
 
 /* Tablets grandes / Laptops pequeñas */
@@ -407,14 +407,27 @@ section { scroll-margin-top:82px; }
 
 /* Móviles */
 @media (max-width: 800px) {
-    .section { padding:80px 6vw; }
+    /* MÁS ESPACIO EN LOS BORDES (8vw) */
+    .section { padding:80px 8vw; }
+    .hero-topline { padding:105px 8vw 0; }
+    .hero-content { padding:55px 8vw 65px; }
+    .seed-section { padding:120px 8vw 100px; }
+    .contact { padding:40px 8vw; }
+    .cide-link { padding:60px 8vw; }
+    
     .desktop-nav .nav-list, .header-button { display:none; }
     .menu-button { display:flex; }
     
-    .hero { min-height:100svh; height:auto; background-attachment: scroll; }
-    .hero-topline { padding-top:105px; align-items:flex-start; flex-direction:column; gap:8px; }
-    .hero-content { margin:0; padding-top:55px; padding-bottom:65px; }
-    .hero h1 { font-size:clamp(3rem, 12.75vw, 5.25rem); }
+    /* FIX FONDOS EN MÓVIL */
+    .hero, .hero-bg-lab, .hero-bg-research, .seed-section {
+        background-attachment: scroll !important;
+        background-position: center;
+    }
+    
+    .hero { min-height:100svh; height:auto; }
+    .hero-topline { align-items:flex-start; flex-direction:column; gap:8px; }
+    .hero-content { margin:0; }
+    .hero h1 { font-size:clamp(3rem, 12vw, 5.25rem); line-height: 0.85; word-break: break-word; }
     .hero-bottom { align-items:flex-start; flex-direction:column; margin-top:45px; gap: 30px; }
     .hero-bottom p { max-width:100%; }
     .circle-button { width:90px; height:90px; }
@@ -422,9 +435,9 @@ section { scroll-margin-top:82px; }
     .intro-layout, .services-heading, .method-heading, .careers-layout, .faq-layout, .hook-grid { grid-template-columns:1fr; gap:45px; }
     .intro-layout, .services-heading, .method-heading, .faq-layout { padding-top:60px; }
     
-    .seed-section { min-height:auto; padding:120px 7vw 100px; background-attachment: scroll; }
+    .seed-section { min-height:auto; }
     .seed-side { position: relative; top: auto; left: auto; right: auto; margin-bottom: 40px; }
-    .seed-main h2 { font-size:clamp(2.625rem, 11.25vw, 5.25rem); }
+    .seed-main h2 { font-size:clamp(2.625rem, 11vw, 5.25rem); line-height: 0.9; }
     .seed-main p { margin-top:35px; }
     .seed-number { bottom:30px; }
     
@@ -437,10 +450,9 @@ section { scroll-margin-top:82px; }
     .principles-grid span { margin-bottom:40px; }
     
     .faq-layout { gap:50px; }
-    .contact { min-height:650px; padding:40px 6vw; }
     .contact-main { padding:70px 0; }
     
-    .footer { flex-direction:column; align-items:stretch; gap:30px; }
+    .footer { flex-direction:column; align-items:stretch; gap:30px; padding: 50px 8vw 40px; }
     .footer-groups { gap:25px; justify-content:space-between; }
     .footer-tagline { margin-left:0; align-self:flex-start; }
     
@@ -450,34 +462,35 @@ section { scroll-margin-top:82px; }
 
 /* Móviles pequeños */
 @media (max-width: 520px) {
-    .header { height:70px; padding:0 5vw; }
+    .header { height:70px; padding:0 6vw; }
     .logo { font-size:11px; }
     .logo-icon { width:30px; height:30px; }
     
-    .hero-topline { padding:95px 6vw 0; font-size:7px; }
-    .hero-content { padding:45px 6vw 55px; }
+    .hero-topline { padding:95px 8vw 0; font-size:7px; }
+    .hero-content { padding:45px 8vw 55px; }
     .hero-small { font-size:7px; flex-wrap:wrap; }
-    .hero h1 { font-size:clamp(2.7rem, 13.5vw, 4.5rem); }
+    .hero h1 { font-size:clamp(2.5rem, 13vw, 4rem); line-height: 0.9; letter-spacing: -0.05em; }
     .hero-bottom { margin-top:38px; }
     .hero-bottom p { font-size:13px; }
     .hero-marquee .marquee-track { gap:25px; padding:15px 0; }
     
-    .section { padding:65px 6vw; }
+    .section { padding:65px 8vw; }
     .section-meta { font-size:7px; flex-direction: column; align-items: flex-start; gap: 10px; }
     .corchete-icon { height: 1.1em; margin-right: 6px; }
     
-    .intro-layout h2, .services-heading h2 { font-size:clamp(2.25rem, 11.25vw, 3.75rem); }
-    .seed-section { padding:110px 7vw 80px; }
+    .intro-layout h2, .services-heading h2 { font-size:clamp(2.25rem, 11vw, 3.75rem); line-height: 0.95; }
+    .seed-section { padding:110px 8vw 80px; }
     .seed-circle { width:80px; height:80px; margin-bottom:35px; }
     .seed-circle span { font-size:32px; }
-    .seed-main h2 { font-size:clamp(2.25rem, 11.25vw, 3.75rem); }
+    .seed-main h2 { font-size:clamp(2.25rem, 11vw, 3.75rem); line-height: 0.95; }
     .seed-main p { font-size:14px; }
     
+    /* FIX TARJETAS SERVICIOS */
     .service-card { min-height:auto; padding:22px; }
     .card-icon { width:70px; height:70px; font-size:32px; margin-bottom: 20px; }
     .card-content h3 { font-size:clamp(1.725rem, 9vw, 3rem); }
     .card-content p { margin-top:20px; font-size:13px; }
-    .card-bottom { align-items:flex-end; flex-direction: column; gap: 15px; }
+    .card-bottom { align-items:flex-start; flex-direction: column; gap: 15px; }
     .card-tags span { font-size:7px; }
     
     .method-row { grid-template-columns:30px 1fr 20px; }
@@ -490,18 +503,24 @@ section { scroll-margin-top:82px; }
     .metodologia-item .icon-wrap svg { width: 24px; height: 24px; }
     
     .hook-button { width:100%; justify-content:center; }
-    .hook-button:hover { transform: translateX(0) scale(1.02); padding-right: 28px; } /* Evitar romper layout en móvil */
+    .hook-button:hover { transform: translateX(0) scale(1.02); padding-right: 28px; }
     
-    .contact { min-height:620px; }
-    .contact-main h2 { font-size:clamp(2.85rem, 13.5vw, 4.5rem); }
+    /* FIX SECCIÓN CONTACTO EN MÓVIL (Texto cortado) */
+    .contact { min-height:620px; padding:40px 8vw; }
+    .contact-main h2 { 
+        font-size: clamp(2rem, 10vw, 3.5rem) !important; 
+        letter-spacing: -0.05em; 
+        line-height: 1; 
+        word-break: break-word;
+    }
     .contact-main p { margin-top:30px; font-size:13px; }
     .contact-top, .contact-bottom { font-size:7px; }
     
-    .cide-link h2 span { font-size: 1.5rem; }
+    .cide-link h2 { font-size: 1.8rem; line-height: 1.1; }
+    .cide-link h2 span { font-size: 1.4rem; }
     .cide-link p { font-size: 13px; }
     
     .footer-groups { flex-direction:column; gap:20px; }
-    
     .metodologia-grid { gap: 15px; }
 }
 
