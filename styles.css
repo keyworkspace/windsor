@@ -436,7 +436,7 @@ a:hover .icon-auto, button:hover .icon-auto, .header-button:hover img, .hook-but
 .arrow-icon img, .card-arrow img { display: inline-block; vertical-align: middle; }
 
 /* =========================================================
-   EFECTO HOVER: EXPANSIÓN ANCLADA A LA IZQUIERDA
+   EFECTO HOVER: EXPANSIÓN ANCLADA A LA IZQUIERDA (X4)
    El botón solo se estira hacia la derecha, el texto no se mueve.
 ========================================================= */
 
@@ -450,11 +450,11 @@ a:hover .icon-auto, button:hover .icon-auto, .header-button:hover img, .hook-but
 .hook-button:hover {
     background: var(--green);
     color: var(--black);
-    padding-right: 38px; /* Crece 10px a la derecha */
-    transform: translateX(5px); /* Compensa el centrado para que el lado izquierdo no se mueva */
+    padding-right: 68px; /* Crecimiento masivo (antes 28px, ahora +40px) */
+    transform: translateX(20px); /* Compensa la mitad del crecimiento para anclar el texto */
 }
 .hook-button:hover img {
-    transform: translateX(6px); /* La flecha se desliza a la derecha */
+    transform: translateX(24px); /* La flecha viaja mucho más lejos */
 }
 
 /* 2. Botón "Ir al formulario" (.contact-button) */
@@ -466,11 +466,11 @@ a:hover .icon-auto, button:hover .icon-auto, .header-button:hover img, .hook-but
 }
 .contact-button:hover {
     background: var(--white);
-    padding-right: 32px; /* Crece 10px a la derecha */
-    transform: translateX(5px); /* Compensa el centrado */
+    padding-right: 62px; /* Crecimiento masivo (antes 22px, ahora +40px) */
+    transform: translateX(20px); /* Ancla el texto a la izquierda */
 }
 .contact-button:hover img {
-    transform: translateX(6px);
+    transform: translateX(24px);
 }
 
 /* 3. Botón "Hablemos" del Header (.header-button) */
@@ -484,9 +484,17 @@ a:hover .icon-auto, button:hover .icon-auto, .header-button:hover img, .hook-but
     background: var(--green);
     color: var(--black);
     border-color: var(--green);
-    padding-right: 26px; /* Crece 6px a la derecha */
-    transform: translateY(-2px) translateX(3px); /* Mantiene el salto y compensa el centrado */
+    padding-right: 44px; /* Crecimiento masivo (antes 20px, ahora +24px) */
+    transform: translateY(-2px) translateX(12px); /* Ancla el texto y mantiene el pequeño salto */
 }
 .header-button:hover img {
-    transform: translateX(4px);
+    transform: translateX(16px);
+}
+
+/* 4. Enlaces con flechas (Orientación, Método, etc.) */
+.underlined-link img, .dark-link img, .method-row .arrow-icon img {
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.underlined-link:hover img, .dark-link:hover img {
+    transform: translateX(8px); /* Movimiento más pronunciado en los textos subrayados */
 }
