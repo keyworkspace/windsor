@@ -2637,3 +2637,56 @@ section { scroll-margin-top:82px; }
         margin-top: var(--space-content) !important;
     }
 }
+/* =========================================================
+   ACTUALIZACIÓN VISUAL: IMÁGENES Y FONDOS
+========================================================= */
+
+/* Tarjetas de servicios con imágenes */
+.card-image {
+    width: 100%;
+    height: 160px;
+    margin: 15px 0 20px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    position: relative;
+    background: rgba(0,0,0,0.1); /* Fondo por si la imagen tarda en cargar */
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.1); /* Fuerza el B&N si alguna foto no lo está */
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.6s ease;
+}
+
+/* Efecto hover: zoom y color original */
+.service-card:hover .card-image img {
+    transform: scale(1.1);
+    filter: grayscale(0%) contrast(1);
+}
+
+/* Ajuste del fondo de "La Semilla" */
+.seed-section {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Efecto parallax al hacer scroll */
+}
+
+/* Ajustes de íconos en línea */
+.header-button img, .card-arrow img, .arrow-icon img {
+    display: inline-block;
+    vertical-align: middle;
+    transition: transform 0.3s ease;
+}
+
+/* Si el fondo de la flecha del header es blanco, la invertimos para que se vea */
+.header-button:hover img {
+    transform: translateX(4px);
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+    .card-image { height: 130px; }
+    .seed-section { background-attachment: scroll; }
+}
