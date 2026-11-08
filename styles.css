@@ -407,6 +407,12 @@ section { scroll-margin-top:82px; }
 
 /* Móviles */
 @media (max-width: 800px) {
+    /* HEADER FIX: Aseguramos que el header sea oscuro al hacer scroll */
+    .header { color: var(--white) !important; }
+    .header::before { background: linear-gradient(180deg, rgba(10,10,12,0.95), rgba(10,10,12,0.8) 70%, transparent) !important; }
+    .header.scrolled::before { background: rgba(10,10,12,0.95) !important; }
+    .header.scrolled { backdrop-filter: blur(10px); }
+
     /* MÁS ESPACIO EN LOS BORDES (8vw) */
     .section { padding:80px 8vw; }
     .hero-topline { padding:105px 8vw 0; }
@@ -435,18 +441,25 @@ section { scroll-margin-top:82px; }
     .intro-layout, .services-heading, .method-heading, .careers-layout, .faq-layout, .hook-grid { grid-template-columns:1fr; gap:45px; }
     .intro-layout, .services-heading, .method-heading, .faq-layout { padding-top:60px; }
     
-    /* ARREGLO DE LA SEMILLA EN MÓVIL */
+    /* ARREGLO MAESTRO DE LA SEMILLA EN MÓVIL */
     .seed-section { min-height: auto; }
     .seed-side { 
-        position: relative; top: auto; left: auto; right: auto; 
-        margin-bottom: 40px; display: flex; justify-content: space-between; 
-        align-items: center; white-space: nowrap;
+        position: absolute; 
+        top: 35px; 
+        left: 8vw; 
+        right: 8vw; 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+        font-size: 7px;
     }
-    .seed-side .corchete-icon { height: 1em; width: auto; margin-right: 8px; vertical-align: text-bottom; }
-    .seed-circle { width: 70px; height: 70px; margin-bottom: 30px; }
-    .seed-main h2 { font-size: clamp(2.5rem, 11vw, 4.5rem); line-height: 1.05; letter-spacing: -0.04em; }
-    .seed-main h2 br { display: none; }
-    .seed-main p { margin-top: 25px; font-size: 15px; line-height: 1.6; }
+    .seed-side .corchete-icon { height: 1em; width: auto; margin-right: 6px; vertical-align: text-bottom; }
+    .seed-main { margin-top: 30px; } /* Damos espacio para que el título no choque con la cabecera absoluta */
+    .seed-circle { width: 60px; height: 60px; margin-bottom: 25px; }
+    .seed-circle span { font-size: 24px; }
+    .seed-main h2 { font-size: clamp(2.2rem, 9.5vw, 3.5rem); line-height: 1.05; letter-spacing: -0.04em; }
+    .seed-main h2 br { display: none; } /* Quitamos el salto de línea forzado para que fluya natural */
+    .seed-main p { margin-top: 20px; font-size: 14px; line-height: 1.6; }
     .seed-number { bottom:30px; }
     
     .service-cards { grid-template-columns:1fr; }
@@ -490,10 +503,10 @@ section { scroll-margin-top:82px; }
     
     /* ARREGLO FINO SEMILLA EN PANTALLAS MUY PEQUEÑAS */
     .seed-section { padding:90px 8vw 70px; }
-    .seed-circle { width: 60px; height: 60px; margin-bottom: 25px; }
-    .seed-circle span { font-size: 24px; }
-    .seed-main h2 { font-size: clamp(2.2rem, 12vw, 3.5rem); line-height: 1.1; }
-    .seed-main p { font-size:14px; margin-top: 20px; }
+    .seed-circle { width: 50px; height: 50px; margin-bottom: 20px; }
+    .seed-circle span { font-size: 20px; }
+    .seed-main h2 { font-size: clamp(2rem, 10vw, 3rem); line-height: 1.1; }
+    .seed-main p { font-size:13px; margin-top: 15px; }
     
     /* FIX TARJETAS SERVICIOS */
     .service-card { min-height:auto; padding:22px; }
@@ -547,4 +560,4 @@ section { scroll-margin-top:82px; }
 @media (prefers-reduced-motion:reduce) {
     html { scroll-behavior:auto; }
     *, *::before, *::after { animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
-}
+                    }
