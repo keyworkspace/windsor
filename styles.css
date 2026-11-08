@@ -486,3 +486,57 @@ button:hover .icon-auto,
     display: inline-block;
     vertical-align: middle;
 }
+/* =========================================================
+   EFECTO HOVER: EXPANSIÓN DE BOTÓN Y DESPLAZAMIENTO DE FLECHA
+========================================================= */
+
+/* 1. Botón "Conocer Windsor One" (.hook-button) */
+.hook-button {
+    transition: background 0.3s ease, padding 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.hook-button img {
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.hook-button:hover {
+    background: var(--green);
+    color: var(--black);
+    padding-right: 38px; /* El botón se alarga (antes era 28px) */
+    transform: none; /* Quitamos el movimiento del botón entero */
+}
+.hook-button:hover img {
+    transform: translateX(6px); /* La flecha se desliza a la derecha */
+}
+
+/* 2. Botón "Ir al formulario" (.contact-button) */
+.contact-button {
+    transition: background 0.3s ease, padding 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.contact-button img {
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.contact-button:hover {
+    background: var(--white);
+    padding-right: 32px; /* Se alarga (antes era 22px) */
+    transform: none;
+}
+.contact-button:hover img {
+    transform: translateX(6px);
+}
+
+/* 3. Botón "Hablemos" del Header (.header-button) */
+.header-button {
+    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease, padding 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.header-button img {
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.header-button:hover {
+    background: var(--green);
+    color: var(--black);
+    border-color: var(--green);
+    transform: translateY(-2px); /* Mantenemos el pequeño salto hacia arriba */
+    padding-right: 26px; /* Se alarga un poco (antes era 20px) */
+}
+.header-button:hover img {
+    transform: translateX(4px);
+}
