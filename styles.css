@@ -170,6 +170,14 @@ section { scroll-margin-top:82px; }
     background-image: linear-gradient(rgba(10,10,12,0.65), rgba(10,10,12,0.95)), url('assets/dialogo.png');
     background-size: cover; background-position: center; background-attachment: fixed;
 }
+.hero-bg-bequeer {
+    background-image: linear-gradient(rgba(10,10,12,0.65), rgba(10,10,12,0.95)), url('assets/amigos.png');
+    background-size: cover; background-position: center; background-attachment: fixed;
+}
+.hero-bg-404 {
+    background-image: linear-gradient(rgba(10,10,12,0.65), rgba(10,10,12,0.95)), url('assets/caminando.png');
+    background-size: cover; background-position: center; background-attachment: fixed;
+}
 .hero-noise { position:absolute; inset:0; opacity:0.08; pointer-events:none; background-image:radial-gradient(rgba(255,255,255,0.8) 0.6px, transparent 0.6px); background-size:5px 5px; }
 .hero-topline { position:relative; z-index:2; display:flex; justify-content:space-between; gap:30px; padding:105px 6vw 0; font-size:8px; font-weight:700; letter-spacing:0.16em; opacity:0.55; }
 .hero-content { position:relative; z-index:2; width:min(100%, var(--max-width)); margin:auto; padding:60px 6vw 70px; }
@@ -188,11 +196,44 @@ section { scroll-margin-top:82px; }
 }
 .circle-button strong { font-size:17px; }
 .circle-button:hover { background:var(--green); color:var(--black); transform:rotate(10deg); }
-.hero-marquee { position:relative; z-index:2; overflow:hidden; border-top:1px solid var(--white-line); }
-.marquee-track { width:max-content; display:flex; align-items:center; gap:35px; padding:19px 0; animation:marquee 22s linear infinite; }
-.marquee-track span { font-family:var(--sans); font-size:clamp(0.825rem, 1.5vw, 1.5rem); font-weight:800; letter-spacing:-0.04em; }
-.marquee-track b { color:var(--green); }
-@keyframes marquee { to { transform:translateX(-50%); } }
+
+/* =========================================================
+   MARQUEE (CINTA INFINITA CON DESVANECIDO)
+========================================================= */
+.hero-marquee, .statement-marquee {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    border-top: 1px solid var(--white-line);
+    /* Máscara para que el texto se desvanezca en los bordes */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.marquee-track, .statement-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+    will-change: transform;
+}
+
+.marquee-content, .statement-content {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    padding-right: 35px; /* Separación entre el bloque 1 y el bloque 2 */
+}
+
+.marquee-content { padding-top: 19px; padding-bottom: 19px; }
+.statement-content { padding-top: 25px; padding-bottom: 25px; }
+
+.marquee-content span { font-family: var(--sans); font-size: clamp(0.825rem, 1.5vw, 1.5rem); font-weight: 800; letter-spacing: -0.04em; }
+.statement-content span { font-family: var(--sans); font-size: clamp(1.275rem, 2.25vw, 2.25rem); font-weight: 800; letter-spacing: -0.04em; }
+.marquee-content b, .statement-content b { color: var(--green); }
+
+@keyframes marquee { 
+    to { transform: translateX(-50%); } 
+}
 
 /* Intro */
 .intro { background:var(--cream); }
@@ -253,12 +294,6 @@ section { scroll-margin-top:82px; }
 .card-tags span { padding:7px 12px; border:1px solid currentColor; border-radius:var(--radius-pill); font-size:8px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; opacity:0.65; }
 .card-arrow { display:inline-flex; align-items:center; transition: transform 0.3s ease; }
 .service-card:hover .card-arrow { transform:translate(5px, -5px); }
-
-/* Marquee Statement */
-.statement-marquee { overflow:hidden; background:var(--black); color:var(--white); }
-.statement-track { width:max-content; display:flex; align-items:center; gap:35px; padding:25px 0; animation:marquee 22s linear infinite; }
-.statement-track span { font-family:var(--sans); font-size:clamp(1.275rem, 2.25vw, 2.25rem); font-weight:800; letter-spacing:-0.04em; }
-.statement-track b { color:var(--green); }
 
 /* Método */
 .method { background:var(--white); }
@@ -387,20 +422,9 @@ section { scroll-margin-top:82px; }
 .hook-button:hover { background: var(--green); color: var(--black); padding-right: 68px; transform: translateX(20px); }
 .hook-button:hover img { transform: translateX(24px); }
 
-/* BOTÓN SECUNDARIO (OUTLINE) PARA LA BOLSA DE TALENTO */
-.hook-button-outline {
-    background: transparent;
-    border: 1px solid var(--white-line);
-    color: var(--white);
-}
-.hook-button-outline:hover {
-    background: var(--white);
-    color: var(--black);
-    border-color: var(--white);
-}
-.hook-button-outline:hover img {
-    filter: brightness(0); /* Vuelve la flecha negra al pasar el mouse */
-}
+.hook-button-outline { background: transparent; border: 1px solid var(--white-line); color: var(--white); }
+.hook-button-outline:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+.hook-button-outline:hover img { filter: brightness(0); }
 
 .contact-button { transition: background 0.3s ease, padding 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
 .contact-button img { transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
@@ -430,28 +454,51 @@ section { scroll-margin-top:82px; }
 .metodologia-item .bottom-bar { height: 4px; margin-top: 16px; transition: width 0.4s cubic-bezier(.25,.46,.45,.94); background-color: var(--blue); border-radius: var(--radius-pill); }
 .metodologia-item:hover .bottom-bar { width: 100% !important; }
 
-/* =========================================================
-   9. RESPONSIVE GENERAL (ARREGLADO PARA MÓVILES)
-========================================================= */
+/* 9. BEQUEER */
+.rainbow-text {
+    background: linear-gradient(90deg, #ff0000, #ff8800, #ffff00, #00cc00, #0066ff, #8b00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
+.rainbow-bar {
+    width: 100%; height: 6px; margin: 0;
+    background: linear-gradient(90deg, #ff0000, #ff8800, #ffff00, #00cc00, #0066ff, #8b00ff);
+}
+.bequeer-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 40px; max-width: var(--max-width); margin-left: auto; margin-right: auto; }
+.bequeer-card { background: var(--white); padding: 28px 24px 16px 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; position: relative; border-radius: var(--radius-sm); border: 1px solid var(--line); }
+.bequeer-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+.bequeer-card .card-inner { display: flex; align-items: flex-start; gap: 20px; flex: 1; }
+.bequeer-card .icon-wrap { flex: 0 0 56px; width: 56px; height: 56px; background: rgba(0,0,0,0.04); display: grid; place-items: center; border-radius: 50%; }
+.bequeer-card .icon-wrap svg { width: 28px !important; height: 28px !important; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.bequeer-card .card-body { flex: 1; }
+.bequeer-card .card-body h3 { font-size: 1.2rem; letter-spacing: -0.03em; margin-bottom: 6px; font-weight: 800; }
+.bequeer-card .card-body p { color: #555; font-size: 14px; line-height: 1.6; margin: 0 0 16px 0; }
+.bequeer-card .card-link { display: inline-flex; align-items: center; gap: 12px; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); }
+.bequeer-card .bottom-bar { height: 4px; margin-top: 16px; transition: width 0.4s ease; border-radius: var(--radius-pill); background: linear-gradient(90deg, #ff0000, #ff8800, #ffff00, #00cc00, #0066ff, #8b00ff); }
+.bequeer-card:hover .bottom-bar { width: 100% !important; }
+.cta-rainbow { background: var(--black); color: var(--white); padding: 40px; display: flex; justify-content: space-between; align-items: center; gap: 30px; flex-wrap: wrap; border-left: 8px solid; border-image: linear-gradient(180deg, #ff0000, #ff8800, #ffff00, #00cc00, #0066ff, #8b00ff) 1; border-image-slice: 1; max-width: var(--max-width); margin: 0 auto; }
+.cta-rainbow h3 { font-size:1.8rem; line-height:1.1; }
+.cta-rainbow p { color:rgba(255,255,255,0.8); max-width:500px; font-size:14px; line-height:1.6; }
 
-/* Tablets grandes / Laptops pequeñas */
+/* =========================================================
+   10. RESPONSIVE GENERAL
+========================================================= */
 @media (max-width: 1100px) {
     .desktop-nav .nav-list { gap:20px; }
     .service-card { min-height:540px; }
     .principles-grid { grid-template-columns:repeat(2, minmax(0,1fr)); }
 }
-
-/* Tablets verticales / Móviles grandes */
 @media (max-width: 900px) {
     .grid-2 { grid-template-columns:1fr; gap:30px; }
     .testimonios { grid-template-columns:1fr; }
     .programas-grid { grid-template-columns:1fr; }
     .areas-grid { grid-template-columns:repeat(3,1fr); }
     .benefits-grid { grid-template-columns:repeat(2,1fr); }
-    .one-cards-grid { grid-template-columns:1fr; gap:15px; }
+    .one-cards-grid, .bequeer-grid { grid-template-columns:1fr; gap:15px; }
 }
 
-/* Móviles */
 @media (max-width: 800px) {
     .header { color: var(--white) !important; }
     .header::before { background: linear-gradient(180deg, rgba(10,10,12,0.95), rgba(10,10,12,0.8) 70%, transparent) !important; }
@@ -468,7 +515,8 @@ section { scroll-margin-top:82px; }
     .desktop-nav .nav-list, .header-button { display:none; }
     .menu-button { display:flex; }
     
-    .hero, .hero-bg-lab, .hero-bg-research, .hero-bg-happy, .hero-bg-talent, .seed-section {
+    /* FIX FONDOS EN MÓVIL */
+    .hero, .hero-bg-lab, .hero-bg-research, .hero-bg-happy, .hero-bg-talent, .hero-bg-bequeer, .hero-bg-404, .seed-section {
         background-attachment: scroll !important;
         background-position: center;
     }
@@ -513,14 +561,13 @@ section { scroll-margin-top:82px; }
     .metodologia-grid { grid-template-columns: 1fr; gap: 20px; margin-top: 40px; }
     .cide-link h2 { flex-direction: column; }
 
-    .one-card { padding: 20px 18px 14px 18px; }
-    .one-card .card-inner { flex-direction: row; gap: 15px; }
-    .one-card .icon-wrap { flex: 0 0 48px; width: 48px; height: 48px; }
-    .one-card .icon-wrap svg { width: 24px !important; height: 24px !important; }
+    .one-card, .bequeer-card { padding: 20px 18px 14px 18px; }
+    .one-card .card-inner, .bequeer-card .card-inner { flex-direction: row; gap: 15px; }
+    .one-card .icon-wrap, .bequeer-card .icon-wrap { flex: 0 0 48px; width: 48px; height: 48px; }
+    .one-card .icon-wrap svg, .bequeer-card .icon-wrap svg { width: 24px !important; height: 24px !important; }
     .method-row .arrow-icon img { width: 20px !important; height: 20px !important; }
 }
 
-/* Móviles pequeños */
 @media (max-width: 520px) {
     .header { height:70px; padding:0 6vw; }
     .logo { font-size:11px; }
@@ -532,7 +579,10 @@ section { scroll-margin-top:82px; }
     .hero h1 { font-size:clamp(2.5rem, 13vw, 4rem); line-height: 0.9; letter-spacing: -0.05em; }
     .hero-bottom { margin-top:38px; }
     .hero-bottom p { font-size:13px; }
-    .hero-marquee .marquee-track { gap:25px; padding:15px 0; }
+    
+    /* Ajuste de la cinta en móvil */
+    .marquee-content, .statement-content { gap: 25px; padding-right: 25px; }
+    .marquee-content { padding-top: 15px; padding-bottom: 15px; }
     
     .section { padding:65px 8vw; }
     .section-meta { font-size:7px; flex-direction: column; align-items: flex-start; gap: 10px; }
@@ -578,7 +628,6 @@ section { scroll-margin-top:82px; }
     .metodologia-grid { gap: 15px; }
 }
 
-/* Pantallas muy bajas (Landscape en móviles) */
 @media (max-height: 700px) and (min-width: 801px) {
     .hero { min-height:680px; }
     .hero-topline { padding-top:95px; }
@@ -587,182 +636,7 @@ section { scroll-margin-top:82px; }
     .hero-bottom { margin-top:35px; }
 }
 
-/* Reducción de movimiento */
 @media (prefers-reduced-motion:reduce) {
     html { scroll-behavior:auto; }
     *, *::before, *::after { animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
-}
-/* =========================================================
-   BEQUEER — ESTILOS ESPECÍFICOS
-========================================================= */
-
-/* Fondo para el Hero de BeQueer */
-.hero-bg-bequeer {
-    background-image: linear-gradient(rgba(10,10,12,0.65), rgba(10,10,12,0.95)), url('assets/amigos.png');
-    background-size: cover; 
-    background-position: center; 
-    background-attachment: fixed;
-}
-
-/* Texto arcoíris */
-.rainbow-text {
-    background: linear-gradient(90deg, #ff0000, #ff8800, #ffff00, #00cc00, #0066ff, #8b00ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    display: inline-block;
-}
-
-/* Barra arcoíris */
-.rainbow-bar {
-    width: 100%;
-    height: 6px;
-    background: linear-gradient(90deg, #ff0000, #ff8800, #ffff00, #00cc00, #0066ff, #8b00ff);
-    margin: 0;
-}
-
-/* Tarjetas de servicios BeQueer (Reutilizan la estructura de las one-card) */
-.bequeer-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    margin-top: 40px;
-    max-width: var(--max-width);
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.bequeer-card {
-    background: var(--white);
-    padding: 28px 24px 16px 24px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--line);
-}
-
-.bequeer-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-}
-
-.bequeer-card .card-inner {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    flex: 1;
-}
-
-.bequeer-card .icon-wrap {
-    flex: 0 0 56px;
-    width: 56px;
-    height: 56px;
-    background: rgba(0,0,0,0.04);
-    display: grid;
-    place-items: center;
-    border-radius: 50%;
-}
-
-.bequeer-card .icon-wrap svg {
-    width: 28px !important;
-    height: 28px !important;
-    stroke: currentColor;
-    fill: none;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.bequeer-card .card-body { flex: 1; }
-
-.bequeer-card .card-body h3 {
-    font-size: 1.2rem;
-    letter-spacing: -0.03em;
-    margin-bottom: 6px;
-    font-weight: 800;
-}
-
-.bequeer-card .card-body p {
-    color: #555;
-    font-size: 14px;
-    line-height: 1.6;
-    margin: 0 0 16px 0;
-}
-
-.bequeer-card .card-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--blue);
-}
-
-.bequeer-card .bottom-bar {
-    height: 4px;
-    margin-top: 16px;
-    transition: width 0.4s ease;
-    border-radius: var(--radius-pill);
-    background: linear-gradient(90deg, #ff0000, #ff8800, #ffff00, #00cc00, #0066ff, #8b00ff);
-}
-
-.bequeer-card:hover .bottom-bar { width: 100% !important; }
-
-/* CTA Arcoíris */
-.cta-rainbow {
-    background: var(--black);
-    color: var(--white);
-    padding: 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    border-left: 8px solid;
-    border-image: linear-gradient(180deg, #ff0000, #ff8800, #ffff00, #00cc00, #0066ff, #8b00ff) 1;
-    border-image-slice: 1;
-    max-width: var(--max-width);
-    margin: 0 auto;
-}
-
-.cta-rainbow h3 { font-size:1.8rem; line-height:1.1; }
-.cta-rainbow p { color:rgba(255,255,255,0.8); max-width:500px; font-size:14px; line-height:1.6; }
-
-@media (max-width: 800px) {
-    .hero-bg-bequeer { background-attachment: scroll !important; }
-    .bequeer-grid { grid-template-columns: 1fr; gap: 15px; }
-    .bequeer-card .card-inner { flex-direction: row; gap: 15px; }
-    .bequeer-card .icon-wrap { flex: 0 0 48px; width: 48px; height: 48px; }
-    .bequeer-card .icon-wrap svg { width: 24px !important; height: 24px !important; }
-}
-/* =========================================================
-   FONDO PARA PÁGINA 404
-========================================================= */
-.hero-bg-404 {
-    background-image: linear-gradient(rgba(10,10,12,0.65), rgba(10,10,12,0.95)), url('assets/caminando.png');
-    background-size: cover; 
-    background-position: center; 
-    background-attachment: fixed;
-}
-
-@media (max-width: 800px) {
-    .hero-bg-404 { background-attachment: scroll !important; }
-}
-/* =========================================================
-   FIX MARQUEE: MÁSCARA DE DESVANECIDO EN LOS BORDES
-========================================================= */
-.hero-marquee, .statement-marquee {
-    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-}
-
-/* Aseguramos que la cinta tenga el ancho suficiente para no cortarse */
-.marquee-track {
-    width: max-content;
-    will-change: transform;
 }
