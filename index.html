@@ -12,20 +12,27 @@
 <link href="styles.css" rel="stylesheet">
 </head>
 <body class="">
+
+<!-- PRELOADER -->
 <div class="preloader">
 <div class="preloader-logo">W</div>
 <div class="preloader-line"><span></span></div>
 <div class="preloader-text">WINDSOR</div>
 </div>
 
+<!-- HEADER INYECTADO POR LAYOUT.JS -->
 <div id="site-header"></div>
 
 <main id="inicio">
 
+<!-- HERO CON FONDO DE LABORATORIO -->
 <section class="hero hero-bg-lab">
 <div class="hero-noise"></div>
 <div class="hero-topline">
-    <span><img src="assets/corchetesabiertos.svg" class="corchete-icon" alt=""> WINDSOR / 01</span>
+    <span>
+        <img src="assets/corchetesabiertos.svg" class="corchete-icon" alt=""> 
+        WINDSOR / 01
+    </span>
     <span style="display: flex; align-items: center; gap: 10px;">
         IDEA <svg class="svg-icon svg-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg> 
         ESTRATEGIA <svg class="svg-icon svg-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg> 
@@ -57,7 +64,7 @@
         <span>TECNOLOGÍA</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
         <span>INNOVACIÓN</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
     </div>
-    <!-- BLOQUE 2 (IDÉNTICO) -->
+    <!-- BLOQUE 2 (DUPLICADO PARA EL BUCLE INFINITO) -->
     <div class="marquee-content">
         <span>ESTRATEGIA</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
         <span>DISEÑO</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
@@ -68,6 +75,7 @@
 </div>
 </section>
 
+<!-- INTRO -->
 <section class="intro section">
 <div class="section-meta">
     <span><img src="assets/corchetesabiertos.svg" class="corchete-icon" alt="">01</span>
@@ -83,6 +91,7 @@
 </div>
 </section>
 
+<!-- SEMILLA -->
 <section class="seed-section" style="background-image: linear-gradient(rgba(10,10,12,0.8), rgba(10,10,12,0.8)), url('assets/manorobot.png');">
 <div class="seed-side">
     <span><img src="assets/corchetesabiertos.svg" class="corchete-icon" alt=""> LA SEMILLA</span>
@@ -96,6 +105,7 @@
 <div class="seed-number">01</div>
 </section>
 
+<!-- SERVICIOS -->
 <section class="services section" id="servicios">
 <div class="section-meta">
     <span><img src="assets/corchetesabiertos.svg" class="corchete-icon" alt="">02</span>
@@ -133,13 +143,16 @@
 </div>
 </section>
 
+<!-- STATEMENT MARQUEE -->
 <div class="statement-marquee">
 <div class="statement-track">
+    <!-- BLOQUE 1 -->
     <div class="statement-content">
         <span>NO PLANTILLAS.</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
         <span>NO ATAJOS.</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
         <span>PRECISIÓN APLICADA.</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
     </div>
+    <!-- BLOQUE 2 (DUPLICADO) -->
     <div class="statement-content">
         <span>NO PLANTILLAS.</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
         <span>NO ATAJOS.</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
@@ -148,6 +161,7 @@
 </div>
 </div>
 
+<!-- MÉTODO -->
 <section class="method section" id="metodo">
 <div class="section-meta">
     <span><img src="assets/corchetesabiertos.svg" class="corchete-icon" alt="">03</span>
@@ -165,6 +179,7 @@
 </div>
 </section>
 
+<!-- PRINCIPIOS -->
 <section class="principles section">
 <div class="section-meta">
     <span><img src="assets/corchetesabiertos.svg" class="corchete-icon" alt="">04</span>
@@ -178,6 +193,7 @@
 </div>
 </section>
 
+<!-- WINDSOR ONE PROMO -->
 <section class="cide-link section" id="windsor-one-promo">
 <div class="container">
 <h2><img src="assets/corchetesabiertos.svg" class="corchete-icon" alt=""> Windsor One <span>tu portafolio digital a medida.</span></h2>
@@ -186,6 +202,7 @@
 </div>
 </section>
 
+<!-- FAQ -->
 <section class="faq section">
 <div class="section-meta">
     <span><img src="assets/corchetesabiertos.svg" class="corchete-icon" alt="">05</span>
@@ -203,6 +220,7 @@
 </div>
 </section>
 
+<!-- CONTACTO -->
 <section class="contact" id="contacto">
 <div class="contact-top">
     <span><img src="assets/corchetesabiertos.svg" class="corchete-icon" alt=""> 06 / CONTACTO</span>
@@ -218,6 +236,7 @@
 
 </main>
 
+<!-- FOOTER INYECTADO POR LAYOUT.JS -->
 <div id="site-footer"></div>
 
 <script src="layout.js"></script>
