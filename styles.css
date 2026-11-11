@@ -166,6 +166,10 @@ section { scroll-margin-top:82px; }
     background-image: linear-gradient(rgba(10,10,12,0.65), rgba(10,10,12,0.95)), url('assets/feliz.png');
     background-size: cover; background-position: center; background-attachment: fixed;
 }
+.hero-bg-talent {
+    background-image: linear-gradient(rgba(10,10,12,0.65), rgba(10,10,12,0.95)), url('assets/dialogo.png');
+    background-size: cover; background-position: center; background-attachment: fixed;
+}
 .hero-noise { position:absolute; inset:0; opacity:0.08; pointer-events:none; background-image:radial-gradient(rgba(255,255,255,0.8) 0.6px, transparent 0.6px); background-size:5px 5px; }
 .hero-topline { position:relative; z-index:2; display:flex; justify-content:space-between; gap:30px; padding:105px 6vw 0; font-size:8px; font-weight:700; letter-spacing:0.16em; opacity:0.55; }
 .hero-content { position:relative; z-index:2; width:min(100%, var(--max-width)); margin:auto; padding:60px 6vw 70px; }
@@ -383,6 +387,21 @@ section { scroll-margin-top:82px; }
 .hook-button:hover { background: var(--green); color: var(--black); padding-right: 68px; transform: translateX(20px); }
 .hook-button:hover img { transform: translateX(24px); }
 
+/* BOTÓN SECUNDARIO (OUTLINE) PARA LA BOLSA DE TALENTO */
+.hook-button-outline {
+    background: transparent;
+    border: 1px solid var(--white-line);
+    color: var(--white);
+}
+.hook-button-outline:hover {
+    background: var(--white);
+    color: var(--black);
+    border-color: var(--white);
+}
+.hook-button-outline:hover img {
+    filter: brightness(0); /* Vuelve la flecha negra al pasar el mouse */
+}
+
 .contact-button { transition: background 0.3s ease, padding 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
 .contact-button img { transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
 .contact-button:hover { background: var(--white); padding-right: 62px; transform: translateX(20px); }
@@ -449,7 +468,7 @@ section { scroll-margin-top:82px; }
     .desktop-nav .nav-list, .header-button { display:none; }
     .menu-button { display:flex; }
     
-    .hero, .hero-bg-lab, .hero-bg-research, .hero-bg-happy, .seed-section {
+    .hero, .hero-bg-lab, .hero-bg-research, .hero-bg-happy, .hero-bg-talent, .seed-section {
         background-attachment: scroll !important;
         background-position: center;
     }
@@ -494,7 +513,6 @@ section { scroll-margin-top:82px; }
     .metodologia-grid { grid-template-columns: 1fr; gap: 20px; margin-top: 40px; }
     .cide-link h2 { flex-direction: column; }
 
-    /* Ajustes de Tarjetas Windsor One */
     .one-card { padding: 20px 18px 14px 18px; }
     .one-card .card-inner { flex-direction: row; gap: 15px; }
     .one-card .icon-wrap { flex: 0 0 48px; width: 48px; height: 48px; }
@@ -573,15 +591,4 @@ section { scroll-margin-top:82px; }
 @media (prefers-reduced-motion:reduce) {
     html { scroll-behavior:auto; }
     *, *::before, *::after { animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
-}
-/* Fondo para el Hero de Bolsa de Talento */
-.hero-bg-talent {
-    background-image: linear-gradient(rgba(10,10,12,0.65), rgba(10,10,12,0.95)), url('assets/dialogo.png');
-    background-size: cover; 
-    background-position: center; 
-    background-attachment: fixed;
-}
-
-@media (max-width: 800px) {
-    .hero-bg-talent { background-attachment: scroll !important; }
 }
