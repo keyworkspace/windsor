@@ -153,15 +153,7 @@ section { scroll-margin-top:82px; }
 
 /* 5. COMPONENTES ESPECÍFICOS */
 /* Hero */
-.hero { 
-    position:relative; 
-    min-height:max(720px, 100svh); 
-    background:var(--black); 
-    color:var(--white); 
-    overflow:hidden; 
-    display:flex; 
-    flex-direction:column; 
-}
+.hero { position:relative; min-height:max(720px, 100svh); background:var(--black); color:var(--white); overflow:hidden; display:flex; flex-direction:column; }
 .hero-bg-lab {
     background-image: linear-gradient(rgba(10,10,12,0.65), rgba(10,10,12,0.95)), url('assets/laboratorio.png');
     background-size: cover; background-position: center; background-attachment: fixed;
@@ -188,21 +180,11 @@ section { scroll-margin-top:82px; }
 }
 .hero-noise { position:absolute; inset:0; opacity:0.08; pointer-events:none; background-image:radial-gradient(rgba(255,255,255,0.8) 0.6px, transparent 0.6px); background-size:5px 5px; }
 .hero-topline { position:relative; z-index:2; display:flex; justify-content:space-between; gap:30px; padding:105px 6vw 0; font-size:8px; font-weight:700; letter-spacing:0.16em; opacity:0.55; }
-.hero-content { 
-    position:relative; 
-    z-index:2; 
-    width:min(100%, var(--max-width)); 
-    margin:0 auto; 
-    padding:140px 6vw 70px; /* Aumentamos el padding superior para evitar que el header lo tape */
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+.hero-content { position:relative; z-index:2; width:min(100%, var(--max-width)); margin:auto; padding:60px 6vw 70px; }
 .hero-small { display:flex; align-items:center; gap:10px; margin-bottom:30px; color:var(--green); font-size:9px; font-weight:700; letter-spacing:0.15em; }
 .green-dot { width:7px; height:7px; border-radius:50%; background:var(--green); animation:dotPulse 2s ease infinite; }
 @keyframes dotPulse { 0%,100% { opacity:0.5; transform:scale(0.85); } 50% { opacity:1; transform:scale(1.15); } }
-.hero h1 { max-width:1150px; font-size:clamp(2.5rem, 7.5vw, 7.5rem); line-height:0.8; letter-spacing:-0.085em; }
+.hero h1 { max-width:1150px; font-size:clamp(3rem, 7.875vw, 7.875rem); line-height:0.8; letter-spacing:-0.085em; }
 .hero h1 em { display:block; color:var(--green); font-family:var(--serif); font-weight:900; text-decoration:underline; text-decoration-thickness:0.07em; text-underline-offset:0.1em; }
 .hero-bottom { margin-top:65px; display:flex; align-items:flex-end; justify-content:space-between; gap:40px; }
 .hero-bottom p { max-width:490px; color:rgba(255,255,255,0.65); font-size:14px; line-height:1.7; }
@@ -216,40 +198,48 @@ section { scroll-margin-top:82px; }
 .circle-button:hover { background:var(--green); color:var(--black); transform:rotate(10deg); }
 
 /* =========================================================
-   MARQUEE (CINTA INFINITA CON DESVANECIDO) - FIX TOTAL
+   MARQUEE (CINTA INFINITA Y DESVANECIDO PERFECTO)
 ========================================================= */
 .hero-marquee, .statement-marquee {
     position: relative;
     z-index: 2;
     overflow: hidden;
     border-top: 1px solid var(--white-line);
-    /* Máscara para que el texto se desvanezca en los bordes */
-    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    /* El desvanecido empieza más adentro para que no se vea cortado */
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+.statement-marquee {
+    background: var(--black);
+    border-top: none; /* Quitamos el borde si es la cinta negra de en medio */
 }
 
 .marquee-track, .statement-track {
-    display: flex !important;
-    width: max-content !important;
-    animation: marquee 30s linear infinite !important;
-    will-change: transform;
+    display: flex;
+    width: max-content;
+    animation: marquee 30s linear infinite;
 }
 
+/* Forzamos a los bloques a no encogerse y mantener su ancho */
 .marquee-content, .statement-content {
-    display: flex !important;
-    align-items: center !important;
-    gap: 40px !important; /* Forzamos el espacio entre palabras e íconos */
-    padding-right: 40px !important;
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    padding-right: 35px;
+    flex-shrink: 0; /* CRUCIAL: Evita que flexbox aplaste los bloques */
 }
 
 .marquee-content { padding-top: 19px; padding-bottom: 19px; }
 .statement-content { padding-top: 25px; padding-bottom: 25px; }
 
-.marquee-content span { font-family: var(--sans); font-size: clamp(0.825rem, 1.5vw, 1.5rem); font-weight: 800; letter-spacing: -0.04em; }
-.statement-content span { font-family: var(--sans); font-size: clamp(1.275rem, 2.25vw, 2.25rem); font-weight: 800; letter-spacing: -0.04em; }
-.marquee-content b, .statement-content b { color: var(--green); display: inline-flex; align-items: center; }
+.marquee-content span { font-family: var(--sans); font-size: clamp(0.825rem, 1.5vw, 1.5rem); font-weight: 800; letter-spacing: -0.04em; white-space: nowrap; }
+.statement-content span { font-family: var(--sans); font-size: clamp(1.275rem, 2.25vw, 2.25rem); font-weight: 800; letter-spacing: -0.04em; white-space: nowrap; }
+
+.marquee-content b, .statement-content b { color: var(--green); }
 
 @keyframes marquee { 
+    from { transform: translateX(0); }
     to { transform: translateX(-50%); } 
 }
 
@@ -525,7 +515,7 @@ section { scroll-margin-top:82px; }
 
     .section { padding:80px 8vw; }
     .hero-topline { padding:105px 8vw 0; }
-    .hero-content { padding:55px 8vw 65px; } /* Ajuste móvil */
+    .hero-content { padding:55px 8vw 65px; }
     .seed-section { padding:100px 8vw 80px; }
     .contact { padding:40px 8vw; }
     .cide-link { padding:60px 8vw; }
@@ -599,8 +589,8 @@ section { scroll-margin-top:82px; }
     .hero-bottom p { font-size:13px; }
     
     /* Ajuste de la cinta en móvil */
-    .marquee-content, .statement-content { gap: 25px !important; padding-right: 25px !important; }
-    .marquee-content { padding-top: 15px !important; padding-bottom: 15px !important; }
+    .marquee-content, .statement-content { gap: 25px; padding-right: 25px; }
+    .marquee-content { padding-top: 15px; padding-bottom: 15px; }
     
     .section { padding:65px 8vw; }
     .section-meta { font-size:7px; flex-direction: column; align-items: flex-start; gap: 10px; }
