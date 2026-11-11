@@ -574,3 +574,14 @@ section { scroll-margin-top:82px; }
     html { scroll-behavior:auto; }
     *, *::before, *::after { animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
 }
+/* Fondo para el Hero de Bolsa de Talento */
+.hero-bg-talent {
+    background-image: linear-gradient(rgba(10,10,12,0.65), rgba(10,10,12,0.95)), url('assets/dialogo.png');
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed;
+}
+
+@media (max-width: 800px) {
+    .hero-bg-talent { background-attachment: scroll !important; }
+}
