@@ -1,8 +1,6 @@
 /* =========================================================
    WINDSOR — LAYOUT CENTRALIZADO
-   Header y footer únicos para todas las páginas.
 ========================================================= */
-
 (function () {
   const headerHTML = `
 <header class="header">
@@ -26,13 +24,13 @@
 <li><a href="BeQueer.html">BeQueer</a></li>
 </ul>
 </li>
+<li><a href="bolsa-talento.html">Bolsa de Talento</a></li>
 <li><a href="contacto.html">Contacto</a></li>
 </ul>
 </nav>
 <div class="header-actions">
 <a class="header-button" href="contacto.html">
 Hablemos
-<!-- Flecha corregida y en blanco para fondo oscuro -->
 <img src="assets/flechasinfondo.svg" class="icon-white" alt="" style="width: 16px; height: 16px;">
 </a>
 </div>
@@ -47,6 +45,8 @@ Hablemos
 <div class="mobile-group-title">Servicios</div>
 <a href="windsor-one.html">Windsor One</a>
 <a href="BeQueer.html">BeQueer</a>
+<div class="mobile-group-title">Talento</div>
+<a href="bolsa-talento.html">Bolsa de Talento</a>
 <div class="mobile-group-title">Contacto</div>
 <a href="contacto.html">Contacto</a>
 </div>
@@ -70,6 +70,10 @@ Hablemos
 <a href="BeQueer.html">BeQueer</a>
 </div>
 <div class="footer-group">
+<h4>Red</h4>
+<a href="bolsa-talento.html">Bolsa de Talento</a>
+</div>
+<div class="footer-group">
 <h4>Contacto</h4>
 <a href="contacto.html">Contáctanos</a>
 </div>
@@ -84,7 +88,6 @@ Hablemos
   if (headerSlot) headerSlot.outerHTML = headerHTML;
   if (footerSlot) footerSlot.outerHTML = footerHTML;
 
-  // Marcar enlace activo según la URL actual
   const currentPath = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
   document.querySelectorAll('.nav-list a, .submenu a, .mobile-menu a, .footer-group a').forEach(function (link) {
     const href = (link.getAttribute('href') || '').split('#')[0].toLowerCase();
