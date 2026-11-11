@@ -740,3 +740,16 @@ section { scroll-margin-top:82px; }
     .bequeer-card .icon-wrap { flex: 0 0 48px; width: 48px; height: 48px; }
     .bequeer-card .icon-wrap svg { width: 24px !important; height: 24px !important; }
 }
+/* =========================================================
+   FONDO PARA PÁGINA 404
+========================================================= */
+.hero-bg-404 {
+    background-image: linear-gradient(rgba(10,10,12,0.65), rgba(10,10,12,0.95)), url('assets/caminando.png');
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed;
+}
+
+@media (max-width: 800px) {
+    .hero-bg-404 { background-attachment: scroll !important; }
+}
