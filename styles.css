@@ -753,3 +753,16 @@ section { scroll-margin-top:82px; }
 @media (max-width: 800px) {
     .hero-bg-404 { background-attachment: scroll !important; }
 }
+/* =========================================================
+   FIX MARQUEE: MÁSCARA DE DESVANECIDO EN LOS BORDES
+========================================================= */
+.hero-marquee, .statement-marquee {
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+/* Aseguramos que la cinta tenga el ancho suficiente para no cortarse */
+.marquee-track {
+    width: max-content;
+    will-change: transform;
+}
