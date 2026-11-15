@@ -14,27 +14,38 @@
 /* =========================================================
    CONTACTO — CSS ESPECÍFICO
 ========================================================= */
+
+/* 1. Arreglar el color del header para fondo claro */
+body.page-contact .header { color: var(--black); }
+body.page-contact .header.scrolled { color: var(--white); }
+body.page-contact .header-button { color: var(--white); } /* Mantener botón blanco */
+
+/* 2. Layout principal */
 .contact-page-wrapper {
     min-height: 100vh;
-    padding: 140px 6vw 90px;
+    padding: 150px 6vw 90px;
     background: var(--cream);
 }
+
 .contact-grid {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
+    grid-template-columns: 1.1fr 0.9fr;
     gap: clamp(2.5rem, 6vw, 6rem);
     align-items: start;
 }
+
+/* 3. Tipografía y Formulario */
 .contact-form h2 {
     font-family: var(--sans);
-    font-size: clamp(2.4rem, 4.2vw, 3.75rem);
+    font-size: clamp(2.6rem, 4.5vw, 4rem);
     font-weight: 800;
     line-height: 0.95;
     letter-spacing: -0.05em;
     margin-bottom: 16px;
 }
+
 .contact-form h2 em {
     font-style: normal;
     color: var(--blue);
@@ -42,67 +53,80 @@
     text-decoration-thickness: 0.06em;
     text-underline-offset: 0.1em;
 }
+
 .subtitle {
+    font-family: var(--body);
     font-size: 15px;
-    line-height: 1.6;
+    line-height: 1.7;
     color: #555550;
     margin-bottom: 40px;
 }
+
 #contactForm {
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 24px;
 }
+
 .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
+
 .form-group {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
+
 .form-group label {
     font-family: var(--sans);
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    opacity: 0.7;
+    opacity: 0.65;
+    color: var(--black);
 }
+
 .form-group input,
 .form-group textarea {
     font-family: var(--body);
     font-size: 15px;
-    padding: 16px 20px;
+    padding: 18px 20px;
     width: 100%;
     background: var(--white);
     border: 1px solid var(--line);
     border-radius: var(--radius-sm);
     color: var(--black);
     outline: none;
-    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
 .form-group textarea {
     min-height: 170px;
     resize: vertical;
 }
+
 .form-group input:focus,
 .form-group textarea:focus {
     border-color: var(--blue);
     box-shadow: 0 0 0 3px rgba(0, 109, 255, 0.1);
 }
+
 .form-group input::placeholder,
 .form-group textarea::placeholder {
     color: var(--grey-dark);
 }
+
+/* 4. Botón de envío con animación nativa */
 .submit-btn {
     align-self: flex-start;
     display: inline-flex;
     align-items: center;
     gap: 15px;
-    padding: 18px 28px;
+    padding: 18px 32px;
     background: var(--blue);
     color: var(--white);
     border: 1px solid var(--blue);
@@ -115,16 +139,20 @@
     cursor: pointer;
     transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
 }
+
 .submit-btn:hover:not(:disabled) {
     background: var(--green);
     border-color: var(--green);
     color: var(--black);
     transform: translateY(-2px);
 }
+
 .submit-btn:disabled {
     opacity: 0.65;
     cursor: wait;
 }
+
+/* Spinner de carga */
 .submit-btn .spinner {
     display: none;
     width: 14px;
@@ -134,45 +162,85 @@
     border-radius: 50%;
     animation: winSpin 0.8s linear infinite;
 }
+
 .submit-btn.loading .spinner { display: block; }
 .submit-btn.loading .btn-text { display: none; }
 @keyframes winSpin { to { transform: rotate(360deg); } }
 
-/* --- Mensajes y estado de éxito --- */
-.success-message,
-.error-message {
-    display: none;
-    align-items: center;
-    gap: 10px;
-    padding: 16px 20px;
-    margin-top: 22px;
-    border-radius: var(--radius-sm);
-    font-size: 14px;
-    line-height: 1.5;
+/* 5. Tarjeta de información (Columna derecha) */
+.contact-info {
+    background: var(--black);
+    color: var(--white);
+    padding: 45px;
+    border-radius: var(--radius);
+    position: sticky;
+    top: 110px;
 }
-.success-message {
-    background: rgba(49, 224, 131, 0.12);
-    color: var(--green-dark);
-    border: 1px solid rgba(49, 224, 131, 0.35);
-}
-.error-message {
-    background: rgba(220, 53, 69, 0.08);
-    color: #b21f2d;
-    border: 1px solid rgba(220, 53, 69, 0.25);
-}
-.success-message.show,
-.error-message.show { display: flex; }
-.svg-icon { width: 20px; height: 20px; flex-shrink: 0; }
-.svg-check circle, .svg-check path { stroke: var(--green-dark); stroke-width: 2; fill: none; }
-.svg-close circle, .svg-close path { stroke: #b21f2d; stroke-width: 2; fill: none; }
 
-/* --- Estado de éxito (formulario oculto + acciones) --- */
+.contact-info h3 {
+    font-family: var(--sans);
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+}
+
+/* Ícono corregido (sin el triángulo negro) */
+.info-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: var(--green);
+    color: var(--black);
+    border-radius: 50%;
+    margin-bottom: 24px;
+}
+
+.info-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.info-text {
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.info-text strong { color: var(--white); font-weight: 600; }
+
+/* 6. Estado de Éxito */
 .form-success-state {
     display: none;
+    background: var(--white);
+    padding: 50px 40px;
+    border-radius: var(--radius);
     text-align: center;
-    padding: 40px 0;
+    border: 1px solid var(--line);
 }
 .form-success-state.show { display: block; }
+
+.success-icon-wrap {
+    width: 60px;
+    height: 60px;
+    background: rgba(49, 224, 131, 0.15);
+    color: var(--green-dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+}
+.success-icon-wrap svg { width: 30px; height: 30px; stroke: currentColor; stroke-width: 2; fill: none; }
+
 .form-success-state h3 {
     font-family: var(--sans);
     font-size: 28px;
@@ -180,23 +248,27 @@
     margin-bottom: 12px;
     letter-spacing: -0.03em;
 }
+
 .form-success-state p {
+    font-family: var(--body);
     font-size: 15px;
     color: #555550;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
 }
+
 .form-success-state .actions {
     display: flex;
     gap: 16px;
     justify-content: center;
     flex-wrap: wrap;
 }
+
 .form-success-state .actions a,
 .form-success-state .actions button {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 16px 26px;
+    gap: 12px;
+    padding: 16px 28px;
     border-radius: var(--radius-pill);
     font-family: var(--sans);
     font-size: 10px;
@@ -204,31 +276,59 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     cursor: pointer;
-    transition: transform 0.2s ease, background 0.2s ease;
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
     text-decoration: none;
 }
+
 .form-success-state .actions .btn-primary {
     background: var(--blue);
     color: var(--white);
     border: 1px solid var(--blue);
 }
+.form-success-state .actions .btn-primary:hover {
+    background: var(--green);
+    border-color: var(--green);
+    color: var(--black);
+    transform: translateY(-2px);
+}
+
 .form-success-state .actions .btn-secondary {
     background: transparent;
     color: var(--black);
     border: 1px solid var(--line);
 }
-.form-success-state .actions .btn-primary:hover,
 .form-success-state .actions .btn-secondary:hover {
+    background: var(--cream);
     transform: translateY(-2px);
 }
+
+/* 7. Mensaje de error */
+.error-message {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 20px;
+    margin-top: 24px;
+    background: rgba(220, 53, 69, 0.08);
+    color: #b21f2d;
+    border: 1px solid rgba(220, 53, 69, 0.25);
+    border-radius: var(--radius-sm);
+    font-family: var(--body);
+    font-size: 14px;
+}
+.error-message.show { display: flex; }
+.error-message svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 2; fill: none; flex-shrink: 0; }
+
+/* 8. Responsive */
 @media (max-width: 900px) {
     .contact-page-wrapper { padding: 115px 5vw 70px; }
     .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .contact-info { position: static; padding: 35px; }
     .form-row { grid-template-columns: 1fr; }
 }
 </style>
 </head>
-<body>
+<body class="page-contact">
 
 <!-- PRELOADER -->
 <div class="preloader">
@@ -243,70 +343,78 @@
 <main class="contact-page-wrapper">
 <div class="contact-grid">
 <div class="contact-form">
-<!-- Formulario -->
-<div id="formContainer">
-<h2>Escribinos <em>un mensaje.</em></h2>
-<p class="subtitle">Completá el formulario y te responderemos a la brevedad.</p>
-<form id="contactForm" action="https://formsubmit.co/ajax/alexhrnndz32@gmail.com" method="POST">
-<input type="hidden" name="_subject" value="Nuevo mensaje desde Windsor">
-<input type="hidden" name="_captcha" value="false">
-<div class="form-row">
-<div class="form-group">
-<label for="nombre">Tu nombre</label>
-<input id="nombre" name="nombre" placeholder="ej. María González" required type="text">
-</div>
-<div class="form-group">
-<label for="email">Tu correo</label>
-<input id="email" name="email" placeholder="ej. maria@ejemplo.com" required type="email">
-</div>
-</div>
-<div class="form-group">
-<label for="asunto">Asunto</label>
-<input id="asunto" name="asunto" placeholder="¿Sobre qué querés hablar?" required type="text">
-</div>
-<div class="form-group">
-<label for="mensaje">Mensaje</label>
-<textarea id="mensaje" name="mensaje" placeholder="Contanos tu idea, proyecto o consulta..." required></textarea>
-</div>
-<button class="submit-btn" id="submitBtn" type="submit">
-<span class="btn-text">Enviar mensaje</span>
-<span class="spinner"></span>
-<span class="arrow-icon">
-<svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="16">
-<line x1="7" x2="17" y1="17" y2="7"></line>
-<polyline points="7 7 17 7 17 17"></polyline>
-</svg>
-</span>
-</button>
-</form>
+    
+    <!-- Formulario -->
+    <div id="formContainer">
+        <h2>Escribinos <em>un mensaje.</em></h2>
+        <p class="subtitle">Completá el formulario y te responderemos a la brevedad.</p>
+        
+        <form id="contactForm" action="https://formsubmit.co/ajax/alexhrnndz32@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Nuevo mensaje desde Windsor">
+            <input type="hidden" name="_captcha" value="false">
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nombre">Tu nombre</label>
+                    <input id="nombre" name="nombre" placeholder="ej. María González" required type="text">
+                </div>
+                <div class="form-group">
+                    <label for="email">Tu correo</label>
+                    <input id="email" name="email" placeholder="ej. maria@ejemplo.com" required type="email">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="asunto">Asunto</label>
+                <input id="asunto" name="asunto" placeholder="¿Sobre qué querés hablar?" required type="text">
+            </div>
+            
+            <div class="form-group">
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" placeholder="Contanos tu idea, proyecto o consulta..." required></textarea>
+            </div>
+            
+            <button class="submit-btn" id="submitBtn" type="submit">
+                <span class="btn-text">Enviar mensaje</span>
+                <span class="spinner"></span>
+                <span class="arrow-icon">
+                    <img src="assets/flechasinfondo.svg" class="icon-white" alt="" style="width: 18px; height: 18px;">
+                </span>
+            </button>
+        </form>
+    </div>
+
+    <!-- Estado de éxito (oculto) -->
+    <div class="form-success-state" id="successState">
+        <div class="success-icon-wrap">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="m8 12 3 3 5-6"></path></svg>
+        </div>
+        <h3>¡Mensaje enviado!</h3>
+        <p>Gracias por escribirnos. Te responderemos a la brevedad.</p>
+        <div class="actions">
+            <a class="btn-primary" href="index.html">Volver al inicio</a>
+            <button class="btn-secondary" id="sendAnotherBtn" type="button">Enviar otro mensaje</button>
+        </div>
+    </div>
+
+    <!-- Error -->
+    <div class="error-message" id="errorMessage">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="m9 9 6 6M15 9l-6 6"></path></svg>
+        Hubo un error al enviar el mensaje. Intentá de nuevo más tarde.
+    </div>
 </div>
 
-<!-- Estado de éxito (oculto inicialmente) -->
-<div class="form-success-state" id="successState">
-<h3>¡Mensaje enviado!</h3>
-<p>Gracias por escribirnos. Te responderemos a la brevedad.</p>
-<div class="actions">
-<a class="btn-primary" href="index.html">Volver al inicio</a>
-<button class="btn-secondary" id="sendAnotherBtn" type="button">Enviar otro mensaje</button>
-</div>
-</div>
-
-<!-- Mensaje de error -->
-<div class="error-message" id="errorMessage">
-<svg aria-hidden="true" class="svg-icon svg-close" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="m9 9 6 6M15 9l-6 6"></path></svg>
-Hubo un error al enviar el mensaje. Intentá de nuevo más tarde.
-</div>
-</div>
-
+<!-- Info Tarjeta -->
 <div class="contact-info">
-<h3>¿Cómo contactarnos?</h3>
-<span class="info-icon">
-<svg viewBox="0 0 24 24">
-<path d="M22 2L11 13"></path>
-<path d="M22 2L15 22l-4-9-9-4z"></path>
-</svg>
-</span>
-<p class="info-text"><strong>Este formulario</strong> es el único canal de contacto.<br>Completalo con tus datos y tu mensaje, y te responderemos lo antes posible.</p>
+    <span class="info-icon">
+        <!-- Ícono de sobre/correo limpio -->
+        <svg viewBox="0 0 24 24">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+    </span>
+    <h3>¿Cómo contactarnos?</h3>
+    <p class="info-text"><strong>Este formulario</strong> es el único canal de contacto.<br>Completalo con tus datos y tu mensaje, y te responderemos lo antes posible.</p>
 </div>
 </div>
 </main>
@@ -319,8 +427,6 @@ Hubo un error al enviar el mensaje. Intentá de nuevo más tarde.
 <script>
 /* =========================================================
    ENVÍO CON FORMSUBMIT (AJAX)
-   - No hay redirección: el usuario se queda en la página.
-   - Se muestra un estado de éxito con acciones.
 ========================================================= */
 (function () {
     const form = document.getElementById('contactForm');
@@ -335,9 +441,7 @@ Hubo un error al enviar el mensaje. Intentá de nuevo más tarde.
     form.addEventListener('submit', async function (e) {
         e.preventDefault();
         errorMsg.classList.remove('show');
-        successState.classList.remove('show');
 
-        // Validación rápida en cliente
         const nombre  = document.getElementById('nombre').value.trim();
         const email   = document.getElementById('email').value.trim();
         const asunto  = document.getElementById('asunto').value.trim();
@@ -358,18 +462,17 @@ Hubo un error al enviar el mensaje. Intentá de nuevo más tarde.
                 method: 'POST',
                 body: formData,
                 headers: {
-                    // ESTO ES CLAVE: FormSubmit devuelve JSON en vez de redirigir
                     'Accept': 'application/json'
                 }
             });
 
             const json = await response.json();
 
-            if (!response.ok || !json.ok) {
-                throw new Error(json.error?.message || 'Error en el envío');
+            if (!response.ok || !json.success) { // Formsubmit usa "success: true" en su respuesta AJAX
+                throw new Error(json.message || 'Error en el envío');
             }
 
-            // Éxito: ocultar formulario y mostrar estado de confirmación
+            // Éxito
             formContainer.style.display = 'none';
             successState.classList.add('show');
             form.reset();
@@ -384,7 +487,6 @@ Hubo un error al enviar el mensaje. Intentá de nuevo más tarde.
         }
     });
 
-    // Botón "Enviar otro mensaje"
     if (sendAnotherBtn) {
         sendAnotherBtn.addEventListener('click', function () {
             successState.classList.remove('show');
