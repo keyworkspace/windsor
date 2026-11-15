@@ -15,15 +15,10 @@
    CONTACTO — CSS ESPECÍFICO
 ========================================================= */
 
-/* 1. Arreglar el color del header para fondo claro */
+/* 1. Arreglar el color del header para fondo claro y ocultar el botón */
 body.page-contact .header { color: var(--black); }
 body.page-contact .header.scrolled { color: var(--white); }
-
-/* Ocultar el botón "Hablemos" del header SOLO en esta página */
-body.page-contact .header-actions { display: none; }
-
-/* Arreglar que la flecha del header se vuelva negra al hacer hover (para el resto de paginas) */
-.header-button:hover .icon-white { filter: brightness(0); }
+body.page-contact .header-actions { display: none; } /* Oculta el botón "Hablemos" */
 
 /* 2. Layout principal */
 .contact-page-wrapper {
@@ -125,13 +120,13 @@ body.page-contact .header-actions { display: none; }
     color: var(--grey-dark);
 }
 
-/* 4. Botón de envío calcado al del header */
+/* 4. Botón de envío (Efecto Estiramiento, sin elevación) */
 .submit-btn {
     align-self: flex-start;
     display: inline-flex;
     align-items: center;
-    gap: 15px;
-    padding: 16px 24px;
+    gap: 15px; /* Mismo gap inicial que el botón del header */
+    padding: 13px 20px;
     background: var(--blue);
     color: var(--white);
     border: 1px solid var(--blue);
@@ -142,14 +137,15 @@ body.page-contact .header-actions { display: none; }
     letter-spacing: 0.12em;
     text-transform: uppercase;
     cursor: pointer;
-    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+    transition: background 0.25s ease, color 0.25s ease, gap 0.25s ease, padding 0.25s ease;
 }
 
 .submit-btn:hover:not(:disabled) {
     background: var(--green);
     border-color: var(--green);
     color: var(--black);
-    transform: translateY(-2px);
+    gap: 24px; /* Se estira separando el texto de la flecha */
+    padding-right: 24px; /* Se estira un poco más a la derecha */
 }
 
 /* La flecha se vuelve negra en hover, igual que en el header */
@@ -278,7 +274,7 @@ body.page-contact .header-actions { display: none; }
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    padding: 16px 28px;
+    padding: 13px 20px;
     border-radius: var(--radius-pill);
     font-family: var(--sans);
     font-size: 9px;
@@ -286,7 +282,7 @@ body.page-contact .header-actions { display: none; }
     letter-spacing: 0.12em;
     text-transform: uppercase;
     cursor: pointer;
-    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    transition: background 0.25s ease, color 0.25s ease, gap 0.25s ease;
     text-decoration: none;
 }
 
@@ -299,7 +295,7 @@ body.page-contact .header-actions { display: none; }
     background: var(--green);
     border-color: var(--green);
     color: var(--black);
-    transform: translateY(-2px);
+    gap: 20px;
 }
 
 .form-success-state .actions .btn-secondary {
@@ -309,7 +305,7 @@ body.page-contact .header-actions { display: none; }
 }
 .form-success-state .actions .btn-secondary:hover {
     background: var(--cream);
-    transform: translateY(-2px);
+    gap: 20px;
 }
 
 /* 7. Mensaje de error */
@@ -478,7 +474,7 @@ body.page-contact .header-actions { display: none; }
 
             const json = await response.json();
 
-            // FormSubmit AJAX devuelve { "success": "true" } (como string)
+            // FormSubmit AJAX devuelve { "success": "true" }
             if (!response.ok || json.success === "false" || json.success === false) {
                 throw new Error(json.message || 'Error en el envío');
             }
