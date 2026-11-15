@@ -87,29 +87,18 @@
     line-height: 1.6;
 }
 
-/* Sección de Escasez / CTA */
+/* Sección de Escasez / CTA (Fondo negro sólido, sin brillos) */
 .cide-apply {
     background: var(--black);
     color: var(--white);
     padding: var(--space-section) 6vw;
     text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-.cide-apply::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, rgba(0, 109, 255, 0.15) 0%, transparent 60%);
-    pointer-events: none;
 }
 .cide-apply h2 {
     font-size: clamp(2.5rem, 5vw, 4rem);
     line-height: 0.9;
     letter-spacing: -0.05em;
     margin-bottom: 20px;
-    position: relative;
-    z-index: 2;
 }
 .cide-apply h2 em { color: var(--green); }
 .cide-apply p {
@@ -118,14 +107,13 @@
     margin: 0 auto 40px;
     font-size: 15px;
     line-height: 1.7;
-    position: relative;
-    z-index: 2;
 }
+
+/* Botón aplicando los estilos nativos exactos */
 .cide-apply .hook-button {
-    position: relative;
-    z-index: 2;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 15px;
     padding: 18px 32px;
     background: var(--blue);
@@ -137,14 +125,16 @@
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    transition: background 0.25s, color 0.25s, gap 0.25s;
+    transition: background 0.25s ease, color 0.25s ease, gap 0.25s ease;
 }
+
 .cide-apply .hook-button:hover {
     background: var(--green);
-    color: var(--black);
     border-color: var(--green);
-    gap: 22px;
+    color: var(--black);
+    gap: 22px; /* Solo se expande el espacio interno, sin mover el botón */
 }
+
 .cide-apply .hook-button:hover .icon-white {
     filter: brightness(0);
 }
@@ -196,22 +186,22 @@
         <span>DIAGNÓSTICO PROFUNDO</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
         <span>REESTRUCTURACIÓN</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
         <span>INNOVACIÓN</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
-        <span>CUPOS LIMITADOS</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>COHORTE 2026</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
         <span>DIAGNÓSTICO PROFUNDO</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
         <span>REESTRUCTURACIÓN</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
         <span>INNOVACIÓN</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
-        <span>CUPOS LIMITADOS</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>COHORTE 2026</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
     </div>
     <!-- BLOQUE 2 (DUPLICADO) -->
     <div class="marquee-content">
         <span>DIAGNÓSTICO PROFUNDO</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
         <span>REESTRUCTURACIÓN</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
         <span>INNOVACIÓN</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
-        <span>CUPOS LIMITADOS</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>COHORTE 2026</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
         <span>DIAGNÓSTICO PROFUNDO</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
         <span>REESTRUCTURACIÓN</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
         <span>INNOVACIÓN</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
-        <span>CUPOS LIMITADOS</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>COHORTE 2026</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
     </div>
 </div>
 </div>
@@ -276,8 +266,8 @@
 <!-- CTA / POSTULACIÓN -->
 <section class="cide-apply" id="postulacion">
 <div class="container">
-<div class="hero-small" style="justify-content: center;">
-    <span class="green-dot"></span> PROGRAMA PILOTO / CUPOS CERRADOS
+<div class="hero-small" style="justify-content: center; margin-bottom: 30px;">
+    <span class="green-dot"></span> PROGRAMA PILOTO / COHORTE 2026
 </div>
 <h2>¿Tu empresa necesita <em>renacer?</em></h2>
 <p>La ReIncubadora opera por cohortes trimestrales. Actualmente estamos evaluando postulaciones para el próximo ciclo. Si tu empresa necesita una reestructuración real, inicia el proceso.</p>
