@@ -18,7 +18,12 @@
 /* 1. Arreglar el color del header para fondo claro */
 body.page-contact .header { color: var(--black); }
 body.page-contact .header.scrolled { color: var(--white); }
-body.page-contact .header-button { color: var(--white); } /* Mantener botón blanco */
+
+/* Ocultar el botón "Hablemos" del header SOLO en esta página */
+body.page-contact .header-actions { display: none; }
+
+/* Arreglar que la flecha del header se vuelva negra al hacer hover (para el resto de paginas) */
+.header-button:hover .icon-white { filter: brightness(0); }
 
 /* 2. Layout principal */
 .contact-page-wrapper {
@@ -120,21 +125,21 @@ body.page-contact .header-button { color: var(--white); } /* Mantener botón bla
     color: var(--grey-dark);
 }
 
-/* 4. Botón de envío con animación nativa */
+/* 4. Botón de envío calcado al del header */
 .submit-btn {
     align-self: flex-start;
     display: inline-flex;
     align-items: center;
     gap: 15px;
-    padding: 18px 32px;
+    padding: 16px 24px;
     background: var(--blue);
     color: var(--white);
     border: 1px solid var(--blue);
     border-radius: var(--radius-pill);
     font-family: var(--sans);
-    font-size: 10px;
+    font-size: 9px; /* Tamaño exacto del header */
     font-weight: 700;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     cursor: pointer;
     transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
@@ -145,6 +150,11 @@ body.page-contact .header-button { color: var(--white); } /* Mantener botón bla
     border-color: var(--green);
     color: var(--black);
     transform: translateY(-2px);
+}
+
+/* La flecha se vuelve negra en hover, igual que en el header */
+.submit-btn:hover:not(:disabled) .icon-white {
+    filter: brightness(0);
 }
 
 .submit-btn:disabled {
@@ -185,7 +195,7 @@ body.page-contact .header-button { color: var(--white); } /* Mantener botón bla
     margin-bottom: 20px;
 }
 
-/* Ícono corregido (sin el triángulo negro) */
+/* Ícono del correo perfectamente estilizado */
 .info-icon {
     display: inline-flex;
     align-items: center;
@@ -199,8 +209,8 @@ body.page-contact .header-button { color: var(--white); } /* Mantener botón bla
 }
 
 .info-icon svg {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     stroke: currentColor;
     stroke-width: 2;
     fill: none;
@@ -271,7 +281,7 @@ body.page-contact .header-button { color: var(--white); } /* Mantener botón bla
     padding: 16px 28px;
     border-radius: var(--radius-pill);
     font-family: var(--sans);
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -378,7 +388,7 @@ body.page-contact .header-button { color: var(--white); } /* Mantener botón bla
                 <span class="btn-text">Enviar mensaje</span>
                 <span class="spinner"></span>
                 <span class="arrow-icon">
-                    <img src="assets/flechasinfondo.svg" class="icon-white" alt="" style="width: 18px; height: 18px;">
+                    <img src="assets/flechasinfondo.svg" class="icon-white" alt="" style="width: 16px; height: 16px;">
                 </span>
             </button>
         </form>
@@ -407,10 +417,10 @@ body.page-contact .header-button { color: var(--white); } /* Mantener botón bla
 <!-- Info Tarjeta -->
 <div class="contact-info">
     <span class="info-icon">
-        <!-- Ícono de sobre/correo limpio -->
+        <!-- Ícono de sobre/correo perfecto -->
         <svg viewBox="0 0 24 24">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-            <polyline points="22,6 12,13 2,6"></polyline>
+            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+            <path d="m22 7-10 7L2 7"></path>
         </svg>
     </span>
     <h3>¿Cómo contactarnos?</h3>
@@ -468,7 +478,8 @@ body.page-contact .header-button { color: var(--white); } /* Mantener botón bla
 
             const json = await response.json();
 
-            if (!response.ok || !json.success) { // Formsubmit usa "success: true" en su respuesta AJAX
+            // FormSubmit AJAX devuelve { "success": "true" } (como string)
+            if (!response.ok || json.success === "false" || json.success === false) {
                 throw new Error(json.message || 'Error en el envío');
             }
 
