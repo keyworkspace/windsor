@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Windsor · ReIncubadora</title>
+<meta content="ReIncubadora Windsor: Nuestro laboratorio de pruebas. Un programa de diagnóstico e innovación para empresas que necesitan reestructurar su ADN digital." name="description">
+<link href="assets/favicon.png" rel="icon" type="image/png">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="styles.css" rel="stylesheet">
+<style>
+/* =========================================================
+   REINCUBADORA — CSS ESPECÍFICO
+========================================================= */
+
+/* Forzar el fondo del laboratorio (laboratorio.png) */
+.hero-bg-incubator { 
+    background-image: linear-gradient(rgba(10,10,12,0.65), rgba(10,10,12,0.95)), url('assets/laboratorio.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed; 
+}
+
+.pilot-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(49, 224, 131, 0.15);
+    color: var(--green);
+    padding: 6px 14px;
+    border-radius: var(--radius-pill);
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: 1px solid rgba(49, 224, 131, 0.3);
+    margin-bottom: 20px;
+}
+.pilot-badge span {
+    width: 6px; height: 6px; background: var(--green); border-radius: 50%;
+    animation: dotPulse 2s infinite;
+}
+
+.cide-hero-title { max-width: 1100px; }
+.cide-hero-title em { color: var(--blue); display: block; }
+
+/* Tarjetas de Fases del Programa */
+.cide-phases {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-grid);
+    margin-top: 40px;
+}
+.phase-card {
+    background: var(--white);
+    padding: 40px 30px;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.phase-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+.phase-card .phase-num {
+    font-family: var(--sans);
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 20px;
+    display: block;
+}
+.phase-card h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+}
+.phase-card p {
+    font-size: 14px;
+    color: #555550;
+    line-height: 1.6;
+}
+
+/* Sección de Escasez / CTA */
+.cide-apply {
+    background: var(--black);
+    color: var(--white);
+    padding: var(--space-section) 6vw;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.cide-apply::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(0, 109, 255, 0.15) 0%, transparent 60%);
+    pointer-events: none;
+}
+.cide-apply h2 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+.cide-apply h2 em { color: var(--green); }
+.cide-apply p {
+    color: rgba(255,255,255,0.6);
+    max-width: 600px;
+    margin: 0 auto 40px;
+    font-size: 15px;
+    line-height: 1.7;
+    position: relative;
+    z-index: 2;
+}
+.cide-apply .hook-button {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px 32px;
+    background: var(--blue);
+    color: var(--white);
+    border: 1px solid var(--blue);
+    border-radius: var(--radius-pill);
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: background 0.25s, color 0.25s, gap 0.25s;
+}
+.cide-apply .hook-button:hover {
+    background: var(--green);
+    color: var(--black);
+    border-color: var(--green);
+    gap: 22px;
+}
+.cide-apply .hook-button:hover .icon-white {
+    filter: brightness(0);
+}
+</style>
+</head>
+<body class="">
+
+<!-- PRELOADER -->
+<div class="preloader">
+<div class="preloader-logo">W</div>
+<div class="preloader-line"><span></span></div>
+<div class="preloader-text">WINDSOR</div>
+</div>
+
+<!-- HEADER INYECTADO POR LAYOUT.JS -->
+<div id="site-header"></div>
+
+<main>
+
+<!-- HERO -->
+<section class="hero hero-bg-incubator">
+<div class="hero-noise"></div>
+<div class="hero-topline">
+    <span>
+        <img src="assets/corchetesabiertos.svg" class="corchete-icon" alt=""> 
+        REINCUBADORA WINDSOR
+    </span>
+    <span style="display: flex; align-items: center; gap: 10px;">
+        PROGRAMA PILOTO / 2026
+    </span>
+</div>
+<div class="hero-content">
+<div class="hero-small">
+    <span class="pilot-badge"><span></span> Laboratorio de pruebas</span>
+</div>
+<h1 class="cide-hero-title">Reestructuramos tu <em>ADN digital.</em></h1>
+<div class="hero-bottom">
+<p>ReIncubadora es nuestro programa de diagnóstico e innovación. No es una agencia tradicional. Es un laboratorio de alta precisión para empresas que necesitan reinventarse.</p>
+<a class="circle-button" href="#el-proceso">
+    <span>Explorar</span>
+    <strong><img src="assets/flechasinfondo.svg" class="icon-white" alt="" style="width: 24px; height: 24px;"></strong>
+</a>
+</div>
+</div>
+<div class="hero-marquee">
+<div class="marquee-track">
+    <!-- BLOQUE 1 -->
+    <div class="marquee-content">
+        <span>DIAGNÓSTICO PROFUNDO</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>REESTRUCTURACIÓN</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>INNOVACIÓN</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>CUPOS LIMITADOS</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>DIAGNÓSTICO PROFUNDO</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>REESTRUCTURACIÓN</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>INNOVACIÓN</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>CUPOS LIMITADOS</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+    </div>
+    <!-- BLOQUE 2 (DUPLICADO) -->
+    <div class="marquee-content">
+        <span>DIAGNÓSTICO PROFUNDO</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>REESTRUCTURACIÓN</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>INNOVACIÓN</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>CUPOS LIMITADOS</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>DIAGNÓSTICO PROFUNDO</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>REESTRUCTURACIÓN</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>INNOVACIÓN</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>CUPOS LIMITADOS</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- QUÉ ES LA REINCUBADORA -->
+<section class="intro section" id="que-es">
+<div class="section-meta">
+    <span><img src="assets/corchetesabiertos.svg" class="corchete-icon" alt="">01</span>
+    <span>EL LABORATORIO</span>
+</div>
+<div class="intro-layout" data-reveal="">
+<h2>No vendemos personalidades. <span>Vendemos sistemas.</span></h2>
+<div class="intro-copy">
+<p>La ReIncubadora Windsor nace como un programa piloto de intervención profunda. Seleccionamos un número limitado de empresas que estén dispuestas a someterse a una auditoría real de su ADN digital.</p>
+<p>No nos importa quién eres, sino cómo funciona tu negocio. Nuestro equipo (operando bajo estricta confidencialidad y anonimato) desarma tu estructura actual y la vuelve a armar con la precisión de Windsor.</p>
+</div>
+</div>
+</section>
+
+<!-- EL PROCESO -->
+<section class="section" id="el-proceso" style="background:var(--white);">
+<div class="section-meta">
+    <span><img src="assets/corchetesabiertos.svg" class="corchete-icon" alt="">02</span>
+    <span>PROCESO DE INTERVENCIÓN</span>
+</div>
+<div class="container">
+<div class="services-heading" style="padding-top:40px; padding-bottom: 0;">
+<h2>Cuatro fases. <span>Cero improvisación.</span></h2>
+<p>Un método de incubación forzada diseñado para empresas que sienten que su presencia digital se ha quedado obsoleta o estancada.</p>
+</div>
+
+<div class="cide-phases">
+<!-- Fase 1 -->
+<div class="phase-card" data-reveal="">
+<span class="phase-num">01</span>
+<h3>Diagnóstico ADN</h3>
+<p>Analizamos cada capa de tu empresa: desde tu código web hasta tu posicionamiento de marca. Encontramos las fallas estructurales.</p>
+</div>
+<!-- Fase 2 -->
+<div class="phase-card" data-reveal="">
+<span class="phase-num">02</span>
+<h3>Reestructuración</h3>
+<p>Intervenimos la marca. Rediseñamos la arquitectura de la información, el tono de voz y la estética visual. Cortamos lo que no sirve.</p>
+</div>
+<!-- Fase 3 -->
+<div class="phase-card" data-reveal="">
+<span class="phase-num">03</span>
+<h3>Incubación Tecnológica</h3>
+<p>Desarrollamos los activos digitales (web, sistemas, plataformas) utilizando nuestro modelo de "IA + Criterio" para máxima velocidad y precisión.</p>
+</div>
+<!-- Fase 4 -->
+<div class="phase-card" data-reveal="">
+<span class="phase-num">04</span>
+<h3>Despliegue Piloto</h3>
+<p>Lanzamos la nueva versión de tu empresa al mercado. Evaluamos los resultados en tiempo real y refinamos el sistema.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA / POSTULACIÓN -->
+<section class="cide-apply" id="postulacion">
+<div class="container">
+<div class="hero-small" style="justify-content: center;">
+    <span class="green-dot"></span> PROGRAMA PILOTO / CUPOS CERRADOS
+</div>
+<h2>¿Tu empresa necesita <em>renacer?</em></h2>
+<p>La ReIncubadora opera por cohortes trimestrales. Actualmente estamos evaluando postulaciones para el próximo ciclo. Si tu empresa necesita una reestructuración real, inicia el proceso.</p>
+<a class="hook-button" href="contacto.html">
+    Aplicar al Programa
+    <span aria-hidden="true" class="arrow-icon">
+        <img src="assets/flechasinfondo.svg" class="icon-sm icon-white" alt="">
+    </span>
+</a>
+</div>
+</section>
+
+</main>
+
+<!-- FOOTER INYECTADO POR LAYOUT.JS -->
+<div id="site-footer"></div>
+
+<script src="layout.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
