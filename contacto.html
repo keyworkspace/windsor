@@ -1,96 +1,28 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Windsor — Contacto</title>
-<meta content="Ponte en contacto con Windsor. Cuéntanos tu proyecto, idea o consulta." name="description"/>
-<link href="assets/favicon.png" rel="icon" type="image/png"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;family=Open+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="styles.css" rel="stylesheet"/>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Windsor · Contacto</title>
+<meta content="Ponte en contacto con Windsor. Cuéntanos tu proyecto, idea o consulta." name="description">
+<link href="assets/favicon.png" rel="icon" type="image/png">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="styles.css" rel="stylesheet">
 </head>
 <body>
+
+<!-- PRELOADER -->
 <div class="preloader">
 <div class="preloader-logo">W</div>
 <div class="preloader-line"><span></span></div>
 <div class="preloader-text">WINDSOR</div>
-</div><header class="header">
-<a class="logo" href="index.html">
-<img alt="Windsor" class="logo-icon" src="assets/favicon.png"/>
-<span class="logo-name">WINDSOR</span>
-</a>
-<nav class="desktop-nav">
-<ul class="nav-list">
-<li><a href="index.html">Inicio</a></li>
-<li class="dropdown">
-<a href="metodologia.html">Sobre</a>
-<ul class="submenu">
-<li><a href="metodologia.html">Metodología</a></li>
-<li><a href="inspiracion.html">Inspiración</a></li>
-</ul>
-</li>
-<li class="dropdown">
-<a href="cide.html">Servicios</a>
-<ul class="submenu">
-<li><a href="cide.html">CIDE</a></li>
-<li><a href="windsor-one.html">Windsor One</a></li>
-<li><a href="BeQueer.html">BeQueer</a></li>
-</ul>
-</li>
-<li class="dropdown">
-<a href="recomendados.html">Recursos</a>
-<ul class="submenu">
-<li><a href="orientacion-vocacional.html">Orientación</a></li>
-<li><a href="recomendados.html">Recomendados</a></li>
-<li><a href="proyectos.html">Proyectos</a></li>
-</ul>
-</li>
-<li class="dropdown">
-<a href="becas.html">Programas</a>
-<ul class="submenu">
-<li><a href="becas.html">BK2</a></li>
-<li><a href="careers.html">Careers</a></li>
-</ul>
-</li>
-<li><a class="active" href="contacto.html">Contacto</a></li>
-</ul>
-</nav>
-<div class="header-actions">
-<a class="header-button active" href="contacto.html">
-                Hablemos
-                <span aria-hidden="true" class="arrow-icon">
-<svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16">
-<line x1="7" x2="17" y1="17" y2="7"></line>
-<polyline points="7 7 17 7 17 17"></polyline>
-</svg>
-</span>
-</a>
 </div>
-<button aria-expanded="false" aria-label="Abrir menú" class="menu-button"><span></span><span></span></button>
-</header><div class="mobile-menu">
-<div class="mobile-menu-inner">
-<div class="mobile-menu-label">NAVEGACIÓN</div>
-<a href="index.html">Inicio</a>
-<div class="mobile-group-title">Sobre</div>
-<a href="metodologia.html">Metodología</a>
-<a href="inspiracion.html">Inspiración</a>
-<div class="mobile-group-title">Servicios</div>
-<a href="cide.html">CIDE</a>
-<a href="windsor-one.html">Windsor One</a>
-<a href="BeQueer.html">BeQueer</a>
-<div class="mobile-group-title">Recursos</div>
-<a href="orientacion-vocacional.html">Orientación</a>
-<a href="recomendados.html">Recomendados</a>
-<a href="proyectos.html">Proyectos</a>
-<div class="mobile-group-title">Programas</div>
-<a href="becas.html">BK2</a>
-<a href="careers.html">Careers</a>
-<a class="active" href="contacto.html">Contacto</a>
-</div>
-</div>
+
+<!-- HEADER INYECTADO POR LAYOUT.JS -->
+<div id="site-header"></div>
+
 <main class="contact-page-wrapper">
 <div class="contact-grid">
 <div class="contact-form">
@@ -100,135 +32,106 @@
 <div class="form-row">
 <div class="form-group">
 <label for="nombre">Tu nombre</label>
-<input id="nombre" name="nombre" placeholder="ej. María González" required="" type="text"/>
+<input id="nombre" name="nombre" placeholder="ej. María González" required type="text">
 </div>
 <div class="form-group">
 <label for="email">Tu correo</label>
-<input id="email" name="email" placeholder="ej. maria@ejemplo.com" required="" type="email"/>
+<input id="email" name="email" placeholder="ej. maria@ejemplo.com" required type="email">
 </div>
 </div>
 <div class="form-group">
 <label for="asunto">Asunto</label>
-<input id="asunto" name="asunto" placeholder="¿Sobre qué querés hablar?" required="" type="text"/>
+<input id="asunto" name="asunto" placeholder="¿Sobre qué querés hablar?" required type="text">
 </div>
 <div class="form-group">
 <label for="mensaje">Mensaje</label>
-<textarea id="mensaje" name="mensaje" placeholder="Contanos tu idea, proyecto o consulta..." required=""></textarea>
+<textarea id="mensaje" name="mensaje" placeholder="Contanos tu idea, proyecto o consulta..." required></textarea>
 </div>
 <button class="submit-btn" id="submitBtn" type="submit">
 <span class="btn-text">Enviar mensaje</span>
 <span class="spinner"></span>
 <span class="arrow-icon">
-<svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16">
+<svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="16">
 <line x1="7" x2="17" y1="17" y2="7"></line>
 <polyline points="7 7 17 7 17 17"></polyline>
 </svg>
 </span>
 </button>
 </form>
-<div class="success-message" id="successMessage"><svg aria-hidden="true" class="svg-icon svg-check" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="m8 12 3 3 5-6"></path></svg> ¡Mensaje enviado! Te responderemos pronto.</div>
-<div class="error-message" id="errorMessage"><svg aria-hidden="true" class="svg-icon svg-close" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="m9 9 6 6M15 9l-6 6"></path></svg> Hubo un error al enviar el mensaje. Intentá de nuevo más tarde.</div>
+<div class="success-message" id="successMessage"><svg aria-hidden="true" class="svg-icon svg-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="m8 12 3 3 5-6"></path></svg> ¡Mensaje enviado! Te responderemos pronto.</div>
+<div class="error-message" id="errorMessage"><svg aria-hidden="true" class="svg-icon svg-close" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="m9 9 6 6M15 9l-6 6"></path></svg> Hubo un error al enviar el mensaje. Intentá de nuevo más tarde.</div>
 </div>
 <div class="contact-info">
 <h3>¿Cómo contactarnos?</h3>
 <span class="info-icon">
-<svg viewbox="0 0 24 24">
+<svg viewBox="0 0 24 24">
 <path d="M22 2L11 13"></path>
 <path d="M22 2L15 22l-4-9-9-4z"></path>
 </svg>
 </span>
-<p class="info-text"><strong>Este formulario</strong> es el único canal de contacto.<br/>Completalo con tus datos y tu mensaje, y te responderemos lo antes posible.</p>
+<p class="info-text"><strong>Este formulario</strong> es el único canal de contacto.<br>Completalo con tus datos y tu mensaje, y te responderemos lo antes posible.</p>
 </div>
 </div>
-</main><footer class="footer">
-<div class="footer-logo">
-<img alt="Windsor" src="assets/favicon.png" style="width:34px; height:34px; display:block;"/>
-<span>WINDSOR</span>
-</div>
-<div class="footer-groups">
-<div class="footer-group">
-<h4>Sobre</h4>
-<a href="metodologia.html">Metodología</a>
-<a href="inspiracion.html">Inspiración</a>
-</div>
-<div class="footer-group">
-<h4>Servicios</h4>
-<a href="cide.html">CIDE</a>
-<a href="windsor-one.html">Windsor One</a>
-<a href="BeQueer.html">BeQueer</a>
-</div>
-<div class="footer-group">
-<h4>Recursos</h4>
-<a href="orientacion-vocacional.html">Orientación</a>
-<a href="recomendados.html">Recomendados</a>
-<a href="proyectos.html">Proyectos</a>
-</div>
-<div class="footer-group">
-<h4>Programas</h4>
-<a href="becas.html">BK2</a>
-<a href="careers.html">Careers</a>
-</div>
-<div class="footer-group">
-<h4>Contacto</h4>
-<a class="active" href="contacto.html">Contáctanos</a>
-</div>
-</div>
-<div class="footer-tagline">Precisión aplicada.</div>
-</footer>
+</main>
+
+<!-- FOOTER INYECTADO POR LAYOUT.JS -->
+<div id="site-footer"></div>
+
+<script src="layout.js"></script>
 <script src="script.js"></script>
 <script>
-        // Formulario de contacto
-        const form = document.getElementById('contactForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const successMsg = document.getElementById('successMessage');
-        const errorMsg = document.getElementById('errorMessage');
+/* FORMULARIO DE CONTACTO */
+const form = document.getElementById('contactForm');
+const submitBtn = document.getElementById('submitBtn');
+const successMsg = document.getElementById('successMessage');
+const errorMsg = document.getElementById('errorMessage');
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            successMsg.classList.remove('show');
-            errorMsg.classList.remove('show');
+form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    successMsg.classList.remove('show');
+    errorMsg.classList.remove('show');
 
-            const nombre = document.getElementById('nombre').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const asunto = document.getElementById('asunto').value.trim();
-            const mensaje = document.getElementById('mensaje').value.trim();
+    const nombre = document.getElementById('nombre').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const asunto = document.getElementById('asunto').value.trim();
+    const mensaje = document.getElementById('mensaje').value.trim();
 
-            if (!nombre || !email || !asunto || !mensaje) {
-                alert('Por favor, completá todos los campos.');
-                return;
-            }
+    if (!nombre || !email || !asunto || !mensaje) {
+        alert('Por favor, completá todos los campos.');
+        return;
+    }
 
-            submitBtn.classList.add('loading');
-            submitBtn.disabled = true;
+    submitBtn.classList.add('loading');
+    submitBtn.disabled = true;
 
-            const formData = new FormData(form);
+    const formData = new FormData(form);
 
-            fetch(form.action, {
-                method: 'POST',
-                body: formData,
-            })
-            .then(response => response.json())
-            .then(data => {
-                submitBtn.classList.remove('loading');
-                submitBtn.disabled = false;
+    fetch(form.action, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        submitBtn.classList.remove('loading');
+        submitBtn.disabled = false;
 
-                if (data.result === 'success') {
-                    successMsg.classList.add('show');
-                    form.reset();
-                    setTimeout(() => successMsg.classList.remove('show'), 6000);
-                } else {
-                    errorMsg.classList.add('show');
-                    setTimeout(() => errorMsg.classList.remove('show'), 8000);
-                }
-            })
-            .catch(error => {
-                submitBtn.classList.remove('loading');
-                submitBtn.disabled = false;
-                errorMsg.classList.add('show');
-                setTimeout(() => errorMsg.classList.remove('show'), 8000);
-                console.error('Error:', error);
-            });
-        });
-    </script>
+        if (data.result === 'success') {
+            successMsg.classList.add('show');
+            form.reset();
+            setTimeout(() => successMsg.classList.remove('show'), 6000);
+        } else {
+            errorMsg.classList.add('show');
+            setTimeout(() => errorMsg.classList.remove('show'), 8000);
+        }
+    })
+    .catch(error => {
+        submitBtn.classList.remove('loading');
+        submitBtn.disabled = false;
+        errorMsg.classList.add('show');
+        setTimeout(() => errorMsg.classList.remove('show'), 8000);
+        console.error('Error:', error);
+    });
+});
+</script>
 </body>
 </html>
