@@ -708,22 +708,24 @@ body.page-contact .header-actions { display: none; }
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 0; /* Cero espacio entre filas */
 }
 
 .marquee-row {
     display: flex;
     width: max-content;
-    gap: 20px;
+    gap: 0; /* Cero espacio entre cuadros */
 }
 
 /* Animaciones de las filas */
 .marquee-row.row-left {
-    animation: scrollLeft 60s linear infinite;
+    animation: scrollLeft 50s linear infinite;
 }
 .marquee-row.row-right {
-    animation: scrollRight 60s linear infinite;
+    animation: scrollRight 50s linear infinite;
 }
+
+/* NO HAY :hover PAUSE, el movimiento es constante */
 
 @keyframes scrollLeft {
     0% { transform: translateX(0); }
@@ -736,15 +738,16 @@ body.page-contact .header-actions { display: none; }
 
 /* Estilos de los cuadros */
 .marquee-box {
-    width: 300px;
-    height: 300px;
-    flex: 0 0 300px;
-    padding: 30px;
+    width: 280px;
+    height: 280px;
+    flex: 0 0 280px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     text-decoration: none;
     position: relative;
+    box-sizing: border-box;
 }
 
 /* Cuadro Vacío (Blanco) */
@@ -759,15 +762,10 @@ body.page-contact .header-actions { display: none; }
     filter: grayscale(100%) contrast(1.1);
 }
 
-/* Cuadro de Texto */
-.marquee-box.text-box {
-    transition: background 0.3s ease;
-}
-
 .marquee-box .box-category {
     font-family: var(--sans);
-    font-size: 10px;
-    font-weight: 700;
+    font-size: 9px;
+    font-weight: 800;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     margin-bottom: 15px;
@@ -776,31 +774,31 @@ body.page-contact .header-actions { display: none; }
 
 .marquee-box h3 {
     font-family: var(--sans);
-    font-size: 26px;
+    font-size: 22px; /* Más chico para que encaje */
     font-weight: 800;
-    line-height: 1.1;
+    line-height: 1.15;
     letter-spacing: -0.03em;
-    margin-bottom: auto; /* Empuja el contenido hacia arriba */
+    margin-bottom: auto;
 }
 
 .marquee-box .box-bottom {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .marquee-box .box-link-text {
     font-family: var(--sans);
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
 }
 
 /* La flecha (SVG nativo) */
 .marquee-box .arrow-svg {
-    width: 24px;
-    height: 24px;
-    transform: rotate(45deg); /* Apunta a la esquina */
+    width: 22px;
+    height: 22px;
+    transform: rotate(45deg); /* Apunta a la esquina (por defecto) */
     transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -816,10 +814,13 @@ body.page-contact .header-actions { display: none; }
 .box-purple { background: var(--purple); color: var(--text-dark); }
 .box-black { background: var(--black); color: var(--text-dark); }
 
-/* Responsive */
+/* Responsive (achicamos un poco en tablets y celus) */
 @media (max-width: 800px) {
-    .marquee-box { width: 220px; height: 220px; flex: 0 0 220px; padding: 20px; }
-    .marquee-box h3 { font-size: 20px; }
-    .marquee-box .box-category { font-size: 8px; }
+    .marquee-box { width: 240px; height: 240px; flex: 0 0 240px; padding: 20px; }
+    .marquee-box h3 { font-size: 18px; }
     .marquee-box .box-link-text { font-size: 10px; }
+}
+@media (max-width: 520px) {
+    .marquee-box { width: 200px; height: 200px; flex: 0 0 200px; padding: 16px; }
+    .marquee-box h3 { font-size: 16px; }
 }
