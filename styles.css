@@ -738,10 +738,10 @@ body.page-contact .header-actions { display: none; }
 
 /* Estilos de los cuadros */
 .marquee-box {
-    width: 280px;
-    height: 280px;
-    flex: 0 0 280px;
-    padding: 24px;
+    width: 264px;
+    height: 233px;
+    flex: 0 0 264px;
+    padding: 20px; /* Reduje un poco el padding para que quepa bien el texto */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
