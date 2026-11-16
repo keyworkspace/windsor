@@ -10,135 +10,6 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="styles.css" rel="stylesheet">
-<style>
-/* =========================================================
-   REINCUBADORA — CSS ESPECÍFICO
-========================================================= */
-
-/* Forzar el fondo del laboratorio (laboratorio.png) */
-.hero-bg-incubator { 
-    background-image: linear-gradient(rgba(10,10,12,0.65), rgba(10,10,12,0.95)), url('assets/laboratorio.png'); 
-    background-size: cover; 
-    background-position: center; 
-    background-attachment: fixed; 
-}
-
-.pilot-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(49, 224, 131, 0.15);
-    color: var(--green);
-    padding: 6px 14px;
-    border-radius: var(--radius-pill);
-    font-family: var(--sans);
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    border: 1px solid rgba(49, 224, 131, 0.3);
-    margin-bottom: 20px;
-}
-.pilot-badge span {
-    width: 6px; height: 6px; background: var(--green); border-radius: 50%;
-    animation: dotPulse 2s infinite;
-}
-
-.cide-hero-title { max-width: 1100px; }
-.cide-hero-title em { color: var(--blue); display: block; }
-
-/* Tarjetas de Fases del Programa */
-.cide-phases {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--space-grid);
-    margin-top: 40px;
-}
-.phase-card {
-    background: var(--white);
-    padding: 40px 30px;
-    border-radius: var(--radius);
-    border: 1px solid var(--line);
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-.phase-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-}
-.phase-card .phase-num {
-    font-family: var(--sans);
-    font-size: 3rem;
-    font-weight: 900;
-    color: var(--cream);
-    line-height: 1;
-    margin-bottom: 20px;
-    display: block;
-}
-.phase-card h3 {
-    font-size: 20px;
-    margin-bottom: 12px;
-    letter-spacing: -0.02em;
-}
-.phase-card p {
-    font-size: 14px;
-    color: #555550;
-    line-height: 1.6;
-}
-
-/* Sección de Escasez / CTA (Fondo negro sólido, sin brillos) */
-.cide-apply {
-    background: var(--black);
-    color: var(--white);
-    padding: var(--space-section) 6vw;
-    text-align: center;
-}
-.cide-apply h2 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    line-height: 0.9;
-    letter-spacing: -0.05em;
-    margin-bottom: 20px;
-}
-.cide-apply h2 em { color: var(--green); }
-.cide-apply p {
-    color: rgba(255,255,255,0.6);
-    max-width: 600px;
-    margin: 0 auto 40px;
-    font-size: 15px;
-    line-height: 1.7;
-}
-
-/* Botón aplicando los estilos nativos exactos */
-.cide-apply .hook-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    padding: 18px 32px;
-    background: var(--blue);
-    color: var(--white);
-    border: 1px solid var(--blue);
-    border-radius: var(--radius-pill);
-    font-family: var(--sans);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    transition: background 0.25s ease, color 0.25s ease, gap 0.25s ease;
-}
-
-.cide-apply .hook-button:hover {
-    background: var(--green);
-    border-color: var(--green);
-    color: var(--black);
-    gap: 22px; /* Solo se expande el espacio interno, sin mover el botón */
-}
-
-.cide-apply .hook-button:hover .icon-white {
-    filter: brightness(0);
-}
-</style>
 </head>
 <body class="">
 
@@ -269,7 +140,7 @@
 <div class="hero-small" style="justify-content: center; margin-bottom: 30px;">
     <span class="green-dot"></span> PROGRAMA PILOTO / COHORTE 2026
 </div>
-<h2>¿Tu empresa necesita <em>renacer?</em></h2>
+<h2><img src="assets/corchetesabiertos.svg" class="corchete-icon" alt=""> ¿Tu empresa necesita <em>renacer?</em></h2>
 <p>La ReIncubadora opera por cohortes trimestrales. Actualmente estamos evaluando postulaciones para el próximo ciclo. Si tu empresa necesita una reestructuración real, inicia el proceso.</p>
 <a class="hook-button" href="contacto.html">
     Aplicar al Programa
