@@ -382,7 +382,7 @@ section { scroll-margin-top:82px; }
 .icon-green { filter: invert(72%) sepia(52%) saturate(476%) hue-rotate(83deg) brightness(95%) contrast(92%); }
 
 .corchete-icon { display: inline-block; height: 1.4em; width: auto; vertical-align: middle; margin-right: 12px; margin-left: 0; opacity: 0.8; filter: brightness(0); }
-.section-dark .corchete-icon, .seed-side .corchete-icon, .cide-link .corchete-icon, .hero .corchete-icon, .contact .corchete-icon, .metodologia-hero .corchete-icon { filter: brightness(0) invert(1); }
+.section-dark .corchete-icon, .seed-side .corchete-icon, .cide-link .corchete-icon, .hero .corchete-icon, .contact .corchete-icon, .cide-apply .corchete-icon, .metodologia-hero .corchete-icon, .cta-rainbow .corchete-icon { filter: brightness(0) invert(1); }
 
 .svg-icon { display: inline-block; width: 1em; height: 1em; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; vertical-align: middle; }
 .svg-arrow { width: 1.12em; height: 1.12em; }
