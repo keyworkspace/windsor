@@ -762,7 +762,9 @@ body.page-contact .header-actions { display: none; }
     transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.marquee-box:hover .arrow-svg {
+/* Efecto Hover por columna y normal */
+.marquee-box:hover .arrow-svg,
+.marquee-box.column-hover .arrow-svg {
     transform: rotate(0deg);
 }
 
