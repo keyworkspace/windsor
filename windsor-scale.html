@@ -78,12 +78,12 @@
     color: #555;
     line-height: 1.6;
     margin-bottom: 30px;
-    flex: 1;
+    /* Se ha eliminado flex: 1 para que la lista suba */
 }
 .scale-card.highlight p.desc { color: rgba(255,255,255,0.7); }
 .scale-card ul {
     list-style: none;
-    margin-bottom: 30px;
+    margin-bottom: 0; /* Margen inferior 0 para que la lista fluya hacia abajo */
 }
 .scale-card li {
     font-family: var(--body);
