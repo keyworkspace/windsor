@@ -367,5 +367,49 @@
 
 <script src="layout.js"></script>
 <script src="script.js"></script>
+
+<!-- SCRIPT PARA EL EFECTO DE COLUMNA EN EL MARQUEE -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const marqueeSection = document.querySelector('.marquee-section');
+    if (marqueeSection) {
+        const allBoxes = Array.from(document.querySelectorAll('.marquee-box'));
+        
+        const clearHoveredColumns = () => {
+            allBoxes.forEach(box => box.classList.remove('column-hover'));
+        };
+
+        marqueeSection.addEventListener('mousemove', (e) => {
+            clearHoveredColumns();
+            
+            let hoveredBox = null;
+            for (let box of allBoxes) {
+                const rect = box.getBoundingClientRect();
+                if (e.clientX >= rect.left && e.clientX <= rect.right && 
+                    e.clientY >= rect.top && e.clientY <= rect.bottom) {
+                    hoveredBox = box;
+                    break;
+                }
+            }
+
+            if (hoveredBox) {
+                const rect = hoveredBox.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+
+                allBoxes.forEach(box => {
+                    const boxRect = box.getBoundingClientRect();
+                    const boxCenterX = boxRect.left + boxRect.width / 2;
+                    // Si están en la misma columna (misma X) con un margen de error
+                    if (Math.abs(centerX - boxCenterX) < 10) {
+                        box.classList.add('column-hover');
+                    }
+                });
+            }
+        });
+
+        marqueeSection.addEventListener('mouseleave', clearHoveredColumns);
+    }
+});
+</script>
 </body>
 </html>
