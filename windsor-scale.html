@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Windsor Scale · Evolución Continua</title>
+<meta content="Windsor Scale: Suscripción de élite para mantener, optimizar y escalar tu producto digital. Tu departamento de tecnología y diseño, sin contratar personal." name="description">
+<link href="assets/favicon.png" rel="icon" type="image/png">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="styles.css" rel="stylesheet">
+<style>
+/* =========================================================
+   WINDSOR SCALE — CSS ESPECÍFICO
+========================================================= */
+.hero-bg-scale { 
+    background-image: linear-gradient(rgba(10,10,12,0.65), rgba(10,10,12,0.95)), url('assets/tech.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed; 
+}
+
+/* Grid de Niveles */
+.scale-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+}
+.scale-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+.scale-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    border-color: var(--blue);
+}
+.scale-card.highlight {
+    background: var(--black);
+    color: var(--white);
+    border-color: var(--black);
+}
+.scale-card.highlight:hover {
+    box-shadow: 0 20px 40px rgba(10,10,12,0.3);
+}
+.scale-card .level {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--blue);
+    margin-bottom: 15px;
+    display: block;
+}
+.scale-card.highlight .level { color: var(--green); }
+.scale-card h3 {
+    font-family: var(--sans);
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 15px;
+}
+.scale-card p.desc {
+    font-family: var(--body);
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    flex: 1;
+}
+.scale-card.highlight p.desc { color: rgba(255,255,255,0.7); }
+.scale-card ul {
+    list-style: none;
+    margin-bottom: 30px;
+}
+.scale-card li {
+    font-family: var(--body);
+    font-size: 14px;
+    color: #444;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+.scale-card.highlight li {
+    color: rgba(255,255,255,0.85);
+    border-bottom-color: rgba(255,255,255,0.1);
+}
+.scale-card li::before {
+    content: "→";
+    color: var(--blue);
+    font-weight: bold;
+}
+.scale-card.highlight li::before { color: var(--green); }
+
+/* Responsive */
+@media (max-width: 900px) {
+    .scale-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body class="">
+
+<!-- PRELOADER -->
+<div class="preloader">
+<div class="preloader-logo">W</div>
+<div class="preloader-line"><span></span></div>
+<div class="preloader-text">WINDSOR</div>
+</div>
+
+<!-- HEADER INYECTADO POR LAYOUT.JS -->
+<div id="site-header"></div>
+
+<main>
+
+<!-- HERO -->
+<section class="hero hero-bg-scale">
+<div class="hero-noise"></div>
+<div class="hero-topline">
+    <span>
+        <img src="assets/corchetesabiertos.svg" class="corchete-icon" alt=""> 
+        WINDSOR SCALE
+    </span>
+    <span style="display: flex; align-items: center; gap: 10px;">
+        SUSCRIPCIÓN / 2026
+    </span>
+</div>
+<div class="hero-content">
+<div class="hero-small">
+    <span class="green-dot"></span>
+    MANTENIMIENTO · OPTIMIZACIÓN · EVOLUCIÓN
+</div>
+<h1>El sistema no <em>se detiene.</em></h1>
+<div class="hero-bottom">
+<p>Las agencias tradicionales construyen, entregan y se van. Windsor Scale es nuestro modelo de suscripción mensual para empresas que no pueden permitirse el lujo de estancarse.</p>
+<a class="circle-button" href="#niveles">
+    <span>Explorar</span>
+    <strong><img src="assets/flechasinfondo.svg" class="icon-white" alt="" style="width: 24px; height: 24px;"></strong>
+</a>
+</div>
+</div>
+<div class="hero-marquee">
+<div class="marquee-track">
+    <!-- BLOQUE 1 -->
+    <div class="marquee-content">
+        <span>MANTENIMIENTO CONTINUO</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>AUDITORÍAS MENSUALES</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>SOPORTE PRIORITARIO</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>OPTIMIZACIÓN UX</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>MANTENIMIENTO CONTINUO</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>AUDITORÍAS MENSUALES</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>SOPORTE PRIORITARIO</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>OPTIMIZACIÓN UX</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+    </div>
+    <!-- BLOQUE 2 (DUPLICADO) -->
+    <div class="marquee-content">
+        <span>MANTENIMIENTO CONTINUO</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>AUDITORÍAS MENSUALES</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>SOPORTE PRIORITARIO</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>OPTIMIZACIÓN UX</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>MANTENIMIENTO CONTINUO</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>AUDITORÍAS MENSUALES</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>SOPORTE PRIORITARIO</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+        <span>OPTIMIZACIÓN UX</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- INTRO -->
+<section class="intro section" id="que-es">
+<div class="section-meta">
+    <span><img src="assets/corchetesabiertos.svg" class="corchete-icon" alt="">01</span>
+    <span>EL PROBLEMA DEL ABANDONO</span>
+</div>
+<div class="intro-layout" data-reveal="">
+<h2>Entregar un proyecto <span>es solo el principio.</span></h2>
+<div class="intro-copy">
+<p>El mercado cambia, los algoritmos se actualizan, los usuarios evolucionan y la seguridad se vuelve obsoleta. Quedarse quieto es retroceder.</p>
+<p>Windsor Scale es un modelo de suscripción exclusivo. No cobramos por "horas de trabajo", cobramos por mantener tu sistema operando al máximo rendimiento. Es tu departamento de tecnología y diseño, sin la carga de contratar personal.</p>
+</div>
+</div>
+</section>
+
+<!-- NIVELES DE OPERACIÓN -->
+<section class="section" id="niveles" style="background:var(--cream);">
+<div class="section-meta">
+    <span><img src="assets/corchetesabiertos.svg" class="corchete-icon" alt="">02</span>
+    <span>NIVELES DE OPERACIÓN</span>
+</div>
+<div class="container">
+<div class="services-heading" style="padding-top:40px; padding-bottom: 0;">
+<h2>Elegí tu nivel <span>de escalabilidad.</span></h2>
+<p>Diseñamos tres niveles de suscripción adaptados al tamaño y la ambición de tu empresa.</p>
+</div>
+
+<div class="scale-grid">
+<!-- Nivel 1 -->
+<div class="scale-card" data-reveal="">
+<span class="level">NIVEL 01</span>
+<h3>Vigilancia</h3>
+<p class="desc">Para empresas que necesitan que su sitio web o aplicación funcione sin fallos, esté seguro y actualizado.</p>
+<ul>
+    <li>Monitoreo de caídas 24/7</li>
+    <li>Backups de seguridad semanales</li>
+    <li>Actualización de dependencias y parches</li>
+    <li>Soporte técnico prioritario (48hs)</li>
+</ul>
+</div>
+<!-- Nivel 2 -->
+<div class="scale-card highlight" data-reveal="">
+<span class="level">NIVEL 02</span>
+<h3>Optimización</h3>
+<p class="desc">Para empresas que ya tienen tráfico y necesitan mejorar sus tasas de conversión y experiencia de usuario.</p>
+<ul>
+    <li>Todo lo del Nivel 01</li>
+    <li>Auditoría UX/UI mensual</li>
+    <li>Tests A/B en landing pages</li>
+    <li>Optimización de velocidad y SEO técnico</li>
+    <li>Soporte prioritario (24hs)</li>
+</ul>
+</div>
+<!-- Nivel 3 -->
+<div class="scale-card" data-reveal="">
+<span class="level">NIVEL 03</span>
+<h3>Vanguardia</h3>
+<p class="desc">Para proyectos ambiciosos que necesitan desarrollo continuo e integración de nuevas tecnologías.</p>
+<ul>
+    <li>Todo lo del Nivel 02</li>
+    <li>Desarrollo de nuevas funcionalidades</li>
+    <li>Integración de soluciones con IA</li>
+    <li>Estrategia de producto continua</li>
+    <li>Soporte dedicado (tiempo real)</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- METODOLOGÍA (CÓMO FUNCIONA) -->
+<section class="method section" id="proceso">
+<div class="section-meta">
+    <span><img src="assets/corchetesabiertos.svg" class="corchete-icon" alt="">03</span>
+    <span>EL CICLO SCALE</span>
+</div>
+<div class="method-heading">
+<h2>Un ciclo <em>que nunca se detiene.</em></h2>
+<p>Nuestro método de suscripción no es reactivo, es proactivo. Siempre estamos un paso adelante.</p>
+</div>
+<div class="method-list">
+<div class="method-row" data-reveal="">
+    <span>01</span>
+    <div><h3>Auditar</h3><p>Al inicio de cada mes, analizamos métricas, velocidad, seguridad y comportamiento del usuario.</p></div>
+    <b aria-hidden="true" class="arrow-icon"><img src="assets/flechacircular.svg" alt="" style="width: 24px; height: 24px;"></b>
+</div>
+<div class="method-row" data-reveal="">
+    <span>02</span>
+    <div><h3>Priorizar</h3><p>Identificamos los cuellos de botella y definimos las mejoras de mayor impacto para ese mes.</p></div>
+    <b aria-hidden="true" class="arrow-icon"><img src="assets/flechacircular.svg" alt="" style="width: 24px; height: 24px;"></b>
+</div>
+<div class="method-row" data-reveal="">
+    <span>03</span>
+    <div><h3>Ejecutar</h3><p>Nuestro equipo técnico aplica las mejoras, parches y desarrollos sin interrumpir tu operación.</p></div>
+    <b aria-hidden="true" class="arrow-icon"><img src="assets/flechacircular.svg" alt="" style="width: 24px; height: 24px;"></b>
+</div>
+<div class="method-row" data-reveal="">
+    <span>04</span>
+    <div><h3>Reportar</h3><p>Recibes un dashboard con el detalle de lo realizado y los resultados obtenidos en el mes.</p></div>
+    <b aria-hidden="true" class="arrow-icon"><img src="assets/flechacircular.svg" alt="" style="width: 24px; height: 24px;"></b>
+</div>
+</div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cide-link section">
+<div class="container">
+<h2><img src="assets/corchetesabiertos.svg" class="corchete-icon" alt=""> ¿Tu sistema necesita <span>escalar?</span></h2>
+<p>Agenda una auditoría inicial con nuestro equipo. Evaluaremos el estado actual de tu producto digital y te recomendaremos el nivel de suscripción adecuado.</p>
+<a class="hook-button" href="contacto.html">Solicitar Diagnóstico <span aria-hidden="true" class="arrow-icon"><img src="assets/flechasinfondo.svg" class="icon-sm icon-white" alt=""></span></a>
+</div>
+</section>
+
+</main>
+
+<!-- FOOTER INYECTADO POR LAYOUT.JS -->
+<div id="site-footer"></div>
+
+<script src="layout.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
