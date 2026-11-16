@@ -702,7 +702,7 @@ body.page-contact .header-actions { display: none; }
     display: flex;
     width: max-content;
     gap: 0;
-    animation: scrollLeft 60s linear infinite; /* Todas las filas giran a la izquierda */
+    animation: scrollLeft 60s linear infinite;
 }
 
 @keyframes scrollLeft {
@@ -731,16 +731,6 @@ body.page-contact .header-actions { display: none; }
     background-size: cover;
     background-position: center;
     filter: grayscale(100%) contrast(1.1);
-}
-
-.marquee-box .box-category {
-    font-family: var(--sans);
-    font-size: 9px;
-    font-weight: 400; /* Texto normal */
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-    opacity: 0.7;
 }
 
 .marquee-box h3 {
