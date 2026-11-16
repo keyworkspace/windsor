@@ -15,7 +15,6 @@
 <a href="metodologia.html">Sobre</a>
 <ul class="submenu">
 <li><a href="metodologia.html">Metodología</a></li>
-<li><a href="transparencia.html">Transparencia</a></li>
 </ul>
 </li>
 <li class="dropdown">
@@ -44,7 +43,6 @@ Hablemos
 <a href="index.html">Inicio</a>
 <div class="mobile-group-title">Sobre</div>
 <a href="metodologia.html">Metodología</a>
-<a href="transparencia.html">Transparencia</a>
 <div class="mobile-group-title">Servicios</div>
 <a href="windsor-one.html">Windsor One</a>
 <a href="BeQueer.html">BeQueer</a>
@@ -67,7 +65,7 @@ Hablemos
 <div class="footer-group">
 <h4>Sobre</h4>
 <a href="metodologia.html">Metodología</a>
-<a href="transparencia.html">Transparencia</a>
+<a href="transparencia.html">Términos y Transparencia</a>
 </div>
 <div class="footer-group">
 <h4>Servicios</h4>
