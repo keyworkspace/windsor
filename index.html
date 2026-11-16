@@ -16,16 +16,16 @@
 ========================================================= */
 .ecosystem-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
     max-width: var(--max-width);
     margin: 40px auto 0;
 }
 .ecosystem-card {
     background: var(--white);
     border: 1px solid var(--line);
-    border-radius: var(--radius-sm);
-    padding: 30px;
+    border-radius: var(--radius);
+    padding: 40px;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -52,57 +52,76 @@
 .ecosystem-card:hover::after {
     width: 100%;
 }
+.ecosystem-card.full-width {
+    grid-column: 1 / -1;
+}
 .ecosystem-card .eco-tag {
     font-family: var(--sans);
-    font-size: 9px;
+    font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.15em;
     color: var(--blue);
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     text-transform: uppercase;
 }
 .ecosystem-card h3 {
     font-family: var(--sans);
-    font-size: 20px;
+    font-size: 28px;
     font-weight: 800;
-    margin-bottom: 10px;
-    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    letter-spacing: -0.03em;
+}
+.ecosystem-card.full-width h3 {
+    font-size: 36px;
 }
 .ecosystem-card p {
     font-family: var(--body);
-    font-size: 14px;
+    font-size: 15px;
     color: #555;
-    line-height: 1.6;
-    margin-bottom: 25px;
+    line-height: 1.7;
+    margin-bottom: 30px;
     flex: 1;
+    max-width: 600px;
 }
+
+/* Botón con la animación nativa de la marca */
 .ecosystem-card .eco-btn {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
+    padding: 13px 20px;
+    background: var(--blue);
+    color: var(--white);
+    border: 1px solid var(--blue);
+    border-radius: var(--radius-pill);
     font-family: var(--sans);
     font-size: 9px;
     font-weight: 700;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--black);
-    transition: color 0.3s ease, gap 0.3s ease;
+    width: fit-content;
+    transition: background 0.25s ease, color 0.25s ease, gap 0.25s ease, padding 0.25s ease;
 }
 .ecosystem-card:hover .eco-btn {
-    color: var(--blue);
-    gap: 15px;
+    background: var(--green);
+    border-color: var(--green);
+    color: var(--black);
+    gap: 22px;
+    padding-right: 24px;
 }
-
-/* Hacer que la primera tarjeta (Windsor One) ocupe 2 columnas en desktop */
-.ecosystem-card.span-2 {
-    grid-column: span 2;
+.ecosystem-card .eco-btn img {
+    transition: transform 0.25s ease, filter 0.25s ease;
 }
-.ecosystem-card.span-2 h3 { font-size: 26px; }
+.ecosystem-card:hover .eco-btn img {
+    filter: brightness(0); /* Flecha a negro */
+    transform: translateX(4px);
+}
 
 /* Responsive */
 @media (max-width: 900px) {
-    .ecosystem-grid { grid-template-columns: 1fr; }
-    .ecosystem-card.span-2 { grid-column: span 1; }
+    .ecosystem-grid { grid-template-columns: 1fr; gap: 20px; }
+    .ecosystem-card { padding: 30px; }
+    .ecosystem-card.full-width h3 { font-size: 28px; }
 }
 </style>
 </head>
@@ -302,7 +321,7 @@
 </div>
 </section>
 
-<!-- EL ECOSISTEMA WINDSOR (REEMPLAZA LA PROMO ÚNICA DE WINDSOR ONE) -->
+<!-- EL ECOSISTEMA WINDSOR -->
 <section class="section" id="ecosistema" style="background:var(--white);">
 <div class="section-meta">
     <span><img src="assets/corchetesabiertos.svg" class="corchete-icon" alt="">05</span>
@@ -316,11 +335,11 @@
 
 <div class="ecosystem-grid">
     <!-- Windsor One -->
-    <a href="windsor-one.html" class="ecosystem-card span-2" data-reveal="">
+    <a href="windsor-one.html" class="ecosystem-card full-width" data-reveal="">
         <span class="eco-tag">Producto Digital</span>
         <h3>Windsor One</h3>
         <p>Tu portafolio profesional a medida. Diseño personalizado, sin plantillas, entregado en tiempo récord para que tu talento destaque.</p>
-        <span class="eco-btn">Ver más <img src="assets/flechasinfondo.svg" class="icon-sm icon-black" alt=""></span>
+        <span class="eco-btn">Ver más <img src="assets/flechasinfondo.svg" class="icon-black" alt="" style="width: 14px; height: 14px;"></span>
     </a>
 
     <!-- Windsor Scale -->
@@ -328,7 +347,7 @@
         <span class="eco-tag">Suscripción</span>
         <h3>Windsor Scale</h3>
         <p>El sistema no se detiene. Mantenimiento, optimización y evolución continua para tu producto digital.</p>
-        <span class="eco-btn">Ver más <img src="assets/flechasinfondo.svg" class="icon-sm icon-black" alt=""></span>
+        <span class="eco-btn">Ver más <img src="assets/flechasinfondo.svg" class="icon-black" alt="" style="width: 14px; height: 14px;"></span>
     </a>
 
     <!-- ReIncubadora -->
@@ -336,7 +355,7 @@
         <span class="eco-tag">Programa Piloto</span>
         <h3>ReIncubadora</h3>
         <p>Nuestro laboratorio de pruebas. Un programa de diagnóstico e innovación para empresas que necesitan reestructurar su ADN.</p>
-        <span class="eco-btn">Ver más <img src="assets/flechasinfondo.svg" class="icon-sm icon-black" alt=""></span>
+        <span class="eco-btn">Ver más <img src="assets/flechasinfondo.svg" class="icon-black" alt="" style="width: 14px; height: 14px;"></span>
     </a>
 
     <!-- BeQueer -->
@@ -344,7 +363,7 @@
         <span class="eco-tag">Comunidad</span>
         <h3>BeQueer</h3>
         <p>Diseño y tecnología con identidad. Branding inclusivo y desarrollo seguro para la comunidad LGBTQ+ y sus aliados.</p>
-        <span class="eco-btn">Ver más <img src="assets/flechasinfondo.svg" class="icon-sm icon-black" alt=""></span>
+        <span class="eco-btn">Ver más <img src="assets/flechasinfondo.svg" class="icon-black" alt="" style="width: 14px; height: 14px;"></span>
     </a>
 
     <!-- Bolsa de Talento -->
@@ -352,7 +371,7 @@
         <span class="eco-tag">Red</span>
         <h3>Bolsa de Talento</h3>
         <p>Curaduría de élite. Conectamos clientes con profesionales verificados para ejecutar proyectos con precisión.</p>
-        <span class="eco-btn">Ver más <img src="assets/flechasinfondo.svg" class="icon-sm icon-black" alt=""></span>
+        <span class="eco-btn">Ver más <img src="assets/flechasinfondo.svg" class="icon-black" alt="" style="width: 14px; height: 14px;"></span>
     </a>
 </div>
 
