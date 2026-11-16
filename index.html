@@ -10,120 +10,6 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="styles.css" rel="stylesheet">
-<style>
-/* =========================================================
-   ECOSISTEMA WINDSOR (SECCIÓN NUEVA EN EL INDEX)
-========================================================= */
-.ecosystem-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    max-width: var(--max-width);
-    margin: 40px auto 0;
-}
-.ecosystem-card {
-    background: var(--white);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
-    text-decoration: none;
-    color: var(--black);
-}
-.ecosystem-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
-    border-color: var(--blue);
-}
-.ecosystem-card::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 4px;
-    width: 0%;
-    background: var(--blue);
-    transition: width 0.4s ease;
-}
-.ecosystem-card:hover::after {
-    width: 100%;
-}
-.ecosystem-card.full-width {
-    grid-column: 1 / -1;
-}
-.ecosystem-card .eco-tag {
-    font-family: var(--sans);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    color: var(--blue);
-    margin-bottom: 16px;
-    text-transform: uppercase;
-}
-.ecosystem-card h3 {
-    font-family: var(--sans);
-    font-size: 28px;
-    font-weight: 800;
-    margin-bottom: 12px;
-    letter-spacing: -0.03em;
-}
-.ecosystem-card.full-width h3 {
-    font-size: 36px;
-}
-.ecosystem-card p {
-    font-family: var(--body);
-    font-size: 15px;
-    color: #555;
-    line-height: 1.7;
-    margin-bottom: 30px;
-    flex: 1;
-    max-width: 600px;
-}
-
-/* Botón con la animación nativa de la marca */
-.ecosystem-card .eco-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 15px;
-    padding: 13px 20px;
-    background: var(--blue);
-    color: var(--white);
-    border: 1px solid var(--blue);
-    border-radius: var(--radius-pill);
-    font-family: var(--sans);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    width: fit-content;
-    transition: background 0.25s ease, color 0.25s ease, gap 0.25s ease, padding 0.25s ease;
-}
-.ecosystem-card:hover .eco-btn {
-    background: var(--green);
-    border-color: var(--green);
-    color: var(--black);
-    gap: 22px;
-    padding-right: 24px;
-}
-.ecosystem-card .eco-btn img {
-    transition: transform 0.25s ease, filter 0.25s ease;
-}
-.ecosystem-card:hover .eco-btn img {
-    filter: brightness(0); /* Flecha a negro */
-    transform: translateX(4px);
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-    .ecosystem-grid { grid-template-columns: 1fr; gap: 20px; }
-    .ecosystem-card { padding: 30px; }
-    .ecosystem-card.full-width h3 { font-size: 28px; }
-}
-</style>
 </head>
 <body class="">
 
@@ -171,7 +57,6 @@
 </div>
 <div class="hero-marquee">
 <div class="marquee-track">
-    <!-- BLOQUE 1 -->
     <div class="marquee-content">
         <span>ESTRATEGIA</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
         <span>DISEÑO</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
@@ -182,7 +67,6 @@
         <span>TECNOLOGÍA</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
         <span>INNOVACIÓN</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
     </div>
-    <!-- BLOQUE 2 (DUPLICADO) -->
     <div class="marquee-content">
         <span>ESTRATEGIA</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
         <span>DISEÑO</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
@@ -268,7 +152,6 @@
 <!-- STATEMENT MARQUEE -->
 <div class="statement-marquee">
 <div class="statement-track">
-    <!-- BLOQUE 1 -->
     <div class="statement-content">
         <span>NO PLANTILLAS.</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
         <span>NO ATAJOS.</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
@@ -277,7 +160,6 @@
         <span>NO ATAJOS.</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
         <span>PRECISIÓN APLICADA.</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
     </div>
-    <!-- BLOQUE 2 (DUPLICADO) -->
     <div class="statement-content">
         <span>NO PLANTILLAS.</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
         <span>NO ATAJOS.</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
@@ -334,44 +216,39 @@
 </div>
 
 <div class="ecosystem-grid">
-    <!-- Windsor One -->
     <a href="windsor-one.html" class="ecosystem-card full-width" data-reveal="">
         <span class="eco-tag">Producto Digital</span>
         <h3>Windsor One</h3>
         <p>Tu portafolio profesional a medida. Diseño personalizado, sin plantillas, entregado en tiempo récord para que tu talento destaque.</p>
-        <span class="eco-btn">Ver más <img src="assets/flechasinfondo.svg" class="icon-black" alt="" style="width: 14px; height: 14px;"></span>
+        <span class="eco-btn">Ver más <img src="assets/flechasinfondo.svg" class="icon-white" alt="" style="width: 14px; height: 14px;"></span>
     </a>
 
-    <!-- Windsor Scale -->
     <a href="windsor-scale.html" class="ecosystem-card" data-reveal="">
         <span class="eco-tag">Suscripción</span>
         <h3>Windsor Scale</h3>
         <p>El sistema no se detiene. Mantenimiento, optimización y evolución continua para tu producto digital.</p>
-        <span class="eco-btn">Ver más <img src="assets/flechasinfondo.svg" class="icon-black" alt="" style="width: 14px; height: 14px;"></span>
+        <span class="eco-btn">Ver más <img src="assets/flechasinfondo.svg" class="icon-white" alt="" style="width: 14px; height: 14px;"></span>
     </a>
 
-    <!-- ReIncubadora -->
     <a href="reincubadora.html" class="ecosystem-card" data-reveal="">
         <span class="eco-tag">Programa Piloto</span>
         <h3>ReIncubadora</h3>
         <p>Nuestro laboratorio de pruebas. Un programa de diagnóstico e innovación para empresas que necesitan reestructurar su ADN.</p>
-        <span class="eco-btn">Ver más <img src="assets/flechasinfondo.svg" class="icon-black" alt="" style="width: 14px; height: 14px;"></span>
+        <span class="eco-btn">Ver más <img src="assets/flechasinfondo.svg" class="icon-white" alt="" style="width: 14px; height: 14px;"></span>
     </a>
 
-    <!-- BeQueer -->
     <a href="BeQueer.html" class="ecosystem-card" data-reveal="">
         <span class="eco-tag">Comunidad</span>
         <h3>BeQueer</h3>
         <p>Diseño y tecnología con identidad. Branding inclusivo y desarrollo seguro para la comunidad LGBTQ+ y sus aliados.</p>
-        <span class="eco-btn">Ver más <img src="assets/flechasinfondo.svg" class="icon-black" alt="" style="width: 14px; height: 14px;"></span>
+        <span class="eco-btn">Ver más <img src="assets/flechasinfondo.svg" class="icon-white" alt="" style="width: 14px; height: 14px;"></span>
     </a>
 
-    <!-- Bolsa de Talento -->
     <a href="bolsa-talento.html" class="ecosystem-card" data-reveal="">
         <span class="eco-tag">Red</span>
         <h3>Bolsa de Talento</h3>
         <p>Curaduría de élite. Conectamos clientes con profesionales verificados para ejecutar proyectos con precisión.</p>
-        <span class="eco-btn">Ver más <img src="assets/flechasinfondo.svg" class="icon-black" alt="" style="width: 14px; height: 14px;"></span>
+        <span class="eco-btn">Ver más <img src="assets/flechasinfondo.svg" class="icon-white" alt="" style="width: 14px; height: 14px;"></span>
     </a>
 </div>
 
