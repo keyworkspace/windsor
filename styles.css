@@ -9,7 +9,7 @@
     --cream: #f3f4f2;
     --white: #ffffff;
     
-    /* NUEVA PALETA DE ELEMENTOS (Botones/Acentos) */
+    /* PALETA DE MARCA */
     --blue: #0583F2;
     --blue-dark: #046bc7;
     --green: #32D97A;
@@ -40,7 +40,7 @@
 html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
     background: var(--cream);
-    color: var(--black); /* TEXTO RESTAURADO */
+    color: var(--black);
     font-family: var(--body);
     overflow-x: hidden;
     min-width:320px;
@@ -57,7 +57,7 @@ section { scroll-margin-top:82px; }
 /* 2. PRELOADER */
 .preloader {
     position:fixed; inset:0; z-index:9999;
-    background:var(--black); color:var(--white); /* TEXTO RESTAURADO */
+    background:var(--black); color:var(--white);
     display:flex; flex-direction:column; align-items:center; justify-content:center;
     transition: opacity 0.7s ease, visibility 0.7s ease;
 }
@@ -113,7 +113,7 @@ section { scroll-margin-top:82px; }
     display:inline-flex; align-items:center; gap:15px; padding:13px 20px; background:var(--blue); border:1px solid var(--blue);
     border-radius:var(--radius-pill); font-size:9px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
     transition: background 0.25s ease, color 0.25s ease, gap 0.25s ease, padding 0.25s ease;
-    color: var(--white); /* TEXTO RESTAURADO */
+    color: var(--white);
 }
 .header-button:hover { background:var(--green); color:var(--black); border-color:var(--green); gap:22px; padding-right: 24px; }
 .header-button:hover .icon-white { filter: brightness(0); }
@@ -125,7 +125,7 @@ section { scroll-margin-top:82px; }
 
 /* Mobile Menu */
 .mobile-menu {
-    position:fixed; inset:0; z-index:450; background:var(--black); color:var(--white); /* TEXTO RESTAURADO */
+    position:fixed; inset:0; z-index:450; background:var(--black); color:var(--white);
     opacity:0; visibility:hidden; pointer-events:none; transform:translateY(-20px); transition: opacity 0.35s ease, visibility 0.35s ease, transform 0.35s ease; overflow-y:auto;
 }
 .mobile-menu.active { opacity:1; visibility:visible; pointer-events:auto; transform:translateY(0); }
@@ -688,20 +688,7 @@ body.page-contact .header-actions { display: none; }
 .error-message.show { display: flex; }
 .error-message svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 2; fill: none; flex-shrink: 0; }
 
-/* --- RESPONSIVE EXTRA --- */
-@media (max-width: 900px) {
-    .scale-grid { grid-template-columns: 1fr; }
-    .ecosystem-grid { grid-template-columns: 1fr; gap: 20px; }
-    .ecosystem-card { padding: 30px; }
-    .ecosystem-card.full-width h3 { font-size: 28px; }
-    .contact-page-wrapper { padding: 115px 5vw 70px; }
-    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-    .contact-info { position: static; padding: 35px; }
-    .form-row { grid-template-columns: 1fr; }
-}
-/* =========================================================
-   12. MARQUEE DE TARJETAS MULTIFILA (ESTILO KEYINSTITUTE)
-========================================================= */
+/* 13. MARQUEE DE TARJETAS MULTIFILA (ESTILO KEYINSTITUTE) */
 .marquee-section {
     background: var(--cream);
     padding: var(--space-section) 0;
@@ -725,8 +712,6 @@ body.page-contact .header-actions { display: none; }
     animation: scrollRight 50s linear infinite;
 }
 
-/* NO HAY :hover PAUSE, el movimiento es constante */
-
 @keyframes scrollLeft {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
@@ -738,16 +723,16 @@ body.page-contact .header-actions { display: none; }
 
 /* Estilos de los cuadros */
 .marquee-box {
-    width: 264px;
-    height: 233px;
-    flex: 0 0 264px;
-    padding: 20px; /* Reduje un poco el padding para que quepa bien el texto */
+    width: 236px;
+    height: 207px;
+    flex: 0 0 236px;
+    padding: 20px; 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     text-decoration: none;
     position: relative;
-    box-sizing: border-box;
+    box-sizing: border-box; /* ESTO ES CLAVE: Incluye el padding en los 236x207 */
 }
 
 /* Cuadro Vacío (Blanco) */
@@ -774,7 +759,7 @@ body.page-contact .header-actions { display: none; }
 
 .marquee-box h3 {
     font-family: var(--sans);
-    font-size: 22px; /* Más chico para que encaje */
+    font-size: 22px;
     font-weight: 800;
     line-height: 1.15;
     letter-spacing: -0.03em;
@@ -808,19 +793,40 @@ body.page-contact .header-actions { display: none; }
 }
 
 /* Colores de los cuadros */
-.box-yellow { background: var(--yellow); color: var(--text-light); }
-.box-blue { background: var(--blue); color: var(--text-dark); }
+.box-yellow { background: var(--yellow); color: var(--black); }
+.box-blue { background: var(--blue); color: var(--white); }
 .box-green { background: var(--green); color: var(--black); }
-.box-purple { background: var(--purple); color: var(--text-dark); }
-.box-black { background: var(--black); color: var(--text-dark); }
+.box-purple { background: var(--purple); color: var(--white); }
+.box-black { background: var(--black); color: var(--white); }
 
 /* Responsive (achicamos un poco en tablets y celus) */
 @media (max-width: 800px) {
-    .marquee-box { width: 240px; height: 240px; flex: 0 0 240px; padding: 20px; }
+    .scale-grid { grid-template-columns: 1fr; }
+    .ecosystem-grid { grid-template-columns: 1fr; gap: 20px; }
+    .ecosystem-card { padding: 30px; }
+    .ecosystem-card.full-width h3 { font-size: 28px; }
+    .contact-page-wrapper { padding: 115px 5vw 70px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .contact-info { position: static; padding: 35px; }
+    .form-row { grid-template-columns: 1fr; }
+    
+    .marquee-box { 
+        width: 200px; 
+        height: 175px; 
+        flex: 0 0 200px; 
+        padding: 16px; 
+    }
     .marquee-box h3 { font-size: 18px; }
     .marquee-box .box-link-text { font-size: 10px; }
 }
+
 @media (max-width: 520px) {
-    .marquee-box { width: 200px; height: 200px; flex: 0 0 200px; padding: 16px; }
-    .marquee-box h3 { font-size: 16px; }
+    .marquee-box { 
+        width: 160px; 
+        height: 140px; 
+        flex: 0 0 160px; 
+        padding: 12px; 
+    }
+    .marquee-box h3 { font-size: 15px; }
+    .marquee-box .box-link-text { font-size: 9px; }
 }
