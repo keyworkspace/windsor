@@ -699,3 +699,112 @@ body.page-contact .header-actions { display: none; }
     .contact-info { position: static; padding: 35px; }
     .form-row { grid-template-columns: 1fr; }
 }
+/* =========================================================
+   13. MARQUEE DE TARJETAS (ESTILO KEYINSTITUTE / WINDSOR)
+========================================================= */
+.brand-marquee-section {
+    padding: var(--space-section) 0;
+    background: var(--white);
+    overflow: hidden;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.brand-marquee-wrapper {
+    display: flex;
+    width: max-content;
+    animation: brandLoop 40s linear infinite;
+}
+
+.brand-marquee-wrapper:hover {
+    animation-play-state: paused; /* Se pausa al pasar el mouse */
+}
+
+.brand-card {
+    width: 320px;
+    height: 380px;
+    flex: 0 0 320px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px;
+    text-decoration: none;
+    border-radius: 0; /* Estilo KeyInstitute es cuadrado */
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+/* Efecto de imagen al pasar el mouse */
+.brand-card:hover {
+    filter: brightness(1.05);
+}
+
+.brand-card.image-card {
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(100%) contrast(1.1); /* Blanco y negro como la referencia */
+    transition: filter 0.5s ease;
+}
+
+.brand-card.image-card:hover {
+    filter: grayscale(0%) contrast(1);
+}
+
+.brand-card.blank-card {
+    width: 160px;
+    flex: 0 0 160px;
+    background: var(--cream);
+}
+
+.brand-card .card-title {
+    font-family: var(--sans);
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    position: relative;
+    z-index: 2;
+}
+
+.brand-card .card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+    z-index: 2;
+}
+
+.brand-card .card-subtitle {
+    font-family: var(--body);
+    font-size: 12px;
+    line-height: 1.4;
+    opacity: 0.8;
+    max-width: 180px;
+}
+
+.brand-card .arrow-icon {
+    transition: transform 0.3s ease;
+}
+
+.brand-card:hover .arrow-icon {
+    transform: translate(5px, -5px);
+}
+
+/* Colores de las tarjetas de texto */
+.card-yellow { background: var(--yellow); color: var(--text-light); }
+.card-blue { background: var(--blue); color: var(--text-dark); }
+.card-green { background: var(--green); color: var(--black); }
+.card-purple { background: var(--purple); color: var(--text-dark); }
+.card-cream { background: var(--cream); color: var(--text-light); }
+
+@keyframes brandLoop {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@media (max-width: 800px) {
+    .brand-card { width: 260px; height: 320px; flex: 0 0 260px; padding: 24px; }
+    .brand-card.blank-card { width: 100px; flex: 0 0 100px; }
+    .brand-card .card-title { font-size: 20px; }
+}
