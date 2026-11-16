@@ -21,6 +21,7 @@
 <a href="windsor-one.html">Servicios</a>
 <ul class="submenu">
 <li><a href="windsor-one.html">Windsor One</a></li>
+<li><a href="windsor-scale.html">Windsor Scale</a></li>
 <li><a href="BeQueer.html">BeQueer</a></li>
 <li><a href="reincubadora.html">ReIncubadora</a></li>
 </ul>
@@ -45,6 +46,7 @@ Hablemos
 <a href="metodologia.html">Metodología</a>
 <div class="mobile-group-title">Servicios</div>
 <a href="windsor-one.html">Windsor One</a>
+<a href="windsor-scale.html">Windsor Scale</a>
 <a href="BeQueer.html">BeQueer</a>
 <a href="reincubadora.html">ReIncubadora</a>
 <div class="mobile-group-title">Talento</div>
@@ -65,11 +67,12 @@ Hablemos
 <div class="footer-group">
 <h4>Sobre</h4>
 <a href="metodologia.html">Metodología</a>
-<a href="transparencia.html">Términos y Transparencia</a>
+<a href="transparencia.html">Términos y Condiciones</a>
 </div>
 <div class="footer-group">
 <h4>Servicios</h4>
 <a href="windsor-one.html">Windsor One</a>
+<a href="windsor-scale.html">Windsor Scale</a>
 <a href="BeQueer.html">BeQueer</a>
 <a href="reincubadora.html">ReIncubadora</a>
 </div>
