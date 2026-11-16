@@ -695,33 +695,21 @@ body.page-contact .header-actions { display: none; }
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    gap: 0; /* Cero espacio entre filas */
+    gap: 0;
 }
 
 .marquee-row {
     display: flex;
     width: max-content;
-    gap: 0; /* Cero espacio entre cuadros */
-}
-
-/* Animaciones de las filas */
-.marquee-row.row-left {
-    animation: scrollLeft 50s linear infinite;
-}
-.marquee-row.row-right {
-    animation: scrollRight 50s linear infinite;
+    gap: 0;
+    animation: scrollLeft 60s linear infinite; /* Todas las filas giran a la izquierda */
 }
 
 @keyframes scrollLeft {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
 }
-@keyframes scrollRight {
-    0% { transform: translateX(-50%); }
-    100% { transform: translateX(0); }
-}
 
-/* Estilos de los cuadros */
 .marquee-box {
     width: 236px;
     height: 207px;
@@ -732,15 +720,13 @@ body.page-contact .header-actions { display: none; }
     justify-content: space-between;
     text-decoration: none;
     position: relative;
-    box-sizing: border-box; /* ESTO ES CLAVE: Incluye el padding en los 236x207 */
+    box-sizing: border-box;
 }
 
-/* Cuadro Vacío (Blanco) */
 .marquee-box.empty {
     background: var(--white);
 }
 
-/* Cuadro de Imagen */
 .marquee-box.image-box {
     background-size: cover;
     background-position: center;
@@ -750,7 +736,7 @@ body.page-contact .header-actions { display: none; }
 .marquee-box .box-category {
     font-family: var(--sans);
     font-size: 9px;
-    font-weight: 800;
+    font-weight: 400; /* Texto normal */
     letter-spacing: 0.1em;
     text-transform: uppercase;
     margin-bottom: 15px;
@@ -760,7 +746,7 @@ body.page-contact .header-actions { display: none; }
 .marquee-box h3 {
     font-family: var(--sans);
     font-size: 22px;
-    font-weight: 800;
+    font-weight: 400; /* Texto normal */
     line-height: 1.15;
     letter-spacing: -0.03em;
     margin-bottom: auto;
@@ -776,23 +762,20 @@ body.page-contact .header-actions { display: none; }
 .marquee-box .box-link-text {
     font-family: var(--sans);
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 400; /* Texto normal */
 }
 
-/* La flecha (SVG nativo) */
 .marquee-box .arrow-svg {
     width: 22px;
     height: 22px;
-    transform: rotate(45deg); /* Apunta a la esquina (por defecto) */
+    transform: rotate(45deg);
     transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* Al hacer hover, SOLO la flecha rota y se endereza */
 .marquee-box:hover .arrow-svg {
-    transform: rotate(0deg); /* Apunta a la derecha */
+    transform: rotate(0deg);
 }
 
-/* Colores de los cuadros */
 .box-yellow { background: var(--yellow); color: var(--black); }
 .box-blue { background: var(--blue); color: var(--white); }
 .box-green { background: var(--green); color: var(--black); }
