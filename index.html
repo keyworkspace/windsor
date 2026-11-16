@@ -10,6 +10,101 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="styles.css" rel="stylesheet">
+<style>
+/* =========================================================
+   ECOSISTEMA WINDSOR (SECCIÓN NUEVA EN EL INDEX)
+========================================================= */
+.ecosystem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: var(--max-width);
+    margin: 40px auto 0;
+}
+.ecosystem-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    text-decoration: none;
+    color: var(--black);
+}
+.ecosystem-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+    border-color: var(--blue);
+}
+.ecosystem-card::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 0%;
+    background: var(--blue);
+    transition: width 0.4s ease;
+}
+.ecosystem-card:hover::after {
+    width: 100%;
+}
+.ecosystem-card .eco-tag {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--blue);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+.ecosystem-card h3 {
+    font-family: var(--sans);
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+}
+.ecosystem-card p {
+    font-family: var(--body);
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    flex: 1;
+}
+.ecosystem-card .eco-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--black);
+    transition: color 0.3s ease, gap 0.3s ease;
+}
+.ecosystem-card:hover .eco-btn {
+    color: var(--blue);
+    gap: 15px;
+}
+
+/* Hacer que la primera tarjeta (Windsor One) ocupe 2 columnas en desktop */
+.ecosystem-card.span-2 {
+    grid-column: span 2;
+}
+.ecosystem-card.span-2 h3 { font-size: 26px; }
+
+/* Responsive */
+@media (max-width: 900px) {
+    .ecosystem-grid { grid-template-columns: 1fr; }
+    .ecosystem-card.span-2 { grid-column: span 1; }
+}
+</style>
 </head>
 <body class="">
 
@@ -68,7 +163,7 @@
         <span>TECNOLOGÍA</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
         <span>INNOVACIÓN</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
     </div>
-    <!-- BLOQUE 2 (DUPLICADO PARA EL BUCLE INFINITO) -->
+    <!-- BLOQUE 2 (DUPLICADO) -->
     <div class="marquee-content">
         <span>ESTRATEGIA</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
         <span>DISEÑO</span> <b><svg class="svg-icon svg-spark" viewBox="0 0 24 24"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7L12 3Z"></path></svg></b>
@@ -207,19 +302,67 @@
 </div>
 </section>
 
-<!-- WINDSOR ONE PROMO -->
-<section class="cide-link section" id="windsor-one-promo">
+<!-- EL ECOSISTEMA WINDSOR (REEMPLAZA LA PROMO ÚNICA DE WINDSOR ONE) -->
+<section class="section" id="ecosistema" style="background:var(--white);">
+<div class="section-meta">
+    <span><img src="assets/corchetesabiertos.svg" class="corchete-icon" alt="">05</span>
+    <span>EL ECOSISTEMA</span>
+</div>
 <div class="container">
-<h2><img src="assets/corchetesabiertos.svg" class="corchete-icon" alt=""> Windsor One <span>tu portafolio digital a medida.</span></h2>
-<p>Diseñamos y desarrollamos tu portafolio profesional sin plantillas. Un sitio hecho a la medida de tu trabajo, con la calidad de Windsor aplicada a un proyecto personal.</p>
-<a class="hook-button" href="windsor-one.html">Conocer Windsor One <span aria-hidden="true" class="arrow-icon"><img src="assets/flechasinfondo.svg" class="icon-white" alt="" style="width: 16px; height: 16px;"></span></a>
+<div class="services-heading" style="padding-top:40px; padding-bottom: 0;">
+<h2>Explora nuestras <span>ramas operativas.</span></h2>
+<p>Windsor no es solo una agencia. Es un ecosistema de sistemas diseñados para diferentes etapas y necesidades.</p>
+</div>
+
+<div class="ecosystem-grid">
+    <!-- Windsor One -->
+    <a href="windsor-one.html" class="ecosystem-card span-2" data-reveal="">
+        <span class="eco-tag">Producto Digital</span>
+        <h3>Windsor One</h3>
+        <p>Tu portafolio profesional a medida. Diseño personalizado, sin plantillas, entregado en tiempo récord para que tu talento destaque.</p>
+        <span class="eco-btn">Ver más <img src="assets/flechasinfondo.svg" class="icon-sm icon-black" alt=""></span>
+    </a>
+
+    <!-- Windsor Scale -->
+    <a href="windsor-scale.html" class="ecosystem-card" data-reveal="">
+        <span class="eco-tag">Suscripción</span>
+        <h3>Windsor Scale</h3>
+        <p>El sistema no se detiene. Mantenimiento, optimización y evolución continua para tu producto digital.</p>
+        <span class="eco-btn">Ver más <img src="assets/flechasinfondo.svg" class="icon-sm icon-black" alt=""></span>
+    </a>
+
+    <!-- ReIncubadora -->
+    <a href="reincubadora.html" class="ecosystem-card" data-reveal="">
+        <span class="eco-tag">Programa Piloto</span>
+        <h3>ReIncubadora</h3>
+        <p>Nuestro laboratorio de pruebas. Un programa de diagnóstico e innovación para empresas que necesitan reestructurar su ADN.</p>
+        <span class="eco-btn">Ver más <img src="assets/flechasinfondo.svg" class="icon-sm icon-black" alt=""></span>
+    </a>
+
+    <!-- BeQueer -->
+    <a href="BeQueer.html" class="ecosystem-card" data-reveal="">
+        <span class="eco-tag">Comunidad</span>
+        <h3>BeQueer</h3>
+        <p>Diseño y tecnología con identidad. Branding inclusivo y desarrollo seguro para la comunidad LGBTQ+ y sus aliados.</p>
+        <span class="eco-btn">Ver más <img src="assets/flechasinfondo.svg" class="icon-sm icon-black" alt=""></span>
+    </a>
+
+    <!-- Bolsa de Talento -->
+    <a href="bolsa-talento.html" class="ecosystem-card" data-reveal="">
+        <span class="eco-tag">Red</span>
+        <h3>Bolsa de Talento</h3>
+        <p>Curaduría de élite. Conectamos clientes con profesionales verificados para ejecutar proyectos con precisión.</p>
+        <span class="eco-btn">Ver más <img src="assets/flechasinfondo.svg" class="icon-sm icon-black" alt=""></span>
+    </a>
+</div>
+
 </div>
 </section>
 
 <!-- FAQ -->
 <section class="faq section">
 <div class="section-meta">
-    <span><img src="assets/corchetesabiertos.svg" class="corchete-icon" alt="">05</span>
+    <span><img src="assets/corchetesabiertos.svg" class="corchete-icon" alt="">06</span>
     <span>PREGUNTAS</span>
 </div>
 <div class="faq-layout">
@@ -229,7 +372,6 @@
 <article class="faq-item" data-reveal=""><button class="faq-question" aria-expanded="false"><span>¿Puedo llegar solo con una idea?</span><b>+</b></button><div class="faq-answer"><p>Sí. La evaluación de proyectos existe precisamente para estudiar una idea antes de invertir recursos importantes en su construcción.</p></div></article>
 <article class="faq-item" data-reveal=""><button class="faq-question" aria-expanded="false"><span>¿Utilizan inteligencia artificial?</span><b>+</b></button><div class="faq-answer"><p>Sí. La utilizamos como herramienta de apoyo para acelerar procesos, explorar alternativas y aumentar nuestra capacidad. Las decisiones estratégicas y creativas permanecen bajo supervisión humana.</p></div></article>
 <article class="faq-item" data-reveal=""><button class="faq-question" aria-expanded="false"><span>¿Pueden construir una marca desde cero?</span><b>+</b></button><div class="faq-answer"><p>Sí. Podemos trabajar desde el naming y la arquitectura de marca hasta la identidad, posicionamiento y desarrollo de sus activos digitales.</p></div></article>
-<article class="faq-item" data-reveal=""><button class="faq-question" aria-expanded="false"><span>¿Qué es Windsor One?</span><b>+</b></button><div class="faq-answer"><p>Windsor One es nuestro servicio de portafolios digitales a medida para profesionales. Diseño personalizado, sin plantillas, con la misma calidad que aplicamos a cualquier proyecto de marca. <a class="underlined-link" href="windsor-one.html" style="margin-top:10px;">Ver detalles <span aria-hidden="true" class="arrow-icon"><img src="assets/flechasinfondo.svg" class="icon-black" alt="" style="width: 14px; height: 14px;"></span></a></p></div></article>
 </div>
 </div>
 </section>
@@ -237,7 +379,7 @@
 <!-- CONTACTO -->
 <section class="contact" id="contacto">
 <div class="contact-top">
-    <span><img src="assets/corchetesabiertos.svg" class="corchete-icon" alt=""> 06 / CONTACTO</span>
+    <span><img src="assets/corchetesabiertos.svg" class="corchete-icon" alt=""> 07 / CONTACTO</span>
     <span>WINDSOR</span>
 </div>
 <div class="contact-main">
