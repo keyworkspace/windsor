@@ -688,11 +688,11 @@ body.page-contact .header-actions { display: none; }
 .error-message.show { display: flex; }
 .error-message svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 2; fill: none; flex-shrink: 0; }
 
-/* 13. MARQUEE DE TARJETAS MULTIFILA (ESTILO KEYINSTITUTE) */
+/* 13. MARQUEE DE TARJETAS MULTIFILA (ESTILO KEYINSTITUTE CORREGIDO) */
 .marquee-section {
     background: var(--cream);
     padding: var(--space-section) 0;
-    overflow: hidden;
+    overflow: hidden; /* Crucial para el efecto */
     display: flex;
     flex-direction: column;
     gap: 0;
@@ -702,12 +702,17 @@ body.page-contact .header-actions { display: none; }
     display: flex;
     width: max-content;
     gap: 0;
-    animation: scrollLeft 60s linear infinite;
+    animation: scrollLeft 60s linear infinite; /* Animación a la izquierda */
+}
+
+.marquee-block {
+    display: flex;
+    gap: 0;
 }
 
 @keyframes scrollLeft {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    100% { transform: translateX(-50%); } /* Se mueve exactamente la mitad (un bloque) */
 }
 
 .marquee-box {
@@ -736,7 +741,7 @@ body.page-contact .header-actions { display: none; }
 .marquee-box h3 {
     font-family: var(--sans);
     font-size: 22px;
-    font-weight: 400; /* Texto normal */
+    font-weight: 400;
     line-height: 1.15;
     letter-spacing: -0.03em;
     margin-bottom: auto;
@@ -752,7 +757,7 @@ body.page-contact .header-actions { display: none; }
 .marquee-box .box-link-text {
     font-family: var(--sans);
     font-size: 11px;
-    font-weight: 400; /* Texto normal */
+    font-weight: 400;
 }
 
 .marquee-box .arrow-svg {
@@ -762,7 +767,6 @@ body.page-contact .header-actions { display: none; }
     transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* Efecto Hover por columna y normal */
 .marquee-box:hover .arrow-svg,
 .marquee-box.column-hover .arrow-svg {
     transform: rotate(0deg);
@@ -774,7 +778,7 @@ body.page-contact .header-actions { display: none; }
 .box-purple { background: var(--purple); color: var(--white); }
 .box-black { background: var(--black); color: var(--white); }
 
-/* Responsive (achicamos un poco en tablets y celus) */
+/* Responsive */
 @media (max-width: 800px) {
     .scale-grid { grid-template-columns: 1fr; }
     .ecosystem-grid { grid-template-columns: 1fr; gap: 20px; }
@@ -785,23 +789,13 @@ body.page-contact .header-actions { display: none; }
     .contact-info { position: static; padding: 35px; }
     .form-row { grid-template-columns: 1fr; }
     
-    .marquee-box { 
-        width: 200px; 
-        height: 175px; 
-        flex: 0 0 200px; 
-        padding: 16px; 
-    }
+    .marquee-box { width: 200px; height: 175px; flex: 0 0 200px; padding: 16px; }
     .marquee-box h3 { font-size: 18px; }
     .marquee-box .box-link-text { font-size: 10px; }
 }
 
 @media (max-width: 520px) {
-    .marquee-box { 
-        width: 160px; 
-        height: 140px; 
-        flex: 0 0 160px; 
-        padding: 12px; 
-    }
+    .marquee-box { width: 160px; height: 140px; flex: 0 0 160px; padding: 12px; }
     .marquee-box h3 { font-size: 15px; }
     .marquee-box .box-link-text { font-size: 9px; }
 }
